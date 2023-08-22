@@ -12,7 +12,7 @@
              x:Class="MAUIpractice.Resources.Views.WeatherView"
              xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion.Maui.ProgressBar"
              Title="WeatherView"
-             BackgroundImageSource="weather_tab_mage.jpg">
+             BackgroundImageSource="weather_tab.jpg">
     
     <ScrollView>
         <FlexLayout Direction="Column" AlignItems="Center">

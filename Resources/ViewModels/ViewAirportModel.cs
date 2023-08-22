@@ -32,11 +32,15 @@ namespace MAUIpractice.Resources.ViewModels
             using (HttpClient client = new HttpClient())
             {
                 client.BaseAddress = new Uri("http://aisweb.decea.gov.br/api/");
-                HttpResponseMessage response = await client.GetAsync($"?{apiKey}&{apiPass}&area=rotaer&icaoCode={airportSearch}");
+                HttpResponseMessage response = await client.GetAsync($"?{apiKey}&{apiPass}&area=rotaer&icaoCode={airportSearch}&force=html");
 
                 if (response.IsSuccessStatusCode)
                 {
-                    var responseBody = await response.Content.ReadAsStreamAsync();
+                    var responseBody = await response.Content.ReadAsStringAsync();
+
+                    responseBody.TrimStart();
+
+                    airport = responseBody;
 
                     //#region Start
 
@@ -56,44 +60,44 @@ namespace MAUIpractice.Resources.ViewModels
 
                     //#region End
 
-                    string[] nodes = { "name", "city", "fir"};
+                    //string[] nodes = { "name", "city", "fir"};
 
-                    XmlReaderSettings settings = new XmlReaderSettings();
-                    settings.Async = true;
-                    settings.IgnoreWhitespace = true;
+                    //XmlReaderSettings settings = new XmlReaderSettings();
+                    //settings.Async = true;
+                    //settings.IgnoreWhitespace = true;
 
-                    using (XmlReader reader = XmlReader.Create(responseBody, settings))
-                    {
-                        await reader.ReadAsync();
+                    //using (XmlReader reader = XmlReader.Create(responseBody, settings))
+                    //{
+                    //    await reader.ReadAsync();
 
-                        while (await reader.ReadAsync())
-                        {
+                    //    while (await reader.ReadAsync())
+                    //    {
 
-                            if(reader.NodeType == XmlNodeType.EndElement)
-                            {
-                                continue;
-                            }
+                    //        if(reader.NodeType == XmlNodeType.EndElement)
+                    //        {
+                    //            continue;
+                    //        }
 
-                            if (reader.NodeType == XmlNodeType.Element && reader.HasAttributes)
-                            {
-                                airport += reader.GetAttribute("descr");
-                            }    
+                    //        if (reader.NodeType == XmlNodeType.Element && reader.HasAttributes)
+                    //        {
+                    //            airport += reader.GetAttribute("descr");
+                    //        }    
 
-                            airport += $"{reader.Value}\n";
+                    //        airport += $"{reader.Value}\n";
 
 
-                            //foreach(string item in nodes)
-                            //{
-                            //    if (reader.NodeType == XmlNodeType.Element && reader.Name == item)
-                            //    {
-                            //        reader.Read();
-                            //        airport += $"{reader.Value} ";
-                            //        break;
-                            //    }
-                            //}
+                    //        //foreach(string item in nodes)
+                    //        //{
+                    //        //    if (reader.NodeType == XmlNodeType.Element && reader.Name == item)
+                    //        //    {
+                    //        //        reader.Read();
+                    //        //        airport += $"{reader.Value} ";
+                    //        //        break;
+                    //        //    }
+                    //        //}
 
-                        }
-                    }
+                    //    }
+                    //}
 
                     return airport;
 

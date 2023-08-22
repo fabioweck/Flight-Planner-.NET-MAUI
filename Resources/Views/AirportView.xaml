@@ -2,21 +2,40 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MAUIpractice.Resources.Views.AirportView"
-             Title="AirportView">
-    
-    <ScrollView>
-    <VerticalStackLayout>
+             Title="AirportView"
+             BackgroundImageSource="rotaer_tab.jpg">
 
-            <Entry x:Name="airportEntry"
-                   Completed="airportEntry_Completed"/>
 
-            <Label x:Name="airportView"
-                    Text="Welcome to .NET MAUI!"
-                    VerticalOptions="Center" 
-                    HorizontalOptions="Center"
-                   WidthRequest="750"/>
 
-        </VerticalStackLayout>
-    </ScrollView>
-    
+
+    <VerticalStackLayout Padding="10" Spacing="10">
+
+        <Label  Text="Rotaer - API source: DECEA - Brazil"
+                HorizontalOptions="Center"
+                FontSize="30"
+                FontFamily="Calibri"
+                Margin="10">
+            <Label.Shadow>
+                    <Shadow Brush="Black"
+                    Offset="2,2"
+                    Radius="5"
+                    Opacity="1"></Shadow>
+            </Label.Shadow>
+        </Label>
+        <Entry x:Name="airportEntry"
+                       Placeholder="Type in a location and press ENTER"
+                       Completed="airportEntry_Completed"
+                       WidthRequest="250"
+                       HorizontalOptions="Center"
+                       BackgroundColor="#CC000000"
+                       HorizontalTextAlignment="Center"/>
+
+        <WebView x:Name="rotaer"
+                    HeightRequest="550"
+             WidthRequest="1000"
+             HorizontalOptions="Center"
+             BackgroundColor="Transparent"/>
+
+    </VerticalStackLayout>
+
 </ContentPage>

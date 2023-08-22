@@ -50,7 +50,8 @@
 
 	<ItemGroup>
 	  <None Remove="Resources\Files\Aldo_return.pdf" />
-	  <None Remove="Resources\Images\weather_tab_mage.jpg" />
+	  <None Remove="Resources\Images\rotaer_tab.jpg" />
+	  <None Remove="Resources\Images\weather_tab.jpg" />
 	</ItemGroup>
 
 	<ItemGroup>
