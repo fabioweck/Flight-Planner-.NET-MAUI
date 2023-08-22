@@ -14,15 +14,11 @@ namespace MAUIpractice.Resources.ViewModels
     {
         public string GetMetar { get; set; }
         public string GetTaf { get; set; }
-
-        public string BackgroundImage { get; set; }
         public ObservableCollection<MetarTafModel> Weather { get; set; }
         public Command<MetarTafModel> Delete { get; set; }
         public ViewWeatherModel()
         {
             Weather = new ObservableCollection<MetarTafModel>();
-
-            BackgroundImage = "C:\\Users\\Fabio Weck\\Documents\\My projects\\MAUIpractice\\Resources\\Images\\weatherTabImage.jpg";
 
             Delete = new Command<MetarTafModel>(data =>
             {

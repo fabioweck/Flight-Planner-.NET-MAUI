@@ -15,7 +15,7 @@
              BackgroundImageSource="weather_tab_mage.jpg">
     
     <ScrollView>
-        <VerticalStackLayout HorizontalOptions="Center">
+        <FlexLayout Direction="Column" AlignItems="Center">
             <Label  Text="METAR/TAF - API source: Redemet/DECEA - Brazil" 
                 HorizontalOptions="Center"
                 Padding="10"
@@ -24,20 +24,20 @@
                 Margin="10">
                 <Label.Shadow>
                     <Shadow Brush="Black"
-                            Offset="0,0"
-                            Radius="10"
+                            Offset="2,2"
+                            Radius="5"
                             Opacity="1"></Shadow>
                 </Label.Shadow>
             </Label>
 
-            <HorizontalStackLayout Spacing="30" HorizontalOptions="Fill">
+            <FlexLayout Direction="Row" JustifyContent="SpaceEvenly" BackgroundColor="AliceBlue">
 
                 <Frame BorderColor="#0A000000" 
-                   Padding="0" BackgroundColor="#CC000000" CornerRadius="10" HasShadow="True">
+                   Padding="0" BackgroundColor="#CC000000" CornerRadius="10"
+                       HeightRequest="600">
     
-                    <VerticalStackLayout Spacing="30" 
-                                        Padding="10"  
-                                        HorizontalOptions="Start">
+                    <VerticalStackLayout Spacing="20" 
+                                        Padding="10">
 
                         <Label  Text="Favorites" 
                                 HorizontalOptions="Center"  
@@ -50,10 +50,10 @@
                         <ScrollView>
 
                             <ListView x:Name="FavoritesList" 
-                        HorizontalOptions="Center" 
-                        WidthRequest="200" 
-                        HeightRequest="300"
-                        ItemsSource="{Binding Favorites}">
+                                        HorizontalOptions="Center" 
+                                        WidthRequest="200" 
+                                        HeightRequest="300"
+                                        ItemsSource="{Binding Favorites}">  
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <ViewCell Tapped="ViewCell_Tapped">
@@ -64,17 +64,16 @@
                                                 CommandParameter="{Binding .}"/>
                                             </ViewCell.ContextActions>
                                             <Grid RowSpacing="5" 
-                                    Padding="15">
+                                                    Padding="15">
                                                 <Grid.RowDefinitions>
                                                     <RowDefinition Height="*"/>
                                                 </Grid.RowDefinitions>
                                                 <Label x:Name="FavoriteClicked" 
-                                           Text="{Binding Location}" 
-                                           HorizontalTextAlignment="Center" 
-                                           Grid.Row="0" 
-                                           FontAttributes="Bold"
-                                                       FontFamily="Calibri
-                                                       "/>
+                                                       Text="{Binding Location}" 
+                                                       HorizontalTextAlignment="Center" 
+                                                       Grid.Row="0" 
+                                                       FontAttributes="Bold"
+                                                       FontFamily="Calibri"/>
                                             </Grid>
                                         </ViewCell>
                                     </DataTemplate>
@@ -111,7 +110,8 @@
 
                 <Frame Padding="0" BorderColor="#0A000000" 
                        HorizontalOptions="FillAndExpand"
-                       BackgroundColor="#CC000000">
+                       BackgroundColor="#CC000000"
+                       HeightRequest="600">
 
                     <VerticalStackLayout Spacing="30"  
                                  Padding="30" 
@@ -146,7 +146,7 @@
 
                         <ScrollView VerticalScrollBarVisibility="Always">
                             <ListView x:Name="WeatherList" 
-                          HeightRequest="370"
+                          HeightRequest="350"
                           WidthRequest="910"
                           ItemsSource="{Binding Weather}">
                                 <ListView.ItemTemplate>
@@ -163,8 +163,8 @@
                                                     <RowDefinition Height="*"/>
                                                     <RowDefinition Height="*"/>
                                                 </Grid.RowDefinitions>
-                                                <Label Text="{Binding Metar}" FontAttributes="Bold" HorizontalTextAlignment="Start" Grid.Row="0"/>
-                                                <Label Text="{Binding Taf}" HorizontalTextAlignment="Start" Grid.Row="1"/>
+                                                <Label Text="{Binding Metar}" FontAttributes="Bold" HorizontalTextAlignment="Start" Grid.Row="0" FontSize="12"/>
+                                                <Label Text="{Binding Taf}" HorizontalTextAlignment="Start" Grid.Row="1" FontSize="12"/>
                                             </Grid>
                                         </ViewCell>
                                     </DataTemplate>
@@ -186,7 +186,7 @@
 
                 </Frame>
 
-            </HorizontalStackLayout>
-        </VerticalStackLayout>
+            </FlexLayout>
+        </FlexLayout>
     </ScrollView>
 </ContentPage>

@@ -8,8 +8,14 @@
 
             InitializeComponent();
 
-            MainPage = new MainPage();
-
         }
+        protected override Window CreateWindow(IActivationState activationState) =>
+        new Window(new MainPage())
+        {
+            Width = 1300,
+            Height = 800,
+            X = 100,
+            Y = 10
+        };
     }
 }

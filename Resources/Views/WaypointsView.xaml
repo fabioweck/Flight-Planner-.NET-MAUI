@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MAUIpractice.Resources.Views.WaypointsView"
+             Title="WaypointsView">
+    <VerticalStackLayout>
+        <Entry x:Name="waypointSearch"
+               Completed="waypointSearch_Completed"/>
+        <ScrollView VerticalScrollBarVisibility="Always">
+            <ListView ItemsSource="{Binding ListOfWaypoints}" HeightRequest="500" WidthRequest="300">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <!--<ViewCell Tapped="ViewCell_Tapped">
+                                <ViewCell.ContextActions>
+                                    <MenuItem Text="Delete" 
+                        IsDestructive="True" 
+                        Command="{Binding Path=BindingContext.Delete, Source={Reference FavoritesList}}" 
+                        CommandParameter="{Binding .}"/>
+                                </ViewCell.ContextActions>-->
+                            <Grid RowSpacing="5" 
+                            Padding="15">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Label x:Name="FavoriteClicked" 
+                               Text="{Binding ident}" 
+                               HorizontalTextAlignment="Center" 
+                               Grid.Row="0"
+                               FontAttributes="Bold"
+                               FontFamily="Calibri"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollView>
+    </VerticalStackLayout>
+</ContentPage>
