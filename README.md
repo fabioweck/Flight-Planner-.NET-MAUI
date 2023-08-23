@@ -13,4 +13,5 @@ UNDER DEVELOPMENT...!
 
 ![flightplannet02](https://github.com/fabioweck/Flight-Planner-.NET-MAUI/assets/115494238/bdeffcbe-9f3a-41f4-9b67-2eabdf74298d)
 
-![rotaer_tab](https://github.com/fabioweck/Flight-Planner-.NET-MAUI/assets/115494238/1303bdfc-c9e3-406a-be49-84948474c47a)
+![rotaer_tab](https://github.com/fabioweck/Flight-Planner-.NET-MAUI/assets/115494238/3b44a818-1396-4c6e-b4f3-b0a182eb9c7a)
+
