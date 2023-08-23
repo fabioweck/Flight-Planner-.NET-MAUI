@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MAUIpractice.Resources.Views.ChartsView"
+             Title="ChartsView"
+             BackgroundColor="#1f1f1f">
+    <VerticalStackLayout>
+
+        <Entry x:Name="searchChart"
+                   WidthRequest="250"
+                   Placeholder="Type in a location and press ENTER"
+                   Completed="searchChart_Completed"/>
+
+            <ListView x:Name="ChartsList" 
+                HorizontalOptions="Center" 
+                WidthRequest="400" 
+                HeightRequest="300"
+                ItemsSource="{Binding Charts}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <!--<ViewCell.ContextActions>
+                                <MenuItem Text="Delete" 
+                        IsDestructive="True" 
+                        Command="{Binding Path=BindingContext.Delete, Source={Reference FavoritesList}}" 
+                        CommandParameter="{Binding .}"/>
+                            </ViewCell.ContextActions>-->
+                        <Grid RowSpacing="5" 
+                            Padding="15"
+                              RowDefinitions="*"
+                              ColumnDefinitions="*,*,*">
+                            <Label
+                                   Text="{Binding Description}"
+                                   HorizontalTextAlignment="Center" 
+                                   Grid.Row="0"
+                                   Grid.Column="0"
+                                   FontAttributes="Bold"
+                                   FontFamily="Calibri"/>
+                            <Label
+                                   Text="{Binding Name}" 
+                                   HorizontalTextAlignment="Center" 
+                                   Grid.Row="0"
+                                   Grid.Column="1"
+                                   Grid.ColumnSpan="2"
+                                   FontAttributes="Bold"
+                                   FontFamily="Calibri"/>
+                        </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+    </VerticalStackLayout>
+</ContentPage>

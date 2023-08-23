@@ -10,5 +10,6 @@
     <local:ReportView Title="Report"/>
     <local:WaypointsView Title="Waypoints"/>
     <local:AirportView Title="Rotaer"/>
+    <local:ChartsView Title="Charts"/>
 
 </TabbedPage>

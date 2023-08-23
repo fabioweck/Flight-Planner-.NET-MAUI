@@ -19,6 +19,7 @@ public partial class AirportView : ContentPage
         //rotaer.Source = "https://drive.google.com/viewerng/viewer?url=https://aisweb.decea.gov.br/download/?arquivo=e5bada5a-2c12-472b-bb5f1e9f5b3f01c1&amp";
         rotaer.Source = new HtmlWebViewSource
         {
+            //#1c1c1c background color
             Html = @"<!DOCTYPE html>
                     <html lang=""en"">
                     <head>
@@ -42,9 +43,7 @@ public partial class AirportView : ContentPage
 
     private async Task LoadProgressBar()
     {
-    
         ProgressBar.IsIndeterminate = true;
-
     }
 
     private async void airportEntry_Completed(object sender, EventArgs e)

@@ -41,7 +41,8 @@
                                 ProgressCornerRadius="20"
                                 TrackHeight="3"
                                 ProgressHeight="3"
-                                IsIndeterminate="False">
+                                IsIndeterminate="False"
+                                Margin="10">
             
             <progressBar:SfLinearProgressBar.Shadow>
                 <Shadow Brush="aqua"
@@ -52,11 +53,19 @@
         </progressBar:SfLinearProgressBar>
 
         <WebView x:Name="rotaer"
-                    HeightRequest="550"
+                    HeightRequest="520"
              MinimumWidthRequest="1000"
-             MaximumWidthRequest="1300"
              HorizontalOptions="Center"
-             BackgroundColor="Transparent"/>
+             BackgroundColor="Transparent"
+                 Opacity="0.5">
+            <WebView.Shadow>
+                <Shadow Brush="Black"
+                        Offset="0,0"
+                        Radius="15"
+                        Opacity="1">
+                </Shadow>
+            </WebView.Shadow>
+        </WebView>
 
     </VerticalStackLayout>
 
