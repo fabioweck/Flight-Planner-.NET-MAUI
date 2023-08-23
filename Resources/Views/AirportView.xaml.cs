@@ -12,11 +12,10 @@ public partial class AirportView : ContentPage
         InitializeComponent();
     }
 
-    private async void airportEntry_Completed(object sender, EventArgs e)
+    private async Task LoadRotaer(string location)
     {
         airport.Clear();
-        string airportSearch = ((Entry)sender).Text;
-        string response = await airport.ConvertXml(airportSearch);
+        string response = await airport.ConvertXml(location);
         //rotaer.Source = "https://drive.google.com/viewerng/viewer?url=https://aisweb.decea.gov.br/download/?arquivo=e5bada5a-2c12-472b-bb5f1e9f5b3f01c1&amp";
         rotaer.Source = new HtmlWebViewSource
         {
@@ -32,5 +31,25 @@ public partial class AirportView : ContentPage
                     </head>
                     <body>" + response + @"</body></html>"
         };
+    }
+
+    private async Task LoadRotaerAndProgress(string location)
+    {
+        await Task.WhenAll(LoadRotaer(location), LoadProgressBar());
+        ProgressBar.IsIndeterminate = false;
+        ProgressBar.Progress = 100;
+    }
+
+    private async Task LoadProgressBar()
+    {
+    
+        ProgressBar.IsIndeterminate = true;
+
+    }
+
+    private async void airportEntry_Completed(object sender, EventArgs e)
+    {
+        string location = ((Entry)sender).Text;
+        await LoadRotaerAndProgress(location);
     }
 }
