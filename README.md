@@ -11,7 +11,10 @@ online PDF viewer in order to avoid downloading locally the chart file.
 
 Further improvements will include distance calculator between airports and waypoints, radar images and NOTAMs (notice to air men).
 
-UNDER DEVELOPMENT...!
+**UNDER DEVELOPMENT...!**
+
+![splashscreen](https://github.com/fabioweck/Flight-Planner-.NET-MAUI/assets/115494238/9b24b46d-b31c-4b00-b690-cb33fc687287)
+
 
 ![flightplannet01](https://github.com/fabioweck/Flight-Planner-.NET-MAUI/assets/115494238/e6761edd-a7eb-4bef-abbb-49bb80293008)
 
