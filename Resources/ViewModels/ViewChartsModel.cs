@@ -13,11 +13,12 @@ namespace MAUIpractice.Resources.ViewModels
     {
         public ObservableCollection<ChartModel> Charts { get; set; }
 
-        public string chart;
+        public string link;
 
         public ViewChartsModel() 
         {
             Charts = new();
+
         }
 
         public async Task GetCharts(string location)
@@ -45,6 +46,7 @@ namespace MAUIpractice.Resources.ViewModels
                         {
                             Charts.Add(new ChartModel()
                             {
+                                Id = item.id,
                                 Name = item.nome,
                                 Description = item.tipo,
                                 Link = item.link,
@@ -52,11 +54,6 @@ namespace MAUIpractice.Resources.ViewModels
                             });
                         }                      
                     }
-                }
-
-                else
-                {
-                    chart = $"Error: {response.StatusCode}";
                 }
             }
         }

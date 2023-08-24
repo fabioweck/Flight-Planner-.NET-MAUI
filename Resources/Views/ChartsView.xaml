@@ -2,52 +2,123 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MAUIpractice.Resources.Views.ChartsView"
+             xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion.Maui.ProgressBar"
              Title="ChartsView"
-             BackgroundColor="#1f1f1f">
-    <VerticalStackLayout>
+             BackgroundImageSource="charts_tab.png">
 
-        <Entry x:Name="searchChart"
-                   WidthRequest="250"
-                   Placeholder="Type in a location and press ENTER"
-                   Completed="searchChart_Completed"/>
+    <VerticalStackLayout Padding="30" Spacing="30">
 
-            <ListView x:Name="ChartsList" 
-                HorizontalOptions="Center" 
-                WidthRequest="400" 
-                HeightRequest="300"
-                ItemsSource="{Binding Charts}">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <!--<ViewCell.ContextActions>
-                                <MenuItem Text="Delete" 
-                        IsDestructive="True" 
-                        Command="{Binding Path=BindingContext.Delete, Source={Reference FavoritesList}}" 
-                        CommandParameter="{Binding .}"/>
-                            </ViewCell.ContextActions>-->
-                        <Grid RowSpacing="5" 
-                            Padding="15"
-                              RowDefinitions="*"
-                              ColumnDefinitions="*,*,*">
-                            <Label
-                                   Text="{Binding Description}"
-                                   HorizontalTextAlignment="Center" 
-                                   Grid.Row="0"
-                                   Grid.Column="0"
-                                   FontAttributes="Bold"
-                                   FontFamily="Calibri"/>
-                            <Label
-                                   Text="{Binding Name}" 
-                                   HorizontalTextAlignment="Center" 
-                                   Grid.Row="0"
-                                   Grid.Column="1"
-                                   Grid.ColumnSpan="2"
-                                   FontAttributes="Bold"
-                                   FontFamily="Calibri"/>
-                        </Grid>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+        <Label  Text="IFR Charts - DECEA, Brazil"
+                HorizontalOptions="Center"
+                FontSize="30"
+                FontFamily="Calibri">
+            <Label.Shadow>
+                <Shadow Brush="Black"
+                        Offset="2,2"
+                        Radius="4"
+                        Opacity="1">
+                </Shadow>
+            </Label.Shadow>
+        </Label>
+
+        <FlexLayout Direction="Row" 
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    JustifyContent="SpaceAround">
+
+            <Frame BorderColor="#0A000000" 
+                   Padding="0" BackgroundColor="#CC000000" 
+                   CornerRadius="10"
+                   HeightRequest="600">
+
+                <VerticalStackLayout>
+
+                    <Entry x:Name="searchChart"
+                           WidthRequest="250"
+                           Placeholder="Type in a location and press ENTER"
+                           Completed="searchChart_Completed"
+                           HorizontalTextAlignment="Center"
+                           Margin="20"
+                           FontSize="14"
+                           PlaceholderColor="#E8E9EB"
+                           BackgroundColor="#1AFFFFFF"/>
+
+                    <progressBar:SfLinearProgressBar x:Name="ProgressBar"
+                                Progress="0" 
+                                WidthRequest="240"
+                                ProgressFill="Aqua"
+                                TrackFill="Black"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Start"
+                                TrackCornerRadius="20"
+                                ProgressCornerRadius="20"
+                                TrackHeight="3"
+                                ProgressHeight="3">
+                        <progressBar:SfLinearProgressBar.Shadow>
+                            <Shadow Brush="aqua"
+                                    Offset="0,0"
+                                    Radius="5"
+                                    Opacity="0.3"></Shadow>
+                        </progressBar:SfLinearProgressBar.Shadow>
+                    </progressBar:SfLinearProgressBar>
+
+                    <ListView x:Name="ChartsList" 
+                        HorizontalOptions="Center" 
+                        WidthRequest="250" 
+                        HeightRequest="480"
+                        ItemsSource="{Binding Charts}"
+                              Margin="10">
+
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell Tapped="ViewCell_Tapped">
+                                    <Grid RowSpacing="5" 
+                                  Padding="15"
+                                  RowDefinitions="*"
+                                    ColumnDefinitions="*,*,*,*,*">
+                                        <Label Text="{Binding Description}"
+                                               HorizontalTextAlignment="Center" 
+                                               Grid.Row="0"
+                                               Grid.Column="0"
+                                               FontAttributes="Bold"
+                                               FontFamily="Calibri"/>
+                                        <Label x:Name="chartClicked"
+                                               Text="{Binding Name}" 
+                                               HorizontalTextAlignment="Center" 
+                                               Grid.Row="0"
+                                               Grid.Column="1"
+                                               Grid.ColumnSpan="4"
+                                               FontAttributes="Bold"
+                                               FontFamily="Calibri"/>
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                </VerticalStackLayout>
+            </Frame>
+
+            <Border StrokeThickness="1"
+                    Stroke="#CC000000"
+                    StrokeShape="RoundRectangle 10,10,10,10"
+                    StrokeLineCap="Round"
+                    BackgroundColor="#CC000000">
+                <WebView x:Name="PdfCharts"
+                     WidthRequest="901"
+                     HeightRequest="600"
+                     VerticalOptions="Start">
+                    <WebView.Shadow>
+                        <Shadow Brush="Black"
+                                Offset="0,0"
+                                Radius="20"
+                                Opacity="1">
+                        </Shadow>
+                    </WebView.Shadow>
+                </WebView>
+            </Border>
+
+    </FlexLayout>
     </VerticalStackLayout>
+    
 </ContentPage>

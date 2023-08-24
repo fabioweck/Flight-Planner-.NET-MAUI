@@ -7,7 +7,9 @@
         <Entry x:Name="waypointSearch"
                Completed="waypointSearch_Completed"/>
         <ScrollView VerticalScrollBarVisibility="Always">
-            <ListView ItemsSource="{Binding ListOfWaypoints}" HeightRequest="500" WidthRequest="300">
+            <ListView ItemsSource="{Binding ListOfWaypoints}" 
+                      HeightRequest="500" 
+                      WidthRequest="300">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -19,16 +21,16 @@
                         CommandParameter="{Binding .}"/>
                                 </ViewCell.ContextActions>-->
                             <Grid RowSpacing="5" 
-                            Padding="15">
+                                  Padding="15">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="*"/>
                                 </Grid.RowDefinitions>
                                 <Label x:Name="FavoriteClicked" 
-                               Text="{Binding ident}" 
-                               HorizontalTextAlignment="Center" 
-                               Grid.Row="0"
-                               FontAttributes="Bold"
-                               FontFamily="Calibri"/>
+                                       Text="{Binding ident}" 
+                                       HorizontalTextAlignment="Center" 
+                                       Grid.Row="0"
+                                       FontAttributes="Bold"
+                                       FontFamily="Calibri"/>
                             </Grid>
                         </ViewCell>
                     </DataTemplate>

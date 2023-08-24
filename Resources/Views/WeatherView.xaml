@@ -16,7 +16,7 @@
     
     <ScrollView>
         <FlexLayout Direction="Column" AlignItems="Center">
-            <Label  Text="METAR/TAF - API source: Redemet/DECEA - Brazil" 
+            <Label  Text="METAR/TAF - Redemet, Brazil" 
                 HorizontalOptions="Center"
                 Padding="10"
                 FontSize="30"
@@ -102,6 +102,24 @@
                             TextColor="#E8E9EB"
                             FontFamily="Calibri"
                             BorderWidth="1.2">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroupList>
+                                <VisualStateGroup x:Name="btnPressed">
+                                    <VisualState x:Name="Normal">
+                                        <VisualState.Setters>
+                                            <Setter Property="Scale"
+                                                    Value="1" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                    <VisualState x:Name="Pressed">
+                                        <VisualState.Setters>
+                                            <Setter Property="Scale"
+                                                    Value="0.95" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                </VisualStateGroup>
+                                    </VisualStateGroupList>
+                            </VisualStateManager.VisualStateGroups>
                         </Button>
 
                     </VerticalStackLayout>
@@ -181,7 +199,26 @@
                                 BorderColor="#4DE8E9EB"
                                 TextColor="#E8E9EB"
                                 FontFamily="Calibri"
-                                BorderWidth="1.2"/>
+                                BorderWidth="1.2">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroupList>
+                                    <VisualStateGroup x:Name="btnPressed">
+                                        <VisualState x:Name="Normal">
+                                            <VisualState.Setters>
+                                                <Setter Property="Scale"
+                                                        Value="1" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                        <VisualState x:Name="Pressed">
+                                            <VisualState.Setters>
+                                                <Setter Property="Scale"
+                                                        Value="0.95" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateGroupList>
+                            </VisualStateManager.VisualStateGroups>
+                        </Button>
                     </VerticalStackLayout>
 
                 </Frame>

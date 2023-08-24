@@ -11,12 +11,12 @@
 
     <VerticalStackLayout Padding="30" Spacing="10">
 
-        <Label  Text="Rotaer - API source: DECEA - Brazil"
+        <Label  Text="Rotaer - DECEA, Brazil"
                 HorizontalOptions="Center"
                 FontSize="30"
                 FontFamily="Calibri">
             <Label.Shadow>
-                    <Shadow Brush="Black"
+                <Shadow Brush="Black"
                     Offset="2,2"
                     Radius="5"
                     Opacity="1"></Shadow>
@@ -29,7 +29,7 @@
                        HorizontalOptions="Center"
                        BackgroundColor="#CC000000"
                        HorizontalTextAlignment="Center"/>
-    
+
         <progressBar:SfLinearProgressBar x:Name="ProgressBar"
                                 Progress="0" 
                                 WidthRequest="750"
@@ -43,7 +43,7 @@
                                 ProgressHeight="3"
                                 IsIndeterminate="False"
                                 Margin="10">
-            
+
             <progressBar:SfLinearProgressBar.Shadow>
                 <Shadow Brush="aqua"
                 Offset="0,0"
@@ -52,20 +52,30 @@
             </progressBar:SfLinearProgressBar.Shadow>
         </progressBar:SfLinearProgressBar>
 
-        <WebView x:Name="rotaer"
-                    HeightRequest="520"
-             MinimumWidthRequest="1000"
-             HorizontalOptions="Center"
-             BackgroundColor="Transparent"
-                 Opacity="0.5">
+        <Border StrokeThickness="1"
+                Stroke="#CC000000"
+                StrokeShape="RoundRectangle 10,10,10,10"
+                StrokeLineCap="Round"
+                BackgroundColor="#CC000000"
+                WidthRequest="1000">
+            <WebView x:Name="rotaer"
+                HeightRequest="520"
+                MinimumWidthRequest="1000"
+                HorizontalOptions="Center"
+                BackgroundColor="Transparent"
+                Opacity="0.5">
+            
             <WebView.Shadow>
                 <Shadow Brush="Black"
                         Offset="0,0"
-                        Radius="15"
+                        Radius="10"
                         Opacity="1">
                 </Shadow>
             </WebView.Shadow>
+            
         </WebView>
+        </Border>
+
 
     </VerticalStackLayout>
 

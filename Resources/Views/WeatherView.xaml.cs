@@ -83,7 +83,7 @@ public partial class WeatherView : ContentPage
 
     private void FavoritesList_ItemSelected(object sender, SelectedItemChangedEventArgs e)
     {
-        FavoriteResponse.Text = "test";
+        
     }
 
 }

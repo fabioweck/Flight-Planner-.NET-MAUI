@@ -16,7 +16,6 @@ public partial class AirportView : ContentPage
     {
         airport.Clear();
         string response = await airport.ConvertXml(location);
-        //rotaer.Source = "https://drive.google.com/viewerng/viewer?url=https://aisweb.decea.gov.br/download/?arquivo=e5bada5a-2c12-472b-bb5f1e9f5b3f01c1&amp";
         rotaer.Source = new HtmlWebViewSource
         {
             //#1c1c1c background color
