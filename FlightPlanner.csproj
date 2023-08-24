@@ -75,6 +75,9 @@
 	  <MauiXaml Update="Resources\Views\ReportView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Resources\Views\ViewSplashScreen.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Resources\Views\WaypointsView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

@@ -5,12 +5,13 @@
              xmlns:syncfusion="clr-namespace:Syncfusion.Maui.PdfViewer;assembly=Syncfusion.Maui.PdfViewer"
              xmlns:local="clr-namespace:MAUIpractice.Resources.ViewModels"
              Title="ReportView"
-             BackgroundColor="#444444">
+             BackgroundImageSource="charts_tab.png">
     
     <ContentPage.BindingContext>
         <local:PdfViewerViewModel/>
     </ContentPage.BindingContext>
-    <Grid>
+    <Grid HeightRequest="600"
+          >
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -19,12 +20,7 @@
             Grid.Row="0" Padding="8"
             IsVisible="{OnPlatform MacCatalyst=False}">
             <Label FontSize="Medium" TextColor="White" VerticalOptions="Center"></Label>
-            <Button Text="Choose file"
-                BackgroundColor="#FFF6F6F6"
-                TextColor="Black"
-                VerticalOptions="Center" HorizontalOptions="Start" 
-                Command="{Binding OpenDocumentCommand}"/>
         </Grid>
-        <syncfusion:SfPdfViewer Grid.Row="1" BackgroundColor="#444444" DocumentSource="{Binding PdfDocumentStream}"/>
+        <syncfusion:SfPdfViewer Grid.Row="1" BackgroundColor="#55000000" DocumentSource="{Binding PdfDocumentStream}"/>
     </Grid>
 </ContentPage>
