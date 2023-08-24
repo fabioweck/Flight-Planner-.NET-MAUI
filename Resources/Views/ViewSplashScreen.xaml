@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion.Maui.ProgressBar"
+             x:Class="MAUIpractice.Resources.Views.ViewSplashScreen"
+             Title=""
+             BackgroundColor="Transparent">
+
+    <Grid>
+        <Image Source="splash_screen.jpg"
+               Aspect="AspectFill"/>
+        <progressBar:SfCircularProgressBar IsIndeterminate="True" 
+                                           WidthRequest="60"
+                                           HeightRequest="60"
+                                           TrackFill="#50FFFFFF" 
+                                           ProgressFill="White"
+                                           ProgressThickness="8"
+                                           TrackThickness="8">
+            
+        </progressBar:SfCircularProgressBar>
+    </Grid>
+        
+    
+</ContentPage>

@@ -1,4 +1,6 @@
-﻿namespace MAUIpractice
+﻿using MAUIpractice.Resources.Views;
+
+namespace MAUIpractice
 {
     public partial class App : Application
     {
@@ -10,7 +12,7 @@
 
         }
         protected override Window CreateWindow(IActivationState activationState) =>
-        new Window(new MainPage())
+        new Window(new ViewSplashScreen())
         {
             Width = 1300,
             Height = 800,

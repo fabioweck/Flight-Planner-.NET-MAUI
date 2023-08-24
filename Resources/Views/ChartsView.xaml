@@ -45,7 +45,7 @@
 
                     <progressBar:SfLinearProgressBar x:Name="ProgressBar"
                                 Progress="0" 
-                                WidthRequest="240"
+                                WidthRequest="250"
                                 ProgressFill="Aqua"
                                 TrackFill="Black"
                                 HorizontalOptions="Center"
@@ -61,6 +61,14 @@
                                     Opacity="0.3"></Shadow>
                         </progressBar:SfLinearProgressBar.Shadow>
                     </progressBar:SfLinearProgressBar>
+
+                    <!--<Label x:Name="LocationName"
+                           Text="Some text"
+                           FontAttributes="Bold"
+                           FontFamily="Calibri"
+                           FontSize="20"
+                           Margin="10"
+                           HorizontalOptions="Center"/>-->
 
                     <ListView x:Name="ChartsList" 
                         HorizontalOptions="Center" 

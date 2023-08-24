@@ -2,11 +2,11 @@
 using Microsoft.Maui.Hosting;                        /* Progress bar */
 using Microsoft.Maui.Controls.Compatibility;
 using Microsoft.Maui.Controls.Hosting;
-using Microsoft.Maui.Controls.Xaml; 
+using Microsoft.Maui.Controls.Xaml;
 
 using Microsoft.Extensions.Logging;
 
-using Syncfusion.Maui.Core.Hosting; //For PDF Viewer
+using Syncfusion.Maui.Core.Hosting; //For PDF Viewer and circular progress bar
 
 namespace MAUIpractice
 {
