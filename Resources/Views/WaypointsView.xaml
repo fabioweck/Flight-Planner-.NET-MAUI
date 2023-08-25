@@ -1,25 +1,44 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:editors="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inputs"
              x:Class="MAUIpractice.Resources.Views.WaypointsView"
+             xmlns:local="clr-namespace:MAUIpractice.Resources.ViewModels"
              Title="WaypointsView">
+
+    <ContentPage.BindingContext>
+        <local:ViewWaypointsModel/>
+    </ContentPage.BindingContext>
+
     <VerticalStackLayout>
-        <Entry x:Name="waypointSearch"
-               Completed="waypointSearch_Completed"/>
-        <ScrollView VerticalScrollBarVisibility="Always">
+        <editors:SfAutocomplete x:Name="autoComplete" 
+                                WidthRequest="250"
+                                ItemsSource="{Binding ListOfWaypoints}"
+                                DisplayMemberPath = "ident"
+                                TextMemberPath = "ident"
+                                SelectedValuePath ="id"
+                                SelectionChanged="autoComplete_SelectionChanged"/>
+        <Button Text="Add"
+                WidthRequest="60"
+                Clicked="Button_Clicked"/>
+        <Label x:Name="waypoints"/>
+
+        <!--<Entry x:Name="waypointSearch"
+               Completed="waypointSearch_Completed"/>-->
+        <!--<ScrollView VerticalScrollBarVisibility="Always">
             <ListView ItemsSource="{Binding ListOfWaypoints}" 
                       HeightRequest="500" 
                       WidthRequest="300">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <!--<ViewCell Tapped="ViewCell_Tapped">
+                            --><!--<ViewCell Tapped="ViewCell_Tapped">
                                 <ViewCell.ContextActions>
                                     <MenuItem Text="Delete" 
                         IsDestructive="True" 
                         Command="{Binding Path=BindingContext.Delete, Source={Reference FavoritesList}}" 
                         CommandParameter="{Binding .}"/>
-                                </ViewCell.ContextActions>-->
+                                </ViewCell.ContextActions>--><!--
                             <Grid RowSpacing="5" 
                                   Padding="15">
                                 <Grid.RowDefinitions>
@@ -36,6 +55,6 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-        </ScrollView>
+        </ScrollView>-->
     </VerticalStackLayout>
 </ContentPage>

@@ -1,19 +1,27 @@
 using MAUIpractice.Resources.ViewModels;
+using Syncfusion.Maui.Inputs;
 
 namespace MAUIpractice.Resources.Views;
 
 public partial class WaypointsView : ContentPage
 {
-    ViewWaypointsModel waypointsModel = new ViewWaypointsModel();
+
+
     public WaypointsView()
 	{
 		InitializeComponent();
-        BindingContext = waypointsModel;
-	}
-
-    private async void waypointSearch_Completed(object sender, EventArgs e)
-    {
-        string waypoint = ((Entry)sender).Text;
-        string response = await waypointsModel.ConvertXml(waypoint);
     }
+
+
+    private void Button_Clicked(object sender, EventArgs e)
+    {
+        
+    }
+
+    private void autoComplete_SelectionChanged(object sender, Syncfusion.Maui.Inputs.SelectionChangedEventArgs e)
+    {
+        //autoComplete.SelectedValue to get the value from selection;
+    }
+
+
 }

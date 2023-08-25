@@ -18,12 +18,14 @@ namespace MAUIpractice.Resources.ViewModels
     {
         string waypoint;
         public ObservableCollection<WaypointModel> ListOfWaypoints { get; set; }
+
         public ViewWaypointsModel()
         {
             ListOfWaypoints = new ObservableCollection<WaypointModel>();
+            ConvertXml();
         }
 
-        public async Task<string> ConvertXml(string waypointSearch)
+        public async Task ConvertXml()
         {
             string apiKey = "apiKey=1999328818";
             string apiPass = "apiPass=89d22412-1f35-11ee-a2b8-0050569ac2e1";
@@ -31,7 +33,7 @@ namespace MAUIpractice.Resources.ViewModels
             using (HttpClient client = new HttpClient())
             {
                 client.BaseAddress = new Uri("http://aisweb.decea.gov.br/api/");
-                HttpResponseMessage response = await client.GetAsync($"?{apiKey}&{apiPass}&area=waypoints&ident={waypointSearch}");
+                HttpResponseMessage response = await client.GetAsync($"?{apiKey}&{apiPass}&area=waypoints&rowend=7000");
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -56,16 +58,52 @@ namespace MAUIpractice.Resources.ViewModels
                         }
 
                         waypoint = $"Item id: {aisweb.waypoints.item[0].ident}";
-                        return waypoint;
+
                     }
                 }
 
                 else
                 {
                     waypoint = $"Error: {response.StatusCode}";
-                    return waypoint;
                 }
             }
         }
+
+        public double GetDistance(int id1, int id2)
+        {
+            //Calculates the distance between two points provided by the user in nautical miles (aviaton pattern)
+            double distance = 0;
+            double pi = Math.PI;
+            double firstWaypointLat = 0;
+            double firstWaypointLong = 0;
+            double secondWaypointLat = 0;
+            double secondWaypointLong = 0;
+
+            foreach(var item in ListOfWaypoints)
+            {
+                if(item.id == id1)
+                {
+                    firstWaypointLat =  Convert.ToDouble(item.latitude);
+                    firstWaypointLong = Convert.ToDouble(item.longitude);
+                }
+
+                if(item.id == id2)
+                {
+                    secondWaypointLat = Convert.ToDouble(item.latitude);
+                    secondWaypointLong = Convert.ToDouble(item.longitude);
+                }
+            }
+
+            firstWaypointLat = firstWaypointLat * (pi / 180.0);
+            secondWaypointLat = secondWaypointLat * (pi / 180.0);
+            firstWaypointLong = firstWaypointLat * (pi / 180.0);
+            secondWaypointLong = secondWaypointLat * (pi / 180.0);
+
+            distance = 3963 * Math.Acos(Math.Sin(firstWaypointLat) * Math.Sin(secondWaypointLat) + Math.Cos(firstWaypointLat) * Math.Cos(secondWaypointLat) * Math.Cos(secondWaypointLong - firstWaypointLong));
+
+            return distance;
+
+        }
+
     }
 }

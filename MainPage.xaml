@@ -6,9 +6,9 @@
              SelectedTabColor="#444444">
 
     <local:WeatherView Title="Weather"/>
-    <!--<local:ReportView Title="Report"/>
-    <local:WaypointsView Title="Waypoints"/>-->
     <local:AirportView Title="Rotaer"/>
-    <local:ChartsView Title="IFR Charts"/>
+    <local:ChartsView Title="Charts"/>
+    <local:WaypointsView Title="Waypoints"/>
+    <local:ReportView Title="Report"/>
 
 </TabbedPage>
