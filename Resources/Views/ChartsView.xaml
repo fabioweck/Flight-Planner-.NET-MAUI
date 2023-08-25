@@ -8,7 +8,7 @@
 
     <VerticalStackLayout Padding="30" Spacing="30">
 
-        <Label  Text="IFR Charts - DECEA, Brazil"
+        <Label  Text="Charts - DECEA, Brazil"
                 HorizontalOptions="Center"
                 FontSize="30"
                 FontFamily="Calibri">
@@ -44,16 +44,16 @@
                            BackgroundColor="#1AFFFFFF"/>
 
                     <progressBar:SfLinearProgressBar x:Name="ProgressBar"
-                                Progress="0" 
-                                WidthRequest="250"
-                                ProgressFill="Aqua"
-                                TrackFill="Black"
-                                HorizontalOptions="Center"
-                                VerticalOptions="Start"
-                                TrackCornerRadius="20"
-                                ProgressCornerRadius="20"
-                                TrackHeight="3"
-                                ProgressHeight="3">
+                                                    Progress="0" 
+                                                    WidthRequest="250"
+                                                    ProgressFill="Aqua"
+                                                    TrackFill="Black"
+                                                    HorizontalOptions="Center"
+                                                    VerticalOptions="Start"
+                                                    TrackCornerRadius="20"
+                                                    ProgressCornerRadius="20"
+                                                    TrackHeight="3"
+                                                    ProgressHeight="3">
                         <progressBar:SfLinearProgressBar.Shadow>
                             <Shadow Brush="aqua"
                                     Offset="0,0"
