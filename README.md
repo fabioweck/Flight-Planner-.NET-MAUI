@@ -13,8 +13,7 @@ Further improvements will include distance calculator between airports and waypo
 
 **UNDER DEVELOPMENT...!**
 
-![splashscreen](https://github.com/fabioweck/Flight-Planner-.NET-MAUI/assets/115494238/9b24b46d-b31c-4b00-b690-cb33fc687287)
-
+![splashscreen](https://github.com/fabioweck/Flight-Planner-.NET-MAUI/assets/115494238/5882adae-232d-4833-b5b1-78c79e18e360)
 
 ![weather_tab](https://github.com/fabioweck/Flight-Planner-.NET-MAUI/assets/115494238/7627d6dd-9e6d-4e7d-9938-0137c170d4c2)
 
