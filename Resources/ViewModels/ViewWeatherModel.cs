@@ -27,12 +27,12 @@ namespace MAUIpractice.Resources.ViewModels
         }
         public async Task AddWeather(string location)
         {
-            string apiKey = "api_key=sJgea8VlPUfxZDd2pH1p3DDw2Vyog6cMNDfres44";
+            KeysModel apiKey = new();
 
             using (HttpClient client = new HttpClient())
             {
                 client.BaseAddress = new Uri("https://api-redemet.decea.mil.br/mensagens/");
-                HttpResponseMessage responseMetar = await client.GetAsync($"metar/{location}?{apiKey}");
+                HttpResponseMessage responseMetar = await client.GetAsync($"metar/{location}?{apiKey.GetRedemetApiKey()}");
                 try
                 {
                     if (responseMetar.IsSuccessStatusCode)
@@ -55,7 +55,7 @@ namespace MAUIpractice.Resources.ViewModels
                 }
                 
 
-                HttpResponseMessage responseTaf = await client.GetAsync($"taf/{location}?{apiKey}");
+                HttpResponseMessage responseTaf = await client.GetAsync($"taf/{location}?{apiKey.GetRedemetApiKey()}");
 
                 try
                 {

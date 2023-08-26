@@ -7,6 +7,7 @@ using Microsoft.Maui.Controls.Xaml;
 using Microsoft.Extensions.Logging;
 
 using Syncfusion.Maui.Core.Hosting; //For PDF Viewer and circular progress bar
+using CommunityToolkit.Maui;
 
 namespace MAUIpractice
 {
@@ -17,6 +18,7 @@ namespace MAUIpractice
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .UseMauiCommunityToolkit()
                 .ConfigureSyncfusionCore() //For PDF Viewer and progress bar
                 .ConfigureFonts(fonts =>
                 {

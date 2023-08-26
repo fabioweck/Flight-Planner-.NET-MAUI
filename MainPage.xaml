@@ -10,5 +10,6 @@
     <local:ChartsView Title="Charts"/>
     <local:WaypointsView Title="Waypoints"/>
     <local:ReportView Title="Report"/>
+    <local:RadarView Title="Radar"/>
 
 </TabbedPage>
