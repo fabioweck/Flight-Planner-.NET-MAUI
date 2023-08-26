@@ -43,6 +43,11 @@ namespace MAUIpractice.Resources.ViewModels
                     {
                         Charts chartsList = (Charts)serializer.Deserialize(reader);
 
+                        if(chartsList.cartas.item == null)
+                        {
+                            return;
+                        }
+
                         foreach (var item in chartsList.cartas.item)
                         {
                             Charts.Add(new ChartModel()

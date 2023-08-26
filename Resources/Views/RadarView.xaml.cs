@@ -16,7 +16,7 @@ public partial class RadarView : ContentPage
 
     private async void Button_Clicked(object sender, EventArgs e)
     {
-		await Radar.GetRadarLink("");
+		await Radar.GetRadarLink();
 		radarImageDisplay.Source = Radar.RadarLink;
 	}
 }

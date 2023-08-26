@@ -8,19 +8,19 @@ using MAUIpractice.Resources.Models;
 
 namespace MAUIpractice.Resources.ViewModels
 {
-
-
-    class ViewRadarModel
+    public class ViewRadarModel
     {
         public string RadarLink { get; set; }
+        public string RadarDate { get; set; }
 
         public ViewRadarModel()
         {
             RadarLink = string.Empty;
+            RadarDate = string.Empty;
         }
 
 
-        public async Task GetRadarLink(string location)
+        public async Task GetRadarLink()
         {
             KeysModel apiKey = new();
 
@@ -40,6 +40,7 @@ namespace MAUIpractice.Resources.ViewModels
                         var dataSet = JsonConvert.DeserializeObject<RadarModel>(responseBody);
 
                         RadarLink = dataSet?.data.satelite[0].path;
+                        RadarDate = dataSet?.data.satelite[0].data;
 
                     }
 
@@ -53,6 +54,16 @@ namespace MAUIpractice.Resources.ViewModels
                     RadarLink = "METAR not found for this location.";
                 }
             }
+        }
+
+        public string GetLink()
+        {
+            return RadarLink;
+        }
+
+        public string GetDate()
+        {
+            return RadarDate;
         }
     }
 }

@@ -2,6 +2,7 @@ using MAUIpractice.Resources.ViewModels;
 using Microsoft.Maui.Devices.Sensors;
 using Syncfusion.Maui.ProgressBar;
 using System.Threading.Tasks;
+using static System.Net.WebRequestMethods;
 
 namespace MAUIpractice.Resources.Views;
 
@@ -9,16 +10,26 @@ public partial class WeatherView : ContentPage
 {
     public ViewWeatherModel GetWeather { get; set; }
     public ViewFavoritesModel GetFavorites { get; set; }
+    public ViewSigwxModel GetSigwx { get; set; }
+    public ViewRadarModel GetRadar { get; set; }
+
+    DataTemplate contentTemplateView;
+    Image sigwxImage;
+    Image radarImage;
+
     public WeatherView()
     {
         InitializeComponent();
 
         GetWeather = new ViewWeatherModel();
         GetFavorites = new ViewFavoritesModel();
+        GetSigwx = new ViewSigwxModel();
+        GetRadar = new ViewRadarModel();
 
         WeatherList.BindingContext = GetWeather;
         FavoritesList.BindingContext = GetFavorites;
         BindingContext = GetWeather;
+
     }
 
     private void WeatherLocation_Completed(object sender, EventArgs e)
@@ -86,4 +97,60 @@ public partial class WeatherView : ContentPage
         
     }
 
+    private async Task LoadSigwxAndProgressBar()
+    {
+        await Task.WhenAll(LoadSigwxContent(), LoadProgressBar());
+    }
+
+    private async Task LoadRadarAndProgressBar()
+    {
+        await Task.WhenAll(LoadRadarContent(), LoadProgressBar());
+    }
+
+    private async Task LoadSigwxContent()
+    {
+        await GetSigwx.GetSigwxLink();
+        string link = GetSigwx.GetLink();
+
+        contentTemplateView = new DataTemplate(() =>
+        {
+            sigwxImage = new Image();
+            sigwxImage.BackgroundColor = Colors.Transparent;
+            sigwxImage.Margin = 10;
+            sigwxImage.Source = link;
+            return sigwxImage;
+        });
+
+        SigwxPopup.ContentTemplate = contentTemplateView;
+        SigwxPopup.Show();
+    }
+
+    private async Task LoadRadarContent()
+    {
+        await GetRadar.GetRadarLink();
+        string link = GetRadar.GetLink();
+        string date = GetRadar.GetDate();
+
+        contentTemplateView = new DataTemplate(() =>
+        {
+            radarImage = new Image();
+            radarImage.Margin = 10;
+            radarImage.Source = link;
+            return radarImage;
+        });
+
+        RadarPopup.HeaderTitle = $"Enhanced - {date}";
+        RadarPopup.ContentTemplate = contentTemplateView;
+        RadarPopup.Show();
+    }
+
+    private void SigwxDisplay_Clicked(object sender, EventArgs e)
+    {
+        LoadSigwxAndProgressBar();
+    }
+
+    private void RadarDisplay_Clicked(object sender, EventArgs e)
+    {
+        LoadRadarAndProgressBar();
+    }
 }
