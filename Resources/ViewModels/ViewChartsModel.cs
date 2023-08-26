@@ -18,7 +18,6 @@ namespace MAUIpractice.Resources.ViewModels
         public ViewChartsModel() 
         {
             Charts = new();
-
         }
 
         public async Task GetCharts(string location)
