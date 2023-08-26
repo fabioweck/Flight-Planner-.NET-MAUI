@@ -23,14 +23,15 @@ namespace MAUIpractice.Resources.ViewModels
 
         public async Task GetCharts(string location)
         {
+
             Charts.Clear();
-            string apiKey = "apiKey=1999328818";
-            string apiPass = "apiPass=89d22412-1f35-11ee-a2b8-0050569ac2e1";
+
+            KeysModel apiKeys = new();
 
             using (HttpClient client = new HttpClient())
             {
                 client.BaseAddress = new Uri("http://aisweb.decea.gov.br/api/");
-                HttpResponseMessage response = await client.GetAsync($"?{apiKey}&{apiPass}&area=cartas&icaoCode={location}");
+                HttpResponseMessage response = await client.GetAsync($"?{apiKeys.GetDeceaApiKey()}&{apiKeys.GetDeceaApiPass()}&area=cartas&icaoCode={location}");
 
                 if (response.IsSuccessStatusCode)
                 {

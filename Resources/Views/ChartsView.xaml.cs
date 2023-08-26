@@ -28,7 +28,7 @@ public partial class ChartsView : ContentPage
 
         if (label != null)
         {
-            PdfCharts.Source = $"https://drive.google.com/viewerng/viewer?url={label.Link}";
+            PdfCharts.Source = $"https://drive.google.com/viewer?url={label.Link}";
         }
     }
 }
