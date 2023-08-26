@@ -11,11 +11,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MAUIpractice.Resources.Views.WeatherView"
              xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion.Maui.ProgressBar"
+             xmlns:sfPopup="clr-namespace:Syncfusion.Maui.Popup;assembly=Syncfusion.Maui.Popup"
              Title="WeatherView"
              BackgroundImageSource="weather_tab.jpg">
-    
+
     <ScrollView>
         <FlexLayout Direction="Column" AlignItems="Center">
+
             <Label  Text="METAR/TAF - Redemet, Brazil" 
                 HorizontalOptions="Center"
                 Padding="10"
@@ -190,40 +192,147 @@
                             </ListView>
                         </ScrollView>
 
-                        <Button x:Name="ClearWeatherField" 
-                                Text="Clear"
-                                Clicked="ClearWeatherField_Clicked" 
-                                HorizontalOptions="End" 
-                                WidthRequest="70"
-                                BackgroundColor="#66000000"
-                                BorderColor="#4DE8E9EB"
-                                TextColor="#E8E9EB"
-                                FontFamily="Calibri"
-                                BorderWidth="1.2">
-                            <VisualStateManager.VisualStateGroups>
-                                <VisualStateGroupList>
-                                    <VisualStateGroup x:Name="btnPressed">
-                                        <VisualState x:Name="Normal">
-                                            <VisualState.Setters>
-                                                <Setter Property="Scale"
-                                                        Value="1" />
-                                            </VisualState.Setters>
-                                        </VisualState>
-                                        <VisualState x:Name="Pressed">
-                                            <VisualState.Setters>
-                                                <Setter Property="Scale"
-                                                        Value="0.95" />
-                                            </VisualState.Setters>
-                                        </VisualState>
-                                    </VisualStateGroup>
-                                </VisualStateGroupList>
-                            </VisualStateManager.VisualStateGroups>
-                        </Button>
+                        <FlexLayout Direction="Row" JustifyContent="SpaceBetween">
+                            
+                            <HorizontalStackLayout Spacing="20">
+                            <Button x:Name="SigwxDisplay" 
+                                    Text="SIGWX"
+                                    Clicked="SigwxDisplay_Clicked" 
+                                    HorizontalOptions="End" 
+                                    WidthRequest="70"
+                                    BackgroundColor="#66000000"
+                                    BorderColor="#4DE8E9EB"
+                                    TextColor="#E8E9EB"
+                                    FontFamily="Calibri"
+                                    BorderWidth="1.2">
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroupList>
+                                        <VisualStateGroup x:Name="btnPressed">
+                                            <VisualState x:Name="Normal">
+                                                <VisualState.Setters>
+                                                    <Setter Property="Scale"
+                                                            Value="1" />
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                            <VisualState x:Name="Pressed">
+                                                <VisualState.Setters>
+                                                    <Setter Property="Scale"
+                                                            Value="0.95" />
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                        </VisualStateGroup>
+                                    </VisualStateGroupList>
+                                </VisualStateManager.VisualStateGroups>
+                            </Button>
+
+                            <Button x:Name="RadarDisplay" 
+                                    Text="Radar"
+                                    Clicked="RadarDisplay_Clicked"
+                                    HorizontalOptions="End" 
+                                    WidthRequest="70"
+                                    BackgroundColor="#66000000"
+                                    BorderColor="#4DE8E9EB"
+                                    TextColor="#E8E9EB"
+                                    FontFamily="Calibri"
+                                    BorderWidth="1.2">
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroupList>
+                                        <VisualStateGroup x:Name="btnPressed">
+                                            <VisualState x:Name="Normal">
+                                                <VisualState.Setters>
+                                                    <Setter Property="Scale"
+                                                            Value="1" />
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                            <VisualState x:Name="Pressed">
+                                                <VisualState.Setters>
+                                                    <Setter Property="Scale"
+                                                            Value="0.95" />
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                        </VisualStateGroup>
+                                    </VisualStateGroupList>
+                                </VisualStateManager.VisualStateGroups>
+                            </Button>
+
+                            </HorizontalStackLayout>
+
+                            <Button x:Name="ClearWeatherField" 
+                                    Text="Clear"
+                                    Clicked="ClearWeatherField_Clicked" 
+                                    HorizontalOptions="End" 
+                                    WidthRequest="70"
+                                    BackgroundColor="#66000000"
+                                    BorderColor="#4DE8E9EB"
+                                    TextColor="#E8E9EB"
+                                    FontFamily="Calibri"
+                                    BorderWidth="1.2">
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroupList>
+                                        <VisualStateGroup x:Name="btnPressed">
+                                            <VisualState x:Name="Normal">
+                                                <VisualState.Setters>
+                                                    <Setter Property="Scale"
+                                    Value="1" />
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                            <VisualState x:Name="Pressed">
+                                                <VisualState.Setters>
+                                                    <Setter Property="Scale"
+                                    Value="0.95" />
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                        </VisualStateGroup>
+                                    </VisualStateGroupList>
+                                </VisualStateManager.VisualStateGroups>
+                            </Button>
+                        </FlexLayout>
+
+                        <sfPopup:SfPopup x:Name="SigwxPopup" 
+                                        HeaderTitle="SIGWX"
+                                        HeightRequest="800" WidthRequest="880"
+                                        ShowCloseButton="True"
+                                        OverlayMode="Blur"
+                                        BackgroundColor="Transparent"
+                                        HeaderHeight="60">
+                        <sfPopup:SfPopup.PopupStyle>
+                                <sfPopup:PopupStyle CornerRadius="10"
+                                                    HeaderBackground="#CC000000"
+                                                    HeaderFontSize="15"
+                                                    HeaderFontAttribute="Bold"
+                                                    HeaderTextColor="#E8E9EB"
+                                                    MessageBackground="#AA000000"
+                                                    BlurIntensity="ExtraDark"/>
+                            </sfPopup:SfPopup.PopupStyle>
+                        </sfPopup:SfPopup>
+
+                        <sfPopup:SfPopup x:Name="RadarPopup" 
+                                        HeaderTitle="Radar"
+                                        HeightRequest="800" WidthRequest="770"
+                                        ShowCloseButton="True"
+                                        OverlayMode="Blur"
+                                        BackgroundColor="Transparent"
+                                        HeaderHeight="60">
+                            <sfPopup:SfPopup.PopupStyle>
+                                <sfPopup:PopupStyle CornerRadius="10"
+                                                    HeaderBackground="#CC000000"
+                                                    HeaderFontSize="15"
+                                                    HeaderFontAttribute="Bold"
+                                                    HeaderTextColor="#E8E9EB"
+                                                    MessageBackground="#AA000000"
+                                                    BlurIntensity="ExtraDark"/>
+                            </sfPopup:SfPopup.PopupStyle>
+                        </sfPopup:SfPopup>
+
                     </VerticalStackLayout>
 
                 </Frame>
 
             </FlexLayout>
         </FlexLayout>
+        
     </ScrollView>
+
+    
+    
 </ContentPage>
