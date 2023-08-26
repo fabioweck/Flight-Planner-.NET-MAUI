@@ -17,7 +17,8 @@ namespace MAUIpractice
             Width = 1300,
             Height = 800,
             X = 100,
-            Y = 10
+            Y = 10,
+            Title = "Electronic Flight Planner - F. Weck"
         };
     }
 }

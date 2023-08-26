@@ -12,7 +12,6 @@
              x:Class="MAUIpractice.Resources.Views.WeatherView"
              xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion.Maui.ProgressBar"
              xmlns:sfPopup="clr-namespace:Syncfusion.Maui.Popup;assembly=Syncfusion.Maui.Popup"
-             Title="WeatherView"
              BackgroundImageSource="weather_tab.jpg">
 
     <ScrollView>
@@ -302,7 +301,7 @@
                                                     HeaderFontAttribute="Bold"
                                                     HeaderTextColor="#E8E9EB"
                                                     MessageBackground="#AA000000"
-                                                    BlurIntensity="ExtraDark"/>
+                                                    BlurIntensity="ExtraLight"/>
                             </sfPopup:SfPopup.PopupStyle>
                         </sfPopup:SfPopup>
 
@@ -320,7 +319,7 @@
                                                     HeaderFontAttribute="Bold"
                                                     HeaderTextColor="#E8E9EB"
                                                     MessageBackground="#AA000000"
-                                                    BlurIntensity="ExtraDark"/>
+                                                    BlurIntensity="ExtraLight"/>
                             </sfPopup:SfPopup.PopupStyle>
                         </sfPopup:SfPopup>
 
