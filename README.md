@@ -9,7 +9,8 @@ On the last tab added, "IFR charts", the user can check published charts for a s
 its resources listed in a listview (procedures, airport map, runaways,...). This tab makes use of a webview as well, calling google
 online PDF viewer in order to avoid downloading locally the chart file.
 
-Further improvements will include distance calculator between airports and waypoints, radar images and NOTAMs (notice to air men).
+Further improvements will include distance calculator between airports and waypoints, WACs (World aeronautical charts), 
+NOTAMs (notice to air men) and AIP (aeronautical information publication).
 
 **UNDER DEVELOPMENT...!**
 
