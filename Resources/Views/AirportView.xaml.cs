@@ -4,19 +4,20 @@ namespace MAUIpractice.Resources.Views;
 
 public partial class AirportView : ContentPage
 {
-    public ViewAirportModel airport;
+    public ViewAirportModel Airport;
+
     public AirportView()
     {
-        airport = new ViewAirportModel();
+        Airport = new ViewAirportModel();
 
         InitializeComponent();
     }
 
     private async Task LoadRotaer(string location)
     {
-        airport.Clear();
-        string response = await airport.ConvertXml(location);
-        rotaer.Source = new HtmlWebViewSource
+        Airport.Clear();
+        string response = await Airport.ConvertXml(location);
+        Rotaer.Source = new HtmlWebViewSource
         {
             //#1c1c1c background color
             Html = @"<!DOCTYPE html>
@@ -45,7 +46,7 @@ public partial class AirportView : ContentPage
         ProgressBar.IsIndeterminate = true;
     }
 
-    private async void airportEntry_Completed(object sender, EventArgs e)
+    private async void AirportEntry_Completed(object sender, EventArgs e)
     {
         string location = ((Entry)sender).Text;
         await LoadRotaerAndProgress(location);

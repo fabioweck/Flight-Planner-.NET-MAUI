@@ -22,9 +22,9 @@
                     Opacity="1"></Shadow>
             </Label.Shadow>
         </Label>
-        <Entry x:Name="airportEntry"
+        <Entry x:Name="AirportEntry"
                        Placeholder="Type in a location and press ENTER"
-                       Completed="airportEntry_Completed"
+                       Completed="AirportEntry_Completed"
                        WidthRequest="250"
                        HorizontalOptions="Center"
                        BackgroundColor="#CC000000"
@@ -58,7 +58,7 @@
                 StrokeLineCap="Round"
                 BackgroundColor="#CC000000"
                 WidthRequest="1000">
-            <WebView x:Name="rotaer"
+            <WebView x:Name="Rotaer"
                 HeightRequest="520"
                 MinimumWidthRequest="1000"
                 HorizontalOptions="Center"

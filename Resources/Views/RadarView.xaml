@@ -18,7 +18,7 @@
             HeightRequest="20"
             WidthRequest="100"/>
         <ScrollView>
-            <Image x:Name="radarImageDisplay"/>
+            <Image x:Name="RadarImageDisplay"/>
         </ScrollView>
 
     </StackLayout>
