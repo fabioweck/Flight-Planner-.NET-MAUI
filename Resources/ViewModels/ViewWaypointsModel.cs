@@ -49,11 +49,11 @@ namespace MAUIpractice.Resources.ViewModels
                         {
                             ListOfWaypoints.Add(new WaypointModel()
                             {
-                                id = item.id,
-                                ident = item.ident,
-                                latitude = item.latitude,
-                                longitude = item.longitude,
-                                dt = item.dt,
+                                Id = item.id,
+                                Ident = item.ident,
+                                Latitude = item.latitude,
+                                Longitude = item.longitude,
+                                Dt = item.dt,
                             });
                         }
 
@@ -81,16 +81,16 @@ namespace MAUIpractice.Resources.ViewModels
 
             foreach(var item in ListOfWaypoints)
             {
-                if(item.id == id1)
+                if(item.Id == id1)
                 {
-                    firstWaypointLat =  Convert.ToDouble(item.latitude);
-                    firstWaypointLong = Convert.ToDouble(item.longitude);
+                    firstWaypointLat =  Convert.ToDouble(item.Latitude);
+                    firstWaypointLong = Convert.ToDouble(item.Longitude);
                 }
 
-                if(item.id == id2)
+                if(item.Id == id2)
                 {
-                    secondWaypointLat = Convert.ToDouble(item.latitude);
-                    secondWaypointLong = Convert.ToDouble(item.longitude);
+                    secondWaypointLat = Convert.ToDouble(item.Latitude);
+                    secondWaypointLong = Convert.ToDouble(item.Longitude);
                 }
             }
 

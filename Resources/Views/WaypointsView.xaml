@@ -11,13 +11,13 @@
     </ContentPage.BindingContext>
 
     <VerticalStackLayout>
-        <editors:SfAutocomplete x:Name="autoComplete" 
+        <editors:SfAutocomplete x:Name="AutoComplete" 
                                 WidthRequest="250"
                                 ItemsSource="{Binding ListOfWaypoints}"
                                 DisplayMemberPath = "ident"
                                 TextMemberPath = "ident"
                                 SelectedValuePath ="id"
-                                SelectionChanged="autoComplete_SelectionChanged"/>
+                                SelectionChanged="AutoComplete_SelectionChanged"/>
         <Button Text="Add"
                 WidthRequest="60"
                 Clicked="Button_Clicked"/>

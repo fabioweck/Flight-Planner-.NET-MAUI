@@ -33,10 +33,10 @@
 
                 <VerticalStackLayout>
 
-                    <Entry x:Name="searchChart"
+                    <Entry x:Name="SearchChart"
                            WidthRequest="250"
                            Placeholder="Type in a location and press ENTER"
-                           Completed="searchChart_Completed"
+                           Completed="SearchChart_Completed"
                            HorizontalTextAlignment="Center"
                            Margin="20"
                            FontSize="14"

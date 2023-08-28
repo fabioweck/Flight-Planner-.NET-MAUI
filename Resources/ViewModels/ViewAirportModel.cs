@@ -14,6 +14,7 @@ namespace MAUIpractice.Resources.ViewModels
     public class ViewAirportModel
     {
         string airport;
+
         public ViewAirportModel()
         {
 

@@ -8,10 +8,10 @@ namespace MAUIpractice.Resources.Views;
 
 public partial class WeatherView : ContentPage
 {
-    public ViewWeatherModel GetWeather { get; set; }
-    public ViewFavoritesModel GetFavorites { get; set; }
-    public ViewSigwxModel GetSigwx { get; set; }
-    public ViewRadarModel GetRadar { get; set; }
+    ViewWeatherModel GetWeather { get; set; }
+    ViewFavoritesModel GetFavorites { get; set; }
+    ViewSigwxModel GetSigwx { get; set; }
+    ViewRadarModel GetRadar { get; set; }
 
     DataTemplate contentTemplateView;
     Image sigwxImage;
@@ -138,6 +138,8 @@ public partial class WeatherView : ContentPage
             radarImage.Source = link;
             return radarImage;
         });
+
+
 
         RadarPopup.HeaderTitle = $"Enhanced - {date}";
         RadarPopup.ContentTemplate = contentTemplateView;

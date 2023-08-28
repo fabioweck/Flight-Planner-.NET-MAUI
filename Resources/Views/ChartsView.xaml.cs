@@ -5,18 +5,19 @@ namespace MAUIpractice.Resources.Views;
 
 public partial class ChartsView : ContentPage
 {
-    ViewChartsModel charts = new();
+    ViewChartsModel Charts = new();
+
     public ChartsView()
 	{
 		InitializeComponent();
-        BindingContext = charts;
+        BindingContext = Charts;
 	}
 
-    private async void searchChart_Completed(object sender, EventArgs e)
+    private async void SearchChart_Completed(object sender, EventArgs e)
     {
         ProgressBar.IsIndeterminate = true;
         string location = ((Entry)sender).Text;
-        await charts.GetCharts(location);
+        await Charts.GetCharts(location);
         ProgressBar.IsIndeterminate = false;
         ProgressBar.Progress = 100;
     }

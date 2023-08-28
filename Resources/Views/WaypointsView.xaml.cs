@@ -18,7 +18,7 @@ public partial class WaypointsView : ContentPage
         
     }
 
-    private void autoComplete_SelectionChanged(object sender, Syncfusion.Maui.Inputs.SelectionChangedEventArgs e)
+    private void AutoComplete_SelectionChanged(object sender, Syncfusion.Maui.Inputs.SelectionChangedEventArgs e)
     {
         //autoComplete.SelectedValue to get the value from selection;
     }

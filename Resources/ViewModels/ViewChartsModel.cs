@@ -13,8 +13,6 @@ namespace MAUIpractice.Resources.ViewModels
     {
         public ObservableCollection<ChartModel> Charts { get; set; }
 
-        public string link;
-
         public ViewChartsModel() 
         {
             Charts = new();

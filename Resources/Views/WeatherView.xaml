@@ -15,6 +15,7 @@
              BackgroundImageSource="weather_tab.jpg">
 
     <ScrollView>
+
         <FlexLayout Direction="Column" AlignItems="Center">
 
             <Label  Text="METAR/TAF - Redemet, Brazil" 
@@ -34,9 +35,9 @@
             <FlexLayout Direction="Row" JustifyContent="SpaceEvenly" BackgroundColor="AliceBlue">
 
                 <Frame BorderColor="#0A000000" 
-                   Padding="0" BackgroundColor="#CC000000" CornerRadius="10"
+                   Padding="0" BackgroundColor="#CC000000" CornerRadius="8"
                        HeightRequest="600">
-    
+
                     <VerticalStackLayout Spacing="20" 
                                         Padding="10">
 
@@ -45,7 +46,8 @@
                                 FontSize="25"
                                 TextColor="#E8E9EB"
                                 FontFamily="Calibri"
-                                Padding="10"/>
+                                Padding="10"
+                                />
                         <Border/>
 
                         <ScrollView>
@@ -60,12 +62,12 @@
                                         <ViewCell Tapped="ViewCell_Tapped">
                                             <ViewCell.ContextActions>
                                                 <MenuItem Text="Delete" 
-                                                IsDestructive="True" 
+                                                IsDestructive="True"
                                                 Command="{Binding Path=BindingContext.Delete, Source={Reference FavoritesList}}" 
                                                 CommandParameter="{Binding .}"/>
                                             </ViewCell.ContextActions>
                                             <Grid RowSpacing="5" 
-                                                    Padding="15">
+                                                  Padding="15">
                                                 <Grid.RowDefinitions>
                                                     <RowDefinition Height="*"/>
                                                 </Grid.RowDefinitions>
@@ -74,7 +76,7 @@
                                                        HorizontalTextAlignment="Center" 
                                                        Grid.Row="0" 
                                                        FontAttributes="Bold"
-                                                       FontFamily="Calibri"/>
+                                                       FontFamily="Calibri"></Label>
                                             </Grid>
                                         </ViewCell>
                                     </DataTemplate>
@@ -83,8 +85,8 @@
                         </ScrollView>
 
                         <Label x:Name="FavoriteResponse" 
-                   HorizontalOptions="Center"
-                           FontSize="13"/>
+                               HorizontalOptions="Center"
+                               FontSize="13"/>
 
                         <Entry x:Name="AddFavoriteToList" 
                                WidthRequest="100"
@@ -95,17 +97,17 @@
                                BackgroundColor="#1AFFFFFF"/>
 
                         <Button x:Name="AddFavorite" 
-                            Text="Add favorite" 
-                            WidthRequest="110" 
-                            Clicked="AddFavorite_Clicked"
-                            BackgroundColor="#66000000"
-                            BorderColor="#4DE8E9EB"
-                            TextColor="#E8E9EB"
-                            FontFamily="Calibri"
-                            BorderWidth="1.2">
+                                Text="Add favorite" 
+                                WidthRequest="110" 
+                                Clicked="AddFavorite_Clicked"
+                                BackgroundColor="#66000000"
+                                BorderColor="#4DE8E9EB"
+                                TextColor="#E8E9EB"
+                                FontFamily="Calibri"
+                                BorderWidth="1.2">
                             <VisualStateManager.VisualStateGroups>
                                 <VisualStateGroupList>
-                                <VisualStateGroup x:Name="btnPressed">
+                                <VisualStateGroup x:Name="BtnPressed">
                                     <VisualState x:Name="Normal">
                                         <VisualState.Setters>
                                             <Setter Property="Scale"
@@ -130,7 +132,8 @@
                 <Frame Padding="0" BorderColor="#0A000000" 
                        HorizontalOptions="FillAndExpand"
                        BackgroundColor="#CC000000"
-                       HeightRequest="600">
+                       HeightRequest="600"
+                       CornerRadius="8">
 
                     <VerticalStackLayout Spacing="30"  
                                  Padding="30" 
@@ -206,7 +209,7 @@
                                     BorderWidth="1.2">
                                 <VisualStateManager.VisualStateGroups>
                                     <VisualStateGroupList>
-                                        <VisualStateGroup x:Name="btnPressed">
+                                        <VisualStateGroup x:Name="BtnPressed">
                                             <VisualState x:Name="Normal">
                                                 <VisualState.Setters>
                                                     <Setter Property="Scale"
@@ -236,7 +239,7 @@
                                     BorderWidth="1.2">
                                 <VisualStateManager.VisualStateGroups>
                                     <VisualStateGroupList>
-                                        <VisualStateGroup x:Name="btnPressed">
+                                        <VisualStateGroup x:Name="BtnPressed">
                                             <VisualState x:Name="Normal">
                                                 <VisualState.Setters>
                                                     <Setter Property="Scale"
@@ -268,17 +271,17 @@
                                     BorderWidth="1.2">
                                 <VisualStateManager.VisualStateGroups>
                                     <VisualStateGroupList>
-                                        <VisualStateGroup x:Name="btnPressed">
+                                        <VisualStateGroup x:Name="BtnPressed">
                                             <VisualState x:Name="Normal">
                                                 <VisualState.Setters>
                                                     <Setter Property="Scale"
-                                    Value="1" />
+                                                            Value="1" />
                                                 </VisualState.Setters>
                                             </VisualState>
                                             <VisualState x:Name="Pressed">
                                                 <VisualState.Setters>
                                                     <Setter Property="Scale"
-                                    Value="0.95" />
+                                                            Value="0.95" />
                                                 </VisualState.Setters>
                                             </VisualState>
                                         </VisualStateGroup>

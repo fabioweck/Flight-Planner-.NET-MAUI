@@ -10,13 +10,12 @@ public partial class RadarView : ContentPage
 
 	public RadarView()
 	{
-		InitializeComponent();
-		
+		InitializeComponent();		
 	}
 
     private async void Button_Clicked(object sender, EventArgs e)
     {
 		await Radar.GetRadarLink();
-		radarImageDisplay.Source = Radar.RadarLink;
+		RadarImageDisplay.Source = Radar.RadarLink;
 	}
 }

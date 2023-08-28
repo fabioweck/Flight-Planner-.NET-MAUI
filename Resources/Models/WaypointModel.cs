@@ -8,10 +8,10 @@ namespace MAUIpractice.Resources.Models
 {
     public class WaypointModel
     {
-        public ushort id { get; set; }
-        public string ident { get; set; }
-        public decimal latitude { get; set; }
-        public decimal longitude { get; set; }
-        public DateTime dt { get; set; }
+        public ushort Id { get; set; }
+        public string Ident { get; set; }
+        public decimal Latitude { get; set; }
+        public decimal Longitude { get; set; }
+        public DateTime Dt { get; set; }
     }
 }
