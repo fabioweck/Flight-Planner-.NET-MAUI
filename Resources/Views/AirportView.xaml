@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MAUIpractice.Resources.Views.AirportView"
              xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion.Maui.ProgressBar"
+             xmlns:editors="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inputs"
              Title="AirportView"
              BackgroundImageSource="rotaer_tab.jpg">
 
@@ -22,13 +23,29 @@
                     Opacity="1"></Shadow>
             </Label.Shadow>
         </Label>
-        <Entry x:Name="AirportEntry"
+        <editors:SfAutocomplete x:Name="SearchAirport" 
+                        WidthRequest="250"
+                        ItemsSource="{Binding Airports}"
+                        DisplayMemberPath = "Airport"
+                        TextMemberPath = "Airport"
+                        SelectedValuePath ="Airport"
+                        SelectionChanged="SearchAirport_SelectionChanged"
+                        Placeholder="Type in a location and press ENTER"
+                        HorizontalOptions="Center"
+                        BackgroundColor="#AA000000"
+                        TextColor="White"
+                        ClearButtonIconColor="Grey"
+                        Stroke="Aqua"
+                        MaxDropDownHeight = "300"
+                        />
+        
+        <!--<Entry x:Name="AirportEntry"
                        Placeholder="Type in a location and press ENTER"
                        Completed="AirportEntry_Completed"
                        WidthRequest="250"
                        HorizontalOptions="Center"
                        BackgroundColor="#CC000000"
-                       HorizontalTextAlignment="Center"/>
+                       HorizontalTextAlignment="Center"/>-->
 
         <progressBar:SfLinearProgressBar x:Name="ProgressBar"
                                 Progress="0" 

@@ -13,15 +13,21 @@
     <VerticalStackLayout>
         <editors:SfAutocomplete x:Name="AutoComplete" 
                                 WidthRequest="250"
-                                ItemsSource="{Binding ListOfWaypoints}"
-                                DisplayMemberPath = "ident"
-                                TextMemberPath = "ident"
-                                SelectedValuePath ="id"
+                                ItemsSource="{Binding Airports}"
+                                DisplayMemberPath = "Airport"
+                                TextMemberPath = "Airport"
+                                SelectedValuePath ="Airport"
                                 SelectionChanged="AutoComplete_SelectionChanged"/>
         <Button Text="Add"
                 WidthRequest="60"
                 Clicked="Button_Clicked"/>
-        <Label x:Name="waypoints"/>
+        <Label x:Name="Waypoints"/>
+
+        <Button Text="Path"
+        WidthRequest="60"
+        Clicked="Button_Clicked_1"/>
+        <Label x:Name="PathLocation"/>
+
 
         <!--<Entry x:Name="waypointSearch"
                Completed="waypointSearch_Completed"/>-->

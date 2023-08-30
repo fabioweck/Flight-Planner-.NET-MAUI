@@ -13,7 +13,7 @@ namespace MAUIpractice.Resources.ViewModels
 {
     public class ViewAirportModel
     {
-        string airport;
+        AirportModel Airport;
 
         public ViewAirportModel()
         {
@@ -22,7 +22,7 @@ namespace MAUIpractice.Resources.ViewModels
 
         public void Clear()
         {
-            airport = string.Empty;
+            Airport = new();
         }
 
         public async Task<string> ConvertXml(string airportSearch)
@@ -42,73 +42,16 @@ namespace MAUIpractice.Resources.ViewModels
 
                     responseBody.TrimStart();
 
-                    airport = responseBody;
+                    Airport.SetAirport(responseBody);
 
-                    //#region Start
-
-                    //XmlSerializer serializer = new(typeof(Rotaer));
-
-                    //XmlReaderSettings settings = new XmlReaderSettings();
-                    //settings.Async = true;
-                    //settings.IgnoreWhitespace = true;
-                    //XmlReader reader = XmlReader.Create(responseBody, settings);
-
-                    //Rotaer rotaer;
-
-                    //rotaer = (Rotaer)serializer.Deserialize(reader);
-
-                    //airport = $"Item id: {rotaer.AeroCode}";
-                    //return airport;
-
-                    //#region End
-
-                    //string[] nodes = { "name", "city", "fir"};
-
-                    //XmlReaderSettings settings = new XmlReaderSettings();
-                    //settings.Async = true;
-                    //settings.IgnoreWhitespace = true;
-
-                    //using (XmlReader reader = XmlReader.Create(responseBody, settings))
-                    //{
-                    //    await reader.ReadAsync();
-
-                    //    while (await reader.ReadAsync())
-                    //    {
-
-                    //        if(reader.NodeType == XmlNodeType.EndElement)
-                    //        {
-                    //            continue;
-                    //        }
-
-                    //        if (reader.NodeType == XmlNodeType.Element && reader.HasAttributes)
-                    //        {
-                    //            airport += reader.GetAttribute("descr");
-                    //        }    
-
-                    //        airport += $"{reader.Value}\n";
-
-
-                    //        //foreach(string item in nodes)
-                    //        //{
-                    //        //    if (reader.NodeType == XmlNodeType.Element && reader.Name == item)
-                    //        //    {
-                    //        //        reader.Read();
-                    //        //        airport += $"{reader.Value} ";
-                    //        //        break;
-                    //        //    }
-                    //        //}
-
-                    //    }
-                    //}
-
-                    return airport;
+                    return Airport.GetAirport();
 
                 }
 
                 else
                 {
-                    airport = $"Error: {response.StatusCode}";
-                    return airport;
+                    Airport.SetAirport($"Error: {response.StatusCode}");
+                    return Airport.GetAirport();
                 }
             }
         }

@@ -8,7 +8,7 @@
     <local:WeatherView Title="Weather"/>
     <local:AirportView Title="Rotaer"/>
     <local:ChartsView Title="Charts"/>
-    <!--<local:WaypointsView Title="Waypoints"/>
-    <local:ReportView Title="Report"/>-->
+    <local:WaypointsView Title="Waypoints"/>
+    <!--<local:ReportView Title="Report"/>-->
 
 </TabbedPage>
