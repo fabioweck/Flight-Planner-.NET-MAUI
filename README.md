@@ -5,11 +5,13 @@ Another version of the same project posted here in my repositories, but now maki
 The project currently reads, updates and stores favorite locations in a local file, fetches actual weather and forecast, displays sigwx chart
 and enhanced radar image (both images retrieved from APIs), and reads weight and balance charts (in PDF format). 
 It is also possibleto check all information about an airport on the "Rotaer" tab. The tab displays a webview consuming a html response from the API.
-On the last tab added, "IFR charts", the user can check published charts for a specific airport through search and have all
+On the tab "IFR charts", the user can check published charts for a specific airport through search and have all
 its resources listed in a listview (procedures, airport map, runaways,...). This tab makes use of a webview as well, calling google
 online PDF viewer in order to avoid downloading locally the chart file.
+Distance calculator tab fetches latitude and longitude coordinates and calculates the distance between two airports selected by the user,
+and displays the distance in nautical miles (aviation patterns).
 
-Further improvements will include distance calculator between airports and waypoints, WACs (World aeronautical charts), 
+Further improvements will include distance calculator between waypoints, WACs (World aeronautical charts), 
 NOTAMs (notice to air men) and AIP (aeronautical information publication).
 
 **UNDER DEVELOPMENT...!**
@@ -27,3 +29,5 @@ NOTAMs (notice to air men) and AIP (aeronautical information publication).
 ![rotaer_tab](https://github.com/fabioweck/Flight-Planner-.NET-MAUI/assets/115494238/d7f8fe51-7ed4-4303-8f01-94a4786615c0)
 
 ![charts_tab](https://github.com/fabioweck/Flight-Planner-.NET-MAUI/assets/115494238/d61ed64e-bddd-499e-9d92-337f69127a29)
+
+![distcalc_tab](https://github.com/fabioweck/Flight-Planner-.NET-MAUI/assets/115494238/28b27d0c-164d-4fe0-a64c-7303b7692795)
