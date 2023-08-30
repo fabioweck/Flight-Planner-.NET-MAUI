@@ -10,7 +10,7 @@
 
 
 
-    <VerticalStackLayout Padding="30" Spacing="10">
+    <VerticalStackLayout Padding="30" Spacing="30">
 
         <Label  Text="Rotaer - DECEA, Brazil"
                 HorizontalOptions="Center"
@@ -23,68 +23,77 @@
                     Opacity="1"></Shadow>
             </Label.Shadow>
         </Label>
-        <editors:SfAutocomplete x:Name="SearchAirport" 
-                        WidthRequest="250"
-                        ItemsSource="{Binding Airports}"
-                        DisplayMemberPath = "Airport"
-                        TextMemberPath = "Airport"
-                        SelectedValuePath ="Airport"
-                        SelectionChanged="SearchAirport_SelectionChanged"
-                        Placeholder="Type in a location and press ENTER"
-                        HorizontalOptions="Center"
-                        BackgroundColor="#AA000000"
-                        TextColor="White"
-                        ClearButtonIconColor="Grey"
-                        Stroke="Aqua"
-                        MaxDropDownHeight = "300"
-                        />
 
-        <progressBar:SfLinearProgressBar x:Name="ProgressBar"
-                                Progress="0" 
-                                WidthRequest="750"
-                                ProgressFill="Aqua"
-                                TrackFill="Black"
-                                HorizontalOptions="Center"
-                                VerticalOptions="Start"
-                                TrackCornerRadius="20"
-                                ProgressCornerRadius="20"
-                                TrackHeight="3"
-                                ProgressHeight="3"
-                                IsIndeterminate="False"
-                                Margin="10">
-
-            <progressBar:SfLinearProgressBar.Shadow>
-                <Shadow Brush="aqua"
-                Offset="0,0"
-                Radius="5"
-                Opacity="0.3"></Shadow>
-            </progressBar:SfLinearProgressBar.Shadow>
-        </progressBar:SfLinearProgressBar>
-
-        <Border StrokeThickness="1"
-                Stroke="#CC000000"
-                StrokeShape="RoundRectangle 10,10,10,10"
-                StrokeLineCap="Round"
-                BackgroundColor="#CC000000"
-                WidthRequest="1000">
-            <WebView x:Name="Rotaer"
-                HeightRequest="520"
-                MinimumWidthRequest="1000"
-                HorizontalOptions="Center"
-                BackgroundColor="Transparent"
-                Opacity="0.5">
+        <Frame BackgroundColor="#CC000000" 
+               WidthRequest="1050"
+               HeightRequest="600">
             
-            <WebView.Shadow>
-                <Shadow Brush="Black"
-                        Offset="0,0"
-                        Radius="10"
-                        Opacity="1">
-                </Shadow>
-            </WebView.Shadow>
-            
-        </WebView>
-        </Border>
+            <VerticalStackLayout Spacing="10">
 
+                <editors:SfAutocomplete x:Name="SearchAirport" 
+                            WidthRequest="250"
+                            ItemsSource="{Binding Airports}"
+                            DisplayMemberPath = "Airport"
+                            TextMemberPath = "Airport"
+                            SelectedValuePath ="Airport"
+                            SelectionChanged="SearchAirport_SelectionChanged"
+                            Placeholder="Type in a location and press ENTER"
+                            HorizontalOptions="Center"
+                            BackgroundColor="#AA000000"
+                            TextColor="White"
+                            ClearButtonIconColor="Grey"
+                            Stroke="Aqua"
+                            MaxDropDownHeight = "300"/>
+
+                <progressBar:SfLinearProgressBar x:Name="ProgressBar"
+                                    Progress="0" 
+                                    WidthRequest="750"
+                                    ProgressFill="Aqua"
+                                    TrackFill="Black"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Start"
+                                    TrackCornerRadius="20"
+                                    ProgressCornerRadius="20"
+                                    TrackHeight="3"
+                                    ProgressHeight="3"
+                                    IsIndeterminate="False"
+                                    Margin="10">
+
+                    <progressBar:SfLinearProgressBar.Shadow>
+                        <Shadow Brush="aqua"
+                    Offset="0,0"
+                    Radius="5"
+                    Opacity="0.3"></Shadow>
+                    </progressBar:SfLinearProgressBar.Shadow>
+                </progressBar:SfLinearProgressBar>
+
+                <!--<Border StrokeThickness="1"
+                    Stroke="#CC000000"
+                    StrokeShape="RoundRectangle 10,10,10,10"
+                    StrokeLineCap="Round"
+                    BackgroundColor="#CC000000"
+                    WidthRequest="1000">-->
+                <WebView x:Name="Rotaer"
+                    HeightRequest="480"
+                    MinimumWidthRequest="1000"
+                    HorizontalOptions="Center"
+                    BackgroundColor="Transparent"
+                    Opacity="0.5">
+
+                    <WebView.Shadow>
+                        <Shadow Brush="Black"
+                            Offset="0,0"
+                            Radius="10"
+                            Opacity="1">
+                        </Shadow>
+                    </WebView.Shadow>
+
+                </WebView>
+            </VerticalStackLayout>
+        </Frame>
+
+        <!--</Border>-->
+        
 
     </VerticalStackLayout>
 
