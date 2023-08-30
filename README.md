@@ -30,4 +30,5 @@ NOTAMs (notice to air men) and AIP (aeronautical information publication).
 
 ![charts_tab](https://github.com/fabioweck/Flight-Planner-.NET-MAUI/assets/115494238/d61ed64e-bddd-499e-9d92-337f69127a29)
 
-![distcalc_tab](https://github.com/fabioweck/Flight-Planner-.NET-MAUI/assets/115494238/28b27d0c-164d-4fe0-a64c-7303b7692795)
+![distcalc_tab](https://github.com/fabioweck/Flight-Planner-.NET-MAUI/assets/115494238/24c39e5f-ac5e-498d-8693-38082f3d589f)
+
