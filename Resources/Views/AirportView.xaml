@@ -38,14 +38,6 @@
                         Stroke="Aqua"
                         MaxDropDownHeight = "300"
                         />
-        
-        <!--<Entry x:Name="AirportEntry"
-                       Placeholder="Type in a location and press ENTER"
-                       Completed="AirportEntry_Completed"
-                       WidthRequest="250"
-                       HorizontalOptions="Center"
-                       BackgroundColor="#CC000000"
-                       HorizontalTextAlignment="Center"/>-->
 
         <progressBar:SfLinearProgressBar x:Name="ProgressBar"
                                 Progress="0" 

@@ -55,7 +55,6 @@ public partial class AirportView : ContentPage
         {
             string location = SearchAirport.SelectedValue.ToString();
             await LoadRotaerAndProgress(location);
-        }
-        
+        }  
     }
 }

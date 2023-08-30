@@ -15,10 +15,7 @@ namespace MAUIpractice.Resources.ViewModels
     {
         AirportModel Airport;
 
-        public ViewAirportModel()
-        {
-
-        }
+        public ViewAirportModel(){ }
 
         public void Clear()
         {

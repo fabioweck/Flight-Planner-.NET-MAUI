@@ -27,14 +27,14 @@ namespace MAUIpractice.Resources.ViewModels
 
         public async Task ConvertXml()
         {
-            string apiKey = "apiKey=1999328818";
-            string apiPass = "apiPass=89d22412-1f35-11ee-a2b8-0050569ac2e1";
+
+            KeysModel apiKeys = new();
 
             using (HttpClient client = new HttpClient())
             {
 
                 client.BaseAddress = new Uri("http://aisweb.decea.gov.br/api/");
-                HttpResponseMessage response = await client.GetAsync($"?{apiKey}&{apiPass}&area=waypoints&rowend=7000");
+                HttpResponseMessage response = await client.GetAsync($"?{apiKeys.GetDeceaApiKey()}&{apiKeys.GetDeceaApiPass()}&area=waypoints&rowend=7000");
 
                 if (response.IsSuccessStatusCode)
                 {

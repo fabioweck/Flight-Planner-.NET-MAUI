@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MAUIpractice.Resources.Views.DistanceCalcView"
+             xmlns:editors="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inputs"
+             BackgroundImageSource="distance_tab.jpg">
+    
+    <VerticalStackLayout Spacing="30" 
+                         Padding="10">
+
+        <Label  Text="Distance calculator" 
+                HorizontalOptions="Center"
+                Padding="10"
+                FontSize="30"
+                FontFamily="Calibri"
+                Margin="10">
+            <Label.Shadow>
+                <Shadow Brush="Black"
+                        Offset="2,2"
+                        Radius="5"
+                        Opacity="1"></Shadow>
+            </Label.Shadow>
+        </Label>
+
+        <Frame WidthRequest="1100"
+               BorderColor="#0A000000"
+               BackgroundColor="#CC000000"
+               CornerRadius="8">
+        <VerticalStackLayout Spacing="70" Padding="10">
+
+            <editors:SfAutocomplete x:Name="SearchAirport" 
+                                    WidthRequest="250"
+                                    ItemsSource="{Binding Airports}"
+                                    DisplayMemberPath = "Airport"
+                                    TextMemberPath = "Airport"
+                                    SelectedValuePath ="Airport"
+                                    SelectionChanged="SearchAirport_SelectionChanged"
+                                    Placeholder="Type in a location and press ENTER"
+                                    HorizontalOptions="Center"
+                                    BackgroundColor="#AA000000"
+                                    TextColor="White"
+                                    ClearButtonIconColor="Grey"
+                                    Stroke="Aqua"
+                                    MaxDropDownHeight = "300"/>
+
+
+            <HorizontalStackLayout HorizontalOptions="Center" 
+                                   Spacing="30">
+                <Label x:Name="DepartureAirport"
+                       FontFamily="AirportIcons" 
+                       Text="&#xe900;"
+                       FontSize="50"
+                       TextColor="Aqua"
+                       IsVisible="False"/>
+                <Label x:Name="From"
+                       TextColor="White"
+                       VerticalOptions="Center"
+                       FontSize="35"/>
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout HorizontalOptions="Center" 
+                                   Spacing="30">
+                <Label x:Name="ArrivalAirport"
+                        FontFamily="AirportIcons" 
+                        Text="&#xe901;"
+                        FontSize="50"
+                        TextColor="Aqua"
+                        IsVisible="False"/>
+                <Label x:Name="To"
+                        TextColor="White"
+                        VerticalOptions="Center"
+                        FontSize="35"/>
+            </HorizontalStackLayout>
+            <Label x:Name="Distance"
+                   TextColor="White"
+                   FontSize="40"
+                   HorizontalOptions="Center"/>
+
+                <Button x:Name="ClearFields" 
+                    Text="Clear fields" 
+                    WidthRequest="100" 
+                    Clicked="ClearFields_Clicked"
+                    BackgroundColor="#66000000"
+                    BorderColor="#4DE8E9EB"
+                    TextColor="#E8E9EB"
+                    FontFamily="Calibri"
+                    BorderWidth="1.2">
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroupList>
+                            <VisualStateGroup x:Name="BtnPressed">
+                                <VisualState x:Name="Normal">
+                                    <VisualState.Setters>
+                                        <Setter Property="Scale"
+                                Value="1" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+                                    <VisualState.Setters>
+                                        <Setter Property="Scale"
+                                Value="0.95" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateGroupList>
+                    </VisualStateManager.VisualStateGroups>
+                </Button>
+            </VerticalStackLayout>
+        </Frame>
+    </VerticalStackLayout>
+</ContentPage>
