@@ -127,8 +127,14 @@ namespace MAUIpractice.Resources.ViewModels
             }
         }
 
+        public void RemoveLastAirport()
+        {
+            CalculateDistance.RemoveAt(1);
+        }
+
         public double GetDistance()
         {
+
             //Calculates the distance between two points provided by the user in nautical miles (aviaton pattern)
             double distance = 0;
             const double pi = 3.14;
@@ -136,14 +142,6 @@ namespace MAUIpractice.Resources.ViewModels
             double firstWaypointLong = Math.Round(Convert.ToDouble(CalculateDistance[0].Longitude), 2);
             double secondWaypointLat = Math.Round(Convert.ToDouble(CalculateDistance[1].Latitude), 2);
             double secondWaypointLong = Math.Round(Convert.ToDouble(CalculateDistance[1].Longitude), 2);
-            
-            //firstWaypointLat = Convert.ToDouble(item.Latitude);
-            //firstWaypointLong = Convert.ToDouble(item.Longitude);
-                
-            //secondWaypointLat = Convert.ToDouble(item.Latitude);
-            //secondWaypointLong = Convert.ToDouble(item.Longitude);
-
-
 
             firstWaypointLat = Math.Round(firstWaypointLat * (pi / 180.0), 3);
             secondWaypointLat = Math.Round(secondWaypointLat * (pi / 180.0), 3);
@@ -159,6 +157,17 @@ namespace MAUIpractice.Resources.ViewModels
 
             return Math.Round(distance, 1);
 
+        }
+
+        public string GetTime(double distance, int speed)
+        {
+            
+            DateTime newTime = new DateTime(2000,01,01,0,0,0);
+            int time = Convert.ToInt32((distance * 60) / speed);
+            DateTime flightTime = newTime.AddMinutes(time);
+            string timeString = flightTime.ToString("HH:mm");
+
+            return timeString;
         }
 
         public void ClearCalculateDistance()

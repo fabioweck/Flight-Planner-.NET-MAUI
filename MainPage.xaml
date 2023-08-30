@@ -10,6 +10,6 @@
     <local:ChartsView Title="Charts"/>
     <!--<local:WaypointsView Title="Waypoints"/>-->
     <!--<local:ReportView Title="Report"/>-->
-    <local:DistanceCalcView Title="Distance Calc."/>
+    <local:DistanceCalcView Title="Calculator"/>
 
 </TabbedPage>
