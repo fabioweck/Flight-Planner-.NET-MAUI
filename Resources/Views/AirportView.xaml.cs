@@ -1,16 +1,19 @@
 using MAUIpractice.Resources.ViewModels;
+using Syncfusion.Maui.Inputs;
 
 namespace MAUIpractice.Resources.Views;
 
 public partial class AirportView : ContentPage
 {
     public ViewAirportModel Airport;
+    public ViewAirportListModel AirportList;
 
     public AirportView()
     {
         Airport = new ViewAirportModel();
-
+        AirportList = new();
         InitializeComponent();
+        SearchAirport.BindingContext = AirportList;
     }
 
     private async Task LoadRotaer(string location)
@@ -46,9 +49,13 @@ public partial class AirportView : ContentPage
         ProgressBar.IsIndeterminate = true;
     }
 
-    private async void AirportEntry_Completed(object sender, EventArgs e)
+    private async void SearchAirport_SelectionChanged(object sender, Syncfusion.Maui.Inputs.SelectionChangedEventArgs e)
     {
-        string location = ((Entry)sender).Text;
-        await LoadRotaerAndProgress(location);
+        if(SearchAirport.SelectedValue != null)
+        {
+            string location = SearchAirport.SelectedValue.ToString();
+            await LoadRotaerAndProgress(location);
+        }
+        
     }
 }

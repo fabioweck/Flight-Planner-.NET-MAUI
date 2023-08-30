@@ -16,7 +16,7 @@ namespace MAUIpractice.Resources.ViewModels
 {
     public class ViewWaypointsModel
     {
-        string waypoint;
+
         public ObservableCollection<WaypointModel> ListOfWaypoints { get; set; }
 
         public ViewWaypointsModel()
@@ -32,6 +32,7 @@ namespace MAUIpractice.Resources.ViewModels
 
             using (HttpClient client = new HttpClient())
             {
+
                 client.BaseAddress = new Uri("http://aisweb.decea.gov.br/api/");
                 HttpResponseMessage response = await client.GetAsync($"?{apiKey}&{apiPass}&area=waypoints&rowend=7000");
 
@@ -56,15 +57,12 @@ namespace MAUIpractice.Resources.ViewModels
                                 Dt = item.dt,
                             });
                         }
-
-                        waypoint = $"Item id: {aisweb.waypoints.item[0].ident}";
-
                     }
                 }
 
                 else
                 {
-                    waypoint = $"Error: {response.StatusCode}";
+                    return;
                 }
             }
         }
@@ -73,7 +71,7 @@ namespace MAUIpractice.Resources.ViewModels
         {
             //Calculates the distance between two points provided by the user in nautical miles (aviaton pattern)
             double distance = 0;
-            double pi = Math.PI;
+            const double pi = 3.141592;
             double firstWaypointLat = 0;
             double firstWaypointLong = 0;
             double secondWaypointLat = 0;
@@ -96,12 +94,17 @@ namespace MAUIpractice.Resources.ViewModels
 
             firstWaypointLat = firstWaypointLat * (pi / 180.0);
             secondWaypointLat = secondWaypointLat * (pi / 180.0);
-            firstWaypointLong = firstWaypointLat * (pi / 180.0);
-            secondWaypointLong = secondWaypointLat * (pi / 180.0);
+            firstWaypointLong = firstWaypointLong * (pi / 180.0);
+            secondWaypointLong = secondWaypointLong * (pi / 180.0);
 
-            distance = 3963 * Math.Acos(Math.Sin(firstWaypointLat) * Math.Sin(secondWaypointLat) + Math.Cos(firstWaypointLat) * Math.Cos(secondWaypointLat) * Math.Cos(secondWaypointLong - firstWaypointLong));
 
-            return distance;
+            distance = 3440.07 * Math.Acos(Math.Sin(firstWaypointLat) 
+                               * Math.Sin(secondWaypointLat) 
+                               + Math.Cos(firstWaypointLat) 
+                               * Math.Cos(secondWaypointLat) 
+                               * Math.Cos(secondWaypointLong - firstWaypointLong));
+
+            return Math.Ceiling(distance);
 
         }
 

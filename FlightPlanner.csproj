@@ -49,13 +49,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Remove="Resources\Files\Aldo_return.pdf" />
 	  <None Remove="Resources\Images\rotaer_tab.jpg" />
 	  <None Remove="Resources\Images\weather_tab.jpg" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <EmbeddedResource Include="Resources\Files\Aldo_return.pdf" />
 	</ItemGroup>
 
 	<ItemGroup>
