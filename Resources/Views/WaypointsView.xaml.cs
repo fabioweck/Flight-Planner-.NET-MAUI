@@ -25,12 +25,27 @@ public partial class WaypointsView : ContentPage
 
     private void Button_Clicked(object sender, EventArgs e)
     {
-        listOfWaypoints.Add(waypointSelected);
-        
-        if(listOfWaypoints.Count > 1 )
+
+        //Fading test
+
+        if(FadeMe.Opacity == 0)
         {
-            Waypoints.Text = Convert.ToString(ViewWaypoints.GetDistance(Convert.ToInt32(listOfWaypoints[0]), Convert.ToInt32(listOfWaypoints[1])));
+            Waypoints.IsVisible = true;
+            FadeMe.FadeTo(1, 1000);
         }
+        else
+        {
+            FadeMe.FadeTo(0, 1000);
+        }
+        
+        
+
+        //listOfWaypoints.Add(waypointSelected);
+        
+        //if(listOfWaypoints.Count > 1 )
+        //{
+        //    Waypoints.Text = Convert.ToString(ViewWaypoints.GetDistance(Convert.ToInt32(listOfWaypoints[0]), Convert.ToInt32(listOfWaypoints[1])));
+        //}
     }
 
     private void AutoComplete_SelectionChanged(object sender, Syncfusion.Maui.Inputs.SelectionChangedEventArgs e)

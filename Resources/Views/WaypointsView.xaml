@@ -21,12 +21,19 @@
         <Button Text="Add"
                 WidthRequest="60"
                 Clicked="Button_Clicked"/>
-        <Label x:Name="Waypoints"/>
 
-        <Button Text="Path"
-        WidthRequest="60"
-        Clicked="Button_Clicked_1"/>
-        <Label x:Name="PathLocation"/>
+        <VerticalStackLayout x:Name="FadeMe">
+            <Label x:Name="Waypoints"
+                   Text="Something else"
+                   IsVisible="false"/>
+
+            <Button Text="Path"
+                    WidthRequest="60"
+                    Clicked="Button_Clicked_1" />
+            <Label x:Name="PathLocation"
+                   Text="Something" />
+        </VerticalStackLayout>
+        
 
 
         <!--<Entry x:Name="waypointSearch"

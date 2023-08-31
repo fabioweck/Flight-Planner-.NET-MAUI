@@ -31,18 +31,17 @@ public partial class DistanceCalcView : ContentPage
             {
                 location = SearchAirport.SelectedValue.ToString();
                 airportDetails = await Airports.GetAirportCoordinates(location);
-                DepartureAirport.IsVisible = true;
                 From.Text = $"{location}, {airportDetails}";
                 counter++;
                 SearchAirport.Text = "";
                 SearchAirport.Placeholder = "Select destination airport";
+                await OriginAirportStack.FadeTo(1, 500);
             }
 
             else if(counter == 1)
             {
                 location = SearchAirport.SelectedValue.ToString();
                 airportDetails = await Airports.GetAirportCoordinates(location);
-                ArrivalAirport.IsVisible = true;
                 To.Text = $"{location}, {airportDetails}";
 
                 calcDistance = Airports.GetDistance();
@@ -50,9 +49,12 @@ public partial class DistanceCalcView : ContentPage
                 SearchAirport.Text = "";
                 SearchAirport.Placeholder = "Select destination airport";
                 counter++;
-                Border.IsVisible = true;
-                CalcStack.IsVisible = true;
-                ClearFields.IsVisible = true;
+                ClearTime.IsVisible = false;
+                ArrivalAirportStack.FadeTo(1, 250);
+                Border.FadeTo(1, 250);
+                CalcStack.FadeTo(1, 250);
+                ClearFields.FadeTo(1, 250);
+                
             }
 
             else
@@ -60,9 +62,11 @@ public partial class DistanceCalcView : ContentPage
                 Airports.RemoveLastAirport();
                 location = SearchAirport.SelectedValue.ToString();
                 airportDetails = await Airports.GetAirportCoordinates(location);
-                ArrivalAirport.IsVisible = true;
-                To.Text = $"{location}, {airportDetails}";
+                await ArrivalAirportStack.FadeTo(0, 100);
+                await Border.FadeTo(0, 100);
+                await CalcStack.FadeTo(0, 100);
 
+                To.Text = $"{location}, {airportDetails}";
                 calcDistance = Airports.GetDistance();
 
                 ClearTime.IsVisible = false;
@@ -73,27 +77,36 @@ public partial class DistanceCalcView : ContentPage
                 Distance.Text = $"{calcDistance.ToString()} NM";
                 SearchAirport.Text = "";
                 SearchAirport.Placeholder = "Select destination airport";
+
+                await ArrivalAirportStack.FadeTo(1, 100);
+                await Border.FadeTo(1, 100);
+                await CalcStack.FadeTo(1, 100);
             }
         }
     }
 
-    private void ClearFields_Clicked(object sender, EventArgs e)
+    private async void ClearFields_Clicked(object sender, EventArgs e)
     {
+
         Airports.ClearCalculateDistance();
-        DepartureAirport.IsVisible = false;
-        ArrivalAirport.IsVisible = false;
-        CalcStack.IsVisible = false;
+        await ClearFields.FadeTo(0, 80);
+        await CalcStack.FadeTo(0, 80);
+        await Border.FadeTo(0, 80);
+        await ArrivalAirportStack.FadeTo(0, 80);
+        await OriginAirportStack.FadeTo(0, 80);
+        
+
         counter = 0;
         From.Text = "";
         To.Text = "";
-        Border.IsVisible = false;
         Distance.Text = "";
         SearchAirport.Text = "";
         SearchAirport.Placeholder = "Select origin airport";
-        ClearFields.IsVisible = false;
+        
         Speed.IsVisible = true;
         Speed.Text = "";
         Time.IsVisible = false;
+        ClearTime.IsVisible = false;
     }
 
     private void Speed_Completed(object sender, EventArgs e)

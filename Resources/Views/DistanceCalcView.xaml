@@ -1,154 +1,169 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MAUIpractice.Resources.Views.DistanceCalcView"
-             xmlns:editors="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inputs"
-             BackgroundImageSource="distance_tab.jpg">
-    
-    <VerticalStackLayout Spacing="10" 
-                         Padding="10">
+<ContentPage
+    x:Class="MAUIpractice.Resources.Views.DistanceCalcView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:editors="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inputs"
+    BackgroundImageSource="distance_tab.jpg">
 
-        <Label  Text="Distance and time calculator" 
-                HorizontalOptions="Center"
-                Padding="10"
-                FontSize="30"
-                FontFamily="Calibri"
-                Margin="10">
+    <VerticalStackLayout Padding="10" Spacing="10">
+
+        <Label
+            Margin="10"
+            Padding="10"
+            FontFamily="Calibri"
+            FontSize="30"
+            HorizontalOptions="Center"
+            Text="Distance and time calculator">
             <Label.Shadow>
-                <Shadow Brush="Black"
-                        Offset="2,2"
-                        Radius="5"
-                        Opacity="1"></Shadow>
+                <Shadow
+                    Brush="Black"
+                    Opacity="1"
+                    Radius="5"
+                    Offset="2,2" />
             </Label.Shadow>
         </Label>
 
-        <Frame WidthRequest="1100"
-               BorderColor="#0A000000"
-               BackgroundColor="#CC000000"
-               CornerRadius="8"
-               HeightRequest="540">
-            
-        <VerticalStackLayout Spacing="50" Padding="10">
+        <Frame
+            BackgroundColor="#CC000000"
+            BorderColor="#0A000000"
+            CornerRadius="8"
+            HeightRequest="540"
+            WidthRequest="1100">
 
-                <editors:SfAutocomplete x:Name="SearchAirport" 
-                                    WidthRequest="175"
-                                    ItemsSource="{Binding Airports}"
-                                    DisplayMemberPath = "Airport"
-                                    TextMemberPath = "Airport"
-                                    SelectedValuePath ="Airport"
-                                    SelectionChanged="SearchAirport_SelectionChanged"
-                                    Placeholder="Select origin airport"
-                                    HorizontalOptions="Center"
-                                    BackgroundColor="#1AFFFFFF"
-                                    TextColor="White"
-                                    ClearButtonIconColor="Grey"
-                                    Stroke="Aqua"
-                                    MaxDropDownHeight = "300"/>
+            <VerticalStackLayout Padding="10" Spacing="50">
 
-                <HorizontalStackLayout HorizontalOptions="Center" 
-                                       Spacing="30">
-                    <Label x:Name="DepartureAirport"
-                           FontFamily="AirportIcons" 
-                           Text="&#xe900;"
-                           FontSize="50"
-                           TextColor="Aqua"
-                           IsVisible="False"/>
-                    <Label x:Name="From"
-                           TextColor="White"
-                           VerticalOptions="Center"
-                           FontSize="35"/>
+                <editors:SfAutocomplete
+                    x:Name="SearchAirport"
+                    BackgroundColor="#1AFFFFFF"
+                    ClearButtonIconColor="Grey"
+                    DisplayMemberPath="Airport"
+                    HorizontalOptions="Center"
+                    ItemsSource="{Binding Airports}"
+                    MaxDropDownHeight="300"
+                    Placeholder="Select origin airport"
+                    SelectedValuePath="Airport"
+                    SelectionChanged="SearchAirport_SelectionChanged"
+                    Stroke="Aqua"
+                    TextColor="White"
+                    TextMemberPath="Airport"
+                    WidthRequest="175" />
+
+                <HorizontalStackLayout
+                    x:Name="OriginAirportStack"
+                    HorizontalOptions="Center"
+                    Opacity="0"
+                    Spacing="30">
+                    <Label
+                        FontFamily="AirportIcons"
+                        FontSize="50"
+                        Text="&#xe900;"
+                        TextColor="Aqua" />
+                    <Label
+                        x:Name="From"
+                        FontSize="35"
+                        TextColor="White"
+                        VerticalOptions="Center" />
                 </HorizontalStackLayout>
 
-                <HorizontalStackLayout HorizontalOptions="Center" 
-                                       Spacing="30">
-                    <Label x:Name="ArrivalAirport"
-                            FontFamily="AirportIcons" 
-                            Text="&#xe901;"
-                            FontSize="50"
-                            TextColor="Aqua"
-                            IsVisible="False"/>
-                    <Label x:Name="To"
-                            TextColor="White"
-                            VerticalOptions="Center"
-                            FontSize="35"/>
+                <HorizontalStackLayout
+                    x:Name="ArrivalAirportStack"
+                    HorizontalOptions="Center"
+                    Opacity="0"
+                    Spacing="30">
+                    <Label
+                        FontFamily="AirportIcons"
+                        FontSize="50"
+                        Text="&#xe901;"
+                        TextColor="Aqua" />
+                    <Label
+                        x:Name="To"
+                        FontSize="35"
+                        TextColor="White"
+                        VerticalOptions="Center" />
 
                 </HorizontalStackLayout>
 
-                <Border x:Name="Border" IsVisible="false"/>
+                <Border x:Name="Border" Opacity="0" />
 
-                <FlexLayout x:Name="CalcStack"
-                            Direction="Row" 
-                            JustifyContent="SpaceEvenly"
-                            IsVisible="false">
-                    
+                <FlexLayout
+                    x:Name="CalcStack"
+                    Direction="Row"
+                    JustifyContent="SpaceEvenly"
+                    Opacity="0">
+
                     <HorizontalStackLayout Spacing="30">
-                        <Label 
-                                FontFamily="AirportIcons" 
-                                Text="&#xe94b;"
-                                FontSize="50"
-                                TextColor="Aqua"/>
-                        <Label x:Name="Distance"
-                                TextColor="White"
-                                VerticalOptions="Center"
-                                FontSize="35"/>
+                        <Label
+                            FontFamily="AirportIcons"
+                            FontSize="50"
+                            Text="&#xe94b;"
+                            TextColor="Aqua" />
+                        <Label
+                            x:Name="Distance"
+                            FontSize="35"
+                            TextColor="White"
+                            VerticalOptions="Center" />
                     </HorizontalStackLayout>
 
                     <HorizontalStackLayout Spacing="30">
-                        <Label  FontFamily="AirportIcons" 
-                                Text="&#xe952;"
-                                FontSize="50"
-                                TextColor="Aqua"/>
-                        <Label x:Name="Time"
-                                TextColor="White"
-                                VerticalOptions="Center"
-                                FontSize="35"
-                                IsVisible="false"/>
-                        <Button x:Name="ClearTime"
-                               FontFamily="AirportIcons"
-                               Text="&#xea0f;"
-                               FontSize="15"
-                               VerticalOptions="Center"
-                               TextColor="Grey"
-                               IsVisible="false"
-                               BackgroundColor="Transparent"
-                               BorderColor="Transparent"
-                               Clicked="ClearTime_Clicked"/>
-                        <Entry x:Name="Speed"
-                               WidthRequest="165"
-                               FontSize="20"
-                               VerticalTextAlignment="Center"
-                               Completed="Speed_Completed"
-                               Placeholder="Speed in knots"
-                               HorizontalTextAlignment="Center"
-                               BackgroundColor="#1AFFFFFF"
-                               VerticalOptions="Center"/>
+                        <Label
+                            FontFamily="AirportIcons"
+                            FontSize="50"
+                            Text="&#xe952;"
+                            TextColor="Aqua" />
+                        <Label
+                            x:Name="Time"
+                            FontSize="35"
+                            IsVisible="false"
+                            TextColor="White"
+                            VerticalOptions="Center" />
+                        <Button
+                            x:Name="ClearTime"
+                            BackgroundColor="Transparent"
+                            BorderColor="Transparent"
+                            Clicked="ClearTime_Clicked"
+                            FontFamily="AirportIcons"
+                            FontSize="15"
+                            IsVisible="false"
+                            Text="&#xea0f;"
+                            TextColor="Grey"
+                            VerticalOptions="Center" />
+                        <Entry
+                            x:Name="Speed"
+                            BackgroundColor="#1AFFFFFF"
+                            Completed="Speed_Completed"
+                            FontSize="20"
+                            HorizontalTextAlignment="Center"
+                            Placeholder="Speed in knots"
+                            VerticalOptions="Center"
+                            VerticalTextAlignment="Center"
+                            WidthRequest="164"/>
                     </HorizontalStackLayout>
 
                 </FlexLayout>
 
-                <Button x:Name="ClearFields" 
-                    Text="Clear fields" 
-                    WidthRequest="100" 
-                    Clicked="ClearFields_Clicked"
+                <Button
+                    x:Name="ClearFields"
                     BackgroundColor="#66000000"
                     BorderColor="#4DE8E9EB"
-                    TextColor="#E8E9EB"
-                    FontFamily="Calibri"
                     BorderWidth="1.2"
-                    IsVisible="false">
+                    Clicked="ClearFields_Clicked"
+                    FontFamily="Calibri"
+                    Opacity="0"
+                    Text="Clear fields"
+                    TextColor="#E8E9EB"
+                    WidthRequest="100">
                     <VisualStateManager.VisualStateGroups>
                         <VisualStateGroupList>
                             <VisualStateGroup x:Name="BtnPressed">
                                 <VisualState x:Name="Normal">
                                     <VisualState.Setters>
-                                        <Setter Property="Scale"
-                                Value="1" />
+                                        <Setter Property="Scale" Value="1" />
                                     </VisualState.Setters>
                                 </VisualState>
                                 <VisualState x:Name="Pressed">
                                     <VisualState.Setters>
-                                        <Setter Property="Scale"
-                                Value="0.95" />
+                                        <Setter Property="Scale" Value="0.95" />
                                     </VisualState.Setters>
                                 </VisualState>
                             </VisualStateGroup>

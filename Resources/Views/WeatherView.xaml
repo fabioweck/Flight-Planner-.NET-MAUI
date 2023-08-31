@@ -16,14 +16,15 @@
 
     <ScrollView>
 
-        <FlexLayout Direction="Column" AlignItems="Center">
+        <FlexLayout Direction="Column"
+                    AlignItems="Center">
 
-            <Label  Text="METAR/TAF - Redemet, Brazil" 
-                HorizontalOptions="Center"
-                Padding="10"
-                FontSize="30"
-                FontFamily="Calibri"
-                Margin="10">
+            <Label  Text="METAR/TAF - Redemet, Brazil"
+                    HorizontalOptions="Center"
+                    Padding="10"
+                    FontSize="30"
+                    FontFamily="Calibri"
+                    Margin="10">
                 <Label.Shadow>
                     <Shadow Brush="Black"
                             Offset="2,2"
@@ -32,49 +33,52 @@
                 </Label.Shadow>
             </Label>
 
-            <FlexLayout Direction="Row" JustifyContent="SpaceEvenly" BackgroundColor="AliceBlue">
+            <FlexLayout Direction="Row"
+                        JustifyContent="SpaceEvenly"
+                        BackgroundColor="AliceBlue">
 
-                <Frame BorderColor="#0A000000" 
-                   Padding="0" BackgroundColor="#CC000000" CornerRadius="8"
+                <Frame BorderColor="#0A000000"
+                       Padding="0"
+                       BackgroundColor="#CC000000"
+                       CornerRadius="8"
                        HeightRequest="600">
 
-                    <VerticalStackLayout Spacing="20" 
-                                        Padding="10">
+                    <VerticalStackLayout Spacing="20"
+                                         Padding="10">
 
-                        <Label  Text="Favorites" 
-                                HorizontalOptions="Center"  
+                        <Label  Text="Favorites"
+                                HorizontalOptions="Center"
                                 FontSize="25"
                                 TextColor="#E8E9EB"
                                 FontFamily="Calibri"
-                                Padding="10"
-                                />
-                        <Border/>
+                                Padding="10" />
+                        <Border />
 
                         <ScrollView>
 
-                            <ListView x:Name="FavoritesList" 
-                                        HorizontalOptions="Center" 
-                                        WidthRequest="200" 
-                                        HeightRequest="300"
-                                        ItemsSource="{Binding Favorites}">  
+                            <ListView x:Name="FavoritesList"
+                                      HorizontalOptions="Center"
+                                      WidthRequest="200"
+                                      HeightRequest="300"
+                                      ItemsSource="{Binding Favorites}">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <ViewCell Tapped="ViewCell_Tapped">
                                             <ViewCell.ContextActions>
-                                                <MenuItem Text="Delete" 
-                                                IsDestructive="True"
-                                                Command="{Binding Path=BindingContext.Delete, Source={Reference FavoritesList}}" 
-                                                CommandParameter="{Binding .}"/>
+                                                <MenuItem Text="Delete"
+                                                          IsDestructive="True"
+                                                          Command="{Binding Path=BindingContext.Delete, Source={Reference FavoritesList}}"
+                                                          CommandParameter="{Binding .}" />
                                             </ViewCell.ContextActions>
-                                            <Grid RowSpacing="5" 
+                                            <Grid RowSpacing="5"
                                                   Padding="15">
                                                 <Grid.RowDefinitions>
-                                                    <RowDefinition Height="*"/>
+                                                    <RowDefinition Height="*" />
                                                 </Grid.RowDefinitions>
-                                                <Label x:Name="FavoriteClicked" 
-                                                       Text="{Binding Location}" 
-                                                       HorizontalTextAlignment="Center" 
-                                                       Grid.Row="0" 
+                                                <Label x:Name="FavoriteClicked"
+                                                       Text="{Binding Location}"
+                                                       HorizontalTextAlignment="Center"
+                                                       Grid.Row="0"
                                                        FontAttributes="Bold"
                                                        FontFamily="Calibri"></Label>
                                             </Grid>
@@ -84,21 +88,21 @@
                             </ListView>
                         </ScrollView>
 
-                        <Label x:Name="FavoriteResponse" 
+                        <Label x:Name="FavoriteResponse"
                                HorizontalOptions="Center"
-                               FontSize="13"/>
+                               FontSize="13" />
 
-                        <Entry x:Name="AddFavoriteToList" 
+                        <Entry x:Name="AddFavoriteToList"
                                WidthRequest="100"
                                Placeholder="Location"
                                HorizontalOptions="Center"
                                HorizontalTextAlignment="Center"
                                PlaceholderColor="#E8E9EB"
-                               BackgroundColor="#1AFFFFFF"/>
+                               BackgroundColor="#1AFFFFFF" />
 
-                        <Button x:Name="AddFavorite" 
-                                Text="Add favorite" 
-                                WidthRequest="110" 
+                        <Button x:Name="AddFavorite"
+                                Text="Add favorite"
+                                WidthRequest="110"
                                 Clicked="AddFavorite_Clicked"
                                 BackgroundColor="#66000000"
                                 BorderColor="#4DE8E9EB"
@@ -107,57 +111,58 @@
                                 BorderWidth="1.2">
                             <VisualStateManager.VisualStateGroups>
                                 <VisualStateGroupList>
-                                <VisualStateGroup x:Name="BtnPressed">
-                                    <VisualState x:Name="Normal">
-                                        <VisualState.Setters>
-                                            <Setter Property="Scale"
-                                                    Value="1" />
-                                        </VisualState.Setters>
-                                    </VisualState>
-                                    <VisualState x:Name="Pressed">
-                                        <VisualState.Setters>
-                                            <Setter Property="Scale"
-                                                    Value="0.95" />
-                                        </VisualState.Setters>
-                                    </VisualState>
-                                </VisualStateGroup>
-                                    </VisualStateGroupList>
+                                    <VisualStateGroup x:Name="BtnPressed">
+                                        <VisualState x:Name="Normal">
+                                            <VisualState.Setters>
+                                                <Setter Property="Scale"
+                                                        Value="1" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                        <VisualState x:Name="Pressed">
+                                            <VisualState.Setters>
+                                                <Setter Property="Scale"
+                                                        Value="0.95" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateGroupList>
                             </VisualStateManager.VisualStateGroups>
                         </Button>
 
                     </VerticalStackLayout>
-                    
+
                 </Frame>
 
-                <Frame Padding="0" BorderColor="#0A000000" 
+                <Frame Padding="0"
+                       BorderColor="#0A000000"
                        HorizontalOptions="FillAndExpand"
                        BackgroundColor="#CC000000"
                        HeightRequest="600"
                        CornerRadius="8">
 
-                    <VerticalStackLayout Spacing="30"  
-                                 Padding="30" 
-                                 WidthRequest="1000"
-                                 HorizontalOptions="FillAndExpand">
-                        <Entry  x:Name="WeatherLocation" 
-                        WidthRequest="250"
-                        Placeholder="Type in a location and press ENTER"
-                        Completed="WeatherLocation_Completed"
-                        HorizontalTextAlignment="Center"
-                        PlaceholderColor="#E8E9EB"
-                        BackgroundColor="#1AFFFFFF"/>
+                    <VerticalStackLayout Spacing="30"
+                                         Padding="30"
+                                         WidthRequest="1000"
+                                         HorizontalOptions="FillAndExpand">
+                        <Entry  x:Name="WeatherLocation"
+                                WidthRequest="250"
+                                Placeholder="Type in a location and press ENTER"
+                                Completed="WeatherLocation_Completed"
+                                HorizontalTextAlignment="Center"
+                                PlaceholderColor="#E8E9EB"
+                                BackgroundColor="#1AFFFFFF" />
 
                         <progressBar:SfLinearProgressBar x:Name="ProgressBar"
-                                                        Progress="0" 
-                                                        WidthRequest="750"
-                                                        ProgressFill="Aqua"
-                                                        TrackFill="Black"
-                                                        HorizontalOptions="Center"
-                                                        VerticalOptions="Start"
-                                                        TrackCornerRadius="20"
-                                                        ProgressCornerRadius="20"
-                                                        TrackHeight="3"
-                                                        ProgressHeight="3">
+                                                         Progress="0"
+                                                         WidthRequest="750"
+                                                         ProgressFill="Aqua"
+                                                         TrackFill="Black"
+                                                         HorizontalOptions="Center"
+                                                         VerticalOptions="Start"
+                                                         TrackCornerRadius="20"
+                                                         ProgressCornerRadius="20"
+                                                         TrackHeight="3"
+                                                         ProgressHeight="3">
                             <progressBar:SfLinearProgressBar.Shadow>
                                 <Shadow Brush="aqua"
                                         Offset="0,0"
@@ -167,26 +172,34 @@
                         </progressBar:SfLinearProgressBar>
 
                         <ScrollView VerticalScrollBarVisibility="Always">
-                            <ListView x:Name="WeatherList" 
-                          HeightRequest="350"
-                          WidthRequest="910"
-                          ItemsSource="{Binding Weather}">
+                            <ListView x:Name="WeatherList"
+                                      HeightRequest="350"
+                                      WidthRequest="910"
+                                      ItemsSource="{Binding Weather}">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <ViewCell>
                                             <ViewCell.ContextActions>
-                                                <MenuItem Text="Delete" 
-                                                        IsDestructive="True" 
-                                                        Command="{Binding Path=BindingContext.Delete, Source={Reference WeatherList}}" 
-                                                        CommandParameter="{Binding .}"/>
+                                                <MenuItem Text="Delete"
+                                                          IsDestructive="True"
+                                                          Command="{Binding Path=BindingContext.Delete, Source={Reference WeatherList}}"
+                                                          CommandParameter="{Binding .}" />
                                             </ViewCell.ContextActions>
-                                            <Grid RowSpacing="5" Margin="20">
+                                            <Grid RowSpacing="5"
+                                                  Margin="20">
                                                 <Grid.RowDefinitions>
-                                                    <RowDefinition Height="*"/>
-                                                    <RowDefinition Height="*"/>
+                                                    <RowDefinition Height="*" />
+                                                    <RowDefinition Height="*" />
                                                 </Grid.RowDefinitions>
-                                                <Label Text="{Binding Metar}" FontAttributes="Bold" HorizontalTextAlignment="Start" Grid.Row="0" FontSize="12"/>
-                                                <Label Text="{Binding Taf}" HorizontalTextAlignment="Start" Grid.Row="1" FontSize="12"/>
+                                                <Label Text="{Binding Metar}"
+                                                       FontAttributes="Bold"
+                                                       HorizontalTextAlignment="Start"
+                                                       Grid.Row="0"
+                                                       FontSize="12" />
+                                                <Label Text="{Binding Taf}"
+                                                       HorizontalTextAlignment="Start"
+                                                       Grid.Row="1"
+                                                       FontSize="12" />
                                             </Grid>
                                         </ViewCell>
                                     </DataTemplate>
@@ -194,75 +207,76 @@
                             </ListView>
                         </ScrollView>
 
-                        <FlexLayout Direction="Row" JustifyContent="SpaceBetween">
-                            
-                            <HorizontalStackLayout Spacing="20">
-                            <Button x:Name="SigwxDisplay" 
-                                    Text="SIGWX"
-                                    Clicked="SigwxDisplay_Clicked" 
-                                    HorizontalOptions="End" 
-                                    WidthRequest="70"
-                                    BackgroundColor="#66000000"
-                                    BorderColor="#4DE8E9EB"
-                                    TextColor="#E8E9EB"
-                                    FontFamily="Calibri"
-                                    BorderWidth="1.2">
-                                <VisualStateManager.VisualStateGroups>
-                                    <VisualStateGroupList>
-                                        <VisualStateGroup x:Name="BtnPressed">
-                                            <VisualState x:Name="Normal">
-                                                <VisualState.Setters>
-                                                    <Setter Property="Scale"
-                                                            Value="1" />
-                                                </VisualState.Setters>
-                                            </VisualState>
-                                            <VisualState x:Name="Pressed">
-                                                <VisualState.Setters>
-                                                    <Setter Property="Scale"
-                                                            Value="0.95" />
-                                                </VisualState.Setters>
-                                            </VisualState>
-                                        </VisualStateGroup>
-                                    </VisualStateGroupList>
-                                </VisualStateManager.VisualStateGroups>
-                            </Button>
+                        <FlexLayout Direction="Row"
+                                    JustifyContent="SpaceBetween">
 
-                            <Button x:Name="RadarDisplay" 
-                                    Text="Radar"
-                                    Clicked="RadarDisplay_Clicked"
-                                    HorizontalOptions="End" 
-                                    WidthRequest="70"
-                                    BackgroundColor="#66000000"
-                                    BorderColor="#4DE8E9EB"
-                                    TextColor="#E8E9EB"
-                                    FontFamily="Calibri"
-                                    BorderWidth="1.2">
-                                <VisualStateManager.VisualStateGroups>
-                                    <VisualStateGroupList>
-                                        <VisualStateGroup x:Name="BtnPressed">
-                                            <VisualState x:Name="Normal">
-                                                <VisualState.Setters>
-                                                    <Setter Property="Scale"
-                                                            Value="1" />
-                                                </VisualState.Setters>
-                                            </VisualState>
-                                            <VisualState x:Name="Pressed">
-                                                <VisualState.Setters>
-                                                    <Setter Property="Scale"
-                                                            Value="0.95" />
-                                                </VisualState.Setters>
-                                            </VisualState>
-                                        </VisualStateGroup>
-                                    </VisualStateGroupList>
-                                </VisualStateManager.VisualStateGroups>
-                            </Button>
+                            <HorizontalStackLayout Spacing="20">
+                                <Button x:Name="SigwxDisplay"
+                                        Text="SIGWX"
+                                        Clicked="SigwxDisplay_Clicked"
+                                        HorizontalOptions="End"
+                                        WidthRequest="70"
+                                        BackgroundColor="#66000000"
+                                        BorderColor="#4DE8E9EB"
+                                        TextColor="#E8E9EB"
+                                        FontFamily="Calibri"
+                                        BorderWidth="1.2">
+                                    <VisualStateManager.VisualStateGroups>
+                                        <VisualStateGroupList>
+                                            <VisualStateGroup x:Name="BtnPressed">
+                                                <VisualState x:Name="Normal">
+                                                    <VisualState.Setters>
+                                                        <Setter Property="Scale"
+                                                                Value="1" />
+                                                    </VisualState.Setters>
+                                                </VisualState>
+                                                <VisualState x:Name="Pressed">
+                                                    <VisualState.Setters>
+                                                        <Setter Property="Scale"
+                                                                Value="0.95" />
+                                                    </VisualState.Setters>
+                                                </VisualState>
+                                            </VisualStateGroup>
+                                        </VisualStateGroupList>
+                                    </VisualStateManager.VisualStateGroups>
+                                </Button>
+
+                                <Button x:Name="RadarDisplay"
+                                        Text="Satellite"
+                                        Clicked="RadarDisplay_Clicked"
+                                        HorizontalOptions="End"
+                                        WidthRequest="80"
+                                        BackgroundColor="#66000000"
+                                        BorderColor="#4DE8E9EB"
+                                        TextColor="#E8E9EB"
+                                        FontFamily="Calibri"
+                                        BorderWidth="1.2">
+                                    <VisualStateManager.VisualStateGroups>
+                                        <VisualStateGroupList>
+                                            <VisualStateGroup x:Name="BtnPressed">
+                                                <VisualState x:Name="Normal">
+                                                    <VisualState.Setters>
+                                                        <Setter Property="Scale"
+                                                                Value="1" />
+                                                    </VisualState.Setters>
+                                                </VisualState>
+                                                <VisualState x:Name="Pressed">
+                                                    <VisualState.Setters>
+                                                        <Setter Property="Scale"
+                                                                Value="0.95" />
+                                                    </VisualState.Setters>
+                                                </VisualState>
+                                            </VisualStateGroup>
+                                        </VisualStateGroupList>
+                                    </VisualStateManager.VisualStateGroups>
+                                </Button>
 
                             </HorizontalStackLayout>
 
-                            <Button x:Name="ClearWeatherField" 
+                            <Button x:Name="ClearWeatherField"
                                     Text="Clear"
-                                    Clicked="ClearWeatherField_Clicked" 
-                                    HorizontalOptions="End" 
+                                    Clicked="ClearWeatherField_Clicked"
+                                    HorizontalOptions="End"
                                     WidthRequest="70"
                                     BackgroundColor="#66000000"
                                     BorderColor="#4DE8E9EB"
@@ -290,31 +304,14 @@
                             </Button>
                         </FlexLayout>
 
-                        <sfPopup:SfPopup x:Name="SigwxPopup" 
-                                        HeaderTitle="SIGWX"
-                                        HeightRequest="800" WidthRequest="880"
-                                        ShowCloseButton="True"
-                                        OverlayMode="Blur"
-                                        BackgroundColor="Transparent"
-                                        HeaderHeight="60">
-                        <sfPopup:SfPopup.PopupStyle>
-                                <sfPopup:PopupStyle CornerRadius="10"
-                                                    HeaderBackground="#CC000000"
-                                                    HeaderFontSize="15"
-                                                    HeaderFontAttribute="Bold"
-                                                    HeaderTextColor="#E8E9EB"
-                                                    MessageBackground="#AA000000"
-                                                    BlurIntensity="ExtraLight"/>
-                            </sfPopup:SfPopup.PopupStyle>
-                        </sfPopup:SfPopup>
-
-                        <sfPopup:SfPopup x:Name="RadarPopup" 
-                                        HeaderTitle="Radar"
-                                        HeightRequest="800" WidthRequest="770"
-                                        ShowCloseButton="True"
-                                        OverlayMode="Blur"
-                                        BackgroundColor="Transparent"
-                                        HeaderHeight="60">
+                        <sfPopup:SfPopup x:Name="SigwxPopup"
+                                         HeaderTitle="SIGWX"
+                                         HeightRequest="800"
+                                         WidthRequest="880"
+                                         ShowCloseButton="True"
+                                         OverlayMode="Blur"
+                                         BackgroundColor="Transparent"
+                                         HeaderHeight="60">
                             <sfPopup:SfPopup.PopupStyle>
                                 <sfPopup:PopupStyle CornerRadius="10"
                                                     HeaderBackground="#CC000000"
@@ -322,7 +319,26 @@
                                                     HeaderFontAttribute="Bold"
                                                     HeaderTextColor="#E8E9EB"
                                                     MessageBackground="#AA000000"
-                                                    BlurIntensity="ExtraLight"/>
+                                                    BlurIntensity="ExtraLight" />
+                            </sfPopup:SfPopup.PopupStyle>
+                        </sfPopup:SfPopup>
+
+                        <sfPopup:SfPopup x:Name="RadarPopup"
+                                         HeaderTitle="Radar"
+                                         HeightRequest="800"
+                                         WidthRequest="770"
+                                         ShowCloseButton="True"
+                                         OverlayMode="Blur"
+                                         BackgroundColor="Transparent"
+                                         HeaderHeight="60">
+                            <sfPopup:SfPopup.PopupStyle>
+                                <sfPopup:PopupStyle CornerRadius="10"
+                                                    HeaderBackground="#CC000000"
+                                                    HeaderFontSize="15"
+                                                    HeaderFontAttribute="Bold"
+                                                    HeaderTextColor="#E8E9EB"
+                                                    MessageBackground="#AA000000"
+                                                    BlurIntensity="ExtraLight" />
                             </sfPopup:SfPopup.PopupStyle>
                         </sfPopup:SfPopup>
 
@@ -332,9 +348,9 @@
 
             </FlexLayout>
         </FlexLayout>
-        
+
     </ScrollView>
 
-    
-    
+
+
 </ContentPage>
