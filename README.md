@@ -3,8 +3,9 @@ Useful tools for pilots! (Refreshed last Flight Planner project, this time built
 
 Another version of the same project posted here in my repositories, but now making use of C# and more powerful resouces.
 The project currently reads, updates and stores favorite locations in a local file, fetches actual weather and forecast, displays sigwx chart
-and enhanced radar image (both images retrieved from APIs), and reads weight and balance charts (in PDF format). 
-It is also possibleto check all information about an airport on the "Rotaer" tab. The tab displays a webview consuming a html response from the API.
+and enhanced radar image (both images retrieved from APIs), reads weight and balance charts (in PDF format), and calculates weight and balance
+limits of a Cessna Citation CJ3 aircraft model (small corporate/private jet) - displaying these limits in a line chart (SyncFusion Line Chart). 
+It is also possible to check all information about an airport on the "Rotaer" tab. The tab displays a webview consuming a html response from the API.
 On the tab "IFR charts", the user can check published charts for a specific airport through search and have all
 its resources listed in a listview (procedures, airport map, runaways,...). This tab makes use of a webview as well, calling google
 online PDF viewer in order to avoid downloading locally the chart file.
@@ -29,6 +30,10 @@ NOTAMs (notice to air men) and AIP (aeronautical information publication).
 ![rotaer_tab](https://github.com/fabioweck/Flight-Planner-.NET-MAUI/assets/115494238/d7f8fe51-7ed4-4303-8f01-94a4786615c0)
 
 ![charts_tab](https://github.com/fabioweck/Flight-Planner-.NET-MAUI/assets/115494238/d61ed64e-bddd-499e-9d92-337f69127a29)
+
+![wb_tab3](https://github.com/fabioweck/Flight-Planner-.NET-MAUI/assets/115494238/d8e1bd41-3342-48b9-bc8c-1109d9f11668)
+
+![wb_tab2](https://github.com/fabioweck/Flight-Planner-.NET-MAUI/assets/115494238/93123ee3-f485-4c79-a14e-c79941b61af4)
 
 ![distcalc_tab](https://github.com/fabioweck/Flight-Planner-.NET-MAUI/assets/115494238/24c39e5f-ac5e-498d-8693-38082f3d589f)
 
