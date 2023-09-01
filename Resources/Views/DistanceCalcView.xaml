@@ -137,7 +137,7 @@
                             Placeholder="Speed in knots"
                             VerticalOptions="Center"
                             VerticalTextAlignment="Center"
-                            WidthRequest="164"/>
+                            WidthRequest="164" />
                     </HorizontalStackLayout>
 
                 </FlexLayout>
