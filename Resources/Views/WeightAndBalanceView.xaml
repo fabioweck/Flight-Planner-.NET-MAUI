@@ -8,8 +8,6 @@
     Title="WeightAndBalanceView"
     BackgroundImageSource="wb_tab.jpeg">
 
-    <!--  #E8E9EB  -->
-
     <ScrollView>
 
         <VerticalStackLayout Padding="30" Spacing="30">
@@ -27,11 +25,11 @@
                 </Label.Shadow>
             </Label>
 
-            <Frame BackgroundColor="#CC000000" WidthRequest="1200">
+            <Frame BackgroundColor="#CC000000" WidthRequest="1100">
 
-                <VerticalStackLayout Padding="20" Spacing="50">
+                <VerticalStackLayout Spacing="50">
 
-                    <FlexLayout Direction="Row" JustifyContent="SpaceAround">
+                    <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
 
                         <VerticalStackLayout Spacing="30">
 
@@ -79,33 +77,6 @@
                                         WidthRequest="65" />
                                 </HorizontalStackLayout>
 
-                                <!--<HorizontalStackLayout Spacing="20">
-                                    <Label
-                                        FontSize="13"
-                                        Text="RH slimlime Refreshment center"
-                                        VerticalTextAlignment="Center"
-                                        WidthRequest="200" />
-                                    <Entry
-                                        x:Name="Field01"
-                                        FontSize="16"
-                                        HorizontalTextAlignment="Center"
-                                        VerticalTextAlignment="Center"
-                                        WidthRequest="50" />
-                                    <Border />
-                                    <Label
-                                        FontSize="15"
-                                        Text="131.0"
-                                        VerticalTextAlignment="Center"
-                                        WidthRequest="40" />
-                                    <Border />
-                                    <Label
-                                        FontSize="15"
-                                        HorizontalTextAlignment="Center"
-                                        Text="262.00"
-                                        VerticalTextAlignment="Center"
-                                        WidthRequest="65" />
-                                </HorizontalStackLayout>-->
-
                             </VerticalStackLayout>
 
                             <Button
@@ -141,86 +112,86 @@
                         </VerticalStackLayout>
 
                         <VerticalStackLayout Spacing="10">
-
                             <Label
                                 FontSize="25"
                                 HorizontalOptions="Center"
                                 Text="Fuel"
                                 TextColor="#E8E9EB" />
                             <Border />
+                            <VerticalStackLayout Spacing="30">
+                                <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
+                                    <Label
+                                        FontSize="15"
+                                        Text="Total fuel (in hundreds)"
+                                        VerticalTextAlignment="Center"
+                                        WidthRequest="250" />
+                                    <editors:SfAutocomplete
+                                        x:Name="SelectTotalFuel"
+                                        BackgroundColor="#AA000000"
+                                        ClearButtonIconColor="Grey"
+                                        DisplayMemberPath="FuelWeight"
+                                        ItemsSource="{Binding FuelWeight}"
+                                        MaxDropDownHeight="300"
+                                        Placeholder="pounds"
+                                        SelectedValuePath="FuelWeight"
+                                        TextColor="White"
+                                        TextMemberPath="FuelWeight"
+                                        WidthRequest="75" />
+                                </HorizontalStackLayout>
+                                <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
+                                    <Label
+                                        FontSize="15"
+                                        Text="Fuel to destination (in hundreds)"
+                                        VerticalTextAlignment="Center"
+                                        WidthRequest="250" />
+                                    <editors:SfAutocomplete
+                                        x:Name="SelectDestinationFuel"
+                                        BackgroundColor="#AA000000"
+                                        ClearButtonIconColor="Grey"
+                                        DisplayMemberPath="FuelWeight"
+                                        HorizontalOptions="Center"
+                                        ItemsSource="{Binding FuelWeight}"
+                                        MaxDropDownHeight="300"
+                                        Placeholder="pounds"
+                                        SelectedValuePath="FuelWeight"
+                                        TextColor="White"
+                                        TextMemberPath="FuelWeight"
+                                        WidthRequest="75" />
+                                </HorizontalStackLayout>
 
-                            <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
-                                <Label
-                                    FontSize="13"
-                                    Text="Total fuel (in hundreds)"
-                                    VerticalTextAlignment="Center"
-                                    WidthRequest="200" />
-                                <editors:SfAutocomplete
-                                    x:Name="SelectTotalFuel"
-                                    BackgroundColor="#AA000000"
-                                    ClearButtonIconColor="Grey"
-                                    DisplayMemberPath="FuelWeight"
-                                    ItemsSource="{Binding FuelWeight}"
-                                    MaxDropDownHeight="300"
-                                    Placeholder="pounds"
-                                    SelectedValuePath="FuelWeight"
-                                    TextColor="White"
-                                    TextMemberPath="FuelWeight"
-                                    WidthRequest="75" />
-                            </HorizontalStackLayout>
-                            <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
-                                <Label
-                                    FontSize="13"
-                                    Text="Fuel to destination (in hundreds)"
-                                    VerticalTextAlignment="Center"
-                                    WidthRequest="200" />
-                                <editors:SfAutocomplete
-                                    x:Name="SelectDestinationFuel"
-                                    BackgroundColor="#AA000000"
-                                    ClearButtonIconColor="Grey"
-                                    DisplayMemberPath="FuelWeight"
+                                <Button
+                                    x:Name="ComputeFuel"
+                                    BackgroundColor="#66000000"
+                                    BorderColor="#4DE8E9EB"
+                                    BorderWidth="1.2"
+                                    Clicked="Compute_Fuel_Clicked"
+                                    FontFamily="Calibri"
+                                    FontSize="15"
                                     HorizontalOptions="Center"
-                                    ItemsSource="{Binding FuelWeight}"
-                                    MaxDropDownHeight="300"
-                                    Placeholder="pounds"
-                                    SelectedValuePath="FuelWeight"
+                                    IsEnabled="false"
+                                    Text="Calculate"
                                     TextColor="White"
-                                    TextMemberPath="FuelWeight"
-                                    WidthRequest="75" />
-                            </HorizontalStackLayout>
+                                    WidthRequest="90">
+                                    <VisualStateManager.VisualStateGroups>
+                                        <VisualStateGroupList>
+                                            <VisualStateGroup x:Name="BtnPressed">
+                                                <VisualState x:Name="Normal">
+                                                    <VisualState.Setters>
+                                                        <Setter Property="Scale" Value="1" />
+                                                    </VisualState.Setters>
+                                                </VisualState>
+                                                <VisualState x:Name="Pressed">
+                                                    <VisualState.Setters>
+                                                        <Setter Property="Scale" Value="0.95" />
+                                                    </VisualState.Setters>
+                                                </VisualState>
+                                            </VisualStateGroup>
+                                        </VisualStateGroupList>
+                                    </VisualStateManager.VisualStateGroups>
+                                </Button>
+                            </VerticalStackLayout>
 
-                            <Button
-                                x:Name="ComputeFuel"
-                                BackgroundColor="#66000000"
-                                BorderColor="#4DE8E9EB"
-                                BorderWidth="1.2"
-                                Clicked="Compute_Fuel_Clicked"
-                                FontFamily="Calibri"
-                                FontSize="15"
-                                HorizontalOptions="Center"
-                                IsEnabled="false"
-                                Text="Calculate"
-                                TextColor="White"
-                                WidthRequest="90">
-                                <VisualStateManager.VisualStateGroups>
-                                    <VisualStateGroupList>
-                                        <VisualStateGroup x:Name="BtnPressed">
-                                            <VisualState x:Name="Normal">
-                                                <VisualState.Setters>
-                                                    <Setter Property="Scale" Value="1" />
-                                                </VisualState.Setters>
-                                            </VisualState>
-                                            <VisualState x:Name="Pressed">
-                                                <VisualState.Setters>
-                                                    <Setter Property="Scale" Value="0.95" />
-                                                </VisualState.Setters>
-                                            </VisualState>
-                                        </VisualStateGroup>
-                                    </VisualStateGroupList>
-                                </VisualStateManager.VisualStateGroups>
-                            </Button>
-
-                            <Border Stroke="Transparent" />
+                            <Border HeightRequest="30" Stroke="Transparent" />
                             <Label
                                 FontSize="25"
                                 HorizontalOptions="Center"
@@ -228,30 +199,29 @@
                                 TextColor="#E8E9EB" />
                             <Border />
 
-                            <VerticalStackLayout Spacing="20">
+                            <VerticalStackLayout Spacing="30">
                                 <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
                                     <Label
                                         FontAttributes="Bold"
                                         FontSize="15"
                                         HorizontalTextAlignment="Center"
                                         VerticalTextAlignment="Center"
-                                        WidthRequest="200" />
-                                    <Border />
+                                        WidthRequest="230" />
+
                                     <Label
                                         FontAttributes="Bold"
                                         FontSize="15"
-                                        HorizontalTextAlignment="Center"
                                         Text="Weight"
                                         VerticalTextAlignment="Center"
-                                        WidthRequest="70" />
-                                    <Border />
+                                        WidthRequest="80" />
+
                                     <Label
                                         FontAttributes="Bold"
                                         FontSize="15"
                                         HorizontalTextAlignment="Center"
                                         Text="Moment"
                                         VerticalTextAlignment="Center"
-                                        WidthRequest="65" />
+                                        WidthRequest="70" />
                                 </HorizontalStackLayout>
 
                                 <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
@@ -291,7 +261,7 @@
                                         x:Name="Payload_Weight"
                                         FontSize="15"
                                         HorizontalTextAlignment="Center"
-                                        Text="Weight"
+                                        Text="---"
                                         VerticalTextAlignment="Center"
                                         WidthRequest="70" />
                                     <Border />
@@ -299,7 +269,7 @@
                                         x:Name="Payload_Moment"
                                         FontSize="15"
                                         HorizontalTextAlignment="Center"
-                                        Text="Moment"
+                                        Text="---"
                                         VerticalTextAlignment="Center"
                                         WidthRequest="65" />
                                 </HorizontalStackLayout>
@@ -316,7 +286,7 @@
                                         x:Name="ZFW_Weight"
                                         FontSize="15"
                                         HorizontalTextAlignment="Center"
-                                        Text="Weight"
+                                        Text="---"
                                         VerticalTextAlignment="Center"
                                         WidthRequest="70" />
                                     <Border />
@@ -324,14 +294,15 @@
                                         x:Name="ZFW_Moment"
                                         FontSize="15"
                                         HorizontalTextAlignment="Center"
-                                        Text="Moment"
+                                        Text="---"
                                         VerticalTextAlignment="Center"
                                         WidthRequest="65" />
                                 </HorizontalStackLayout>
 
-                                <Label x:Name="ZFW_CG"
+                                <Label
+                                    x:Name="ZFW_CG"
                                     FontAttributes="Bold"
-                                    FontSize="17"
+                                    FontSize="20"
                                     HorizontalTextAlignment="End"
                                     VerticalTextAlignment="Center" />
 
@@ -343,17 +314,19 @@
                                         VerticalTextAlignment="Center"
                                         WidthRequest="200" />
                                     <Border />
-                                    <Label x:Name="UseableFuel_Weight"
+                                    <Label
+                                        x:Name="UseableFuel_Weight"
                                         FontSize="15"
                                         HorizontalTextAlignment="Center"
-                                        Text="Weight"
+                                        Text="---"
                                         VerticalTextAlignment="Center"
                                         WidthRequest="70" />
                                     <Border />
-                                    <Label x:Name="UseableFuel_Moment"
+                                    <Label
+                                        x:Name="UseableFuel_Moment"
                                         FontSize="15"
                                         HorizontalTextAlignment="Center"
-                                        Text="Moment"
+                                        Text="---"
                                         VerticalTextAlignment="Center"
                                         WidthRequest="65" />
                                 </HorizontalStackLayout>
@@ -366,24 +339,27 @@
                                         VerticalTextAlignment="Center"
                                         WidthRequest="200" />
                                     <Border />
-                                    <Label x:Name="Ramp_Weight"
+                                    <Label
+                                        x:Name="Ramp_Weight"
                                         FontSize="15"
                                         HorizontalTextAlignment="Center"
-                                        Text="Weight"
+                                        Text="---"
                                         VerticalTextAlignment="Center"
                                         WidthRequest="70" />
                                     <Border />
-                                    <Label x:Name="Ramp_Moment"
+                                    <Label
+                                        x:Name="Ramp_Moment"
                                         FontSize="15"
                                         HorizontalTextAlignment="Center"
-                                        Text="Moment"
+                                        Text="---"
                                         VerticalTextAlignment="Center"
                                         WidthRequest="65" />
                                 </HorizontalStackLayout>
 
-                                <Label x:Name="Ramp_CG"
+                                <Label
+                                    x:Name="Ramp_CG"
                                     FontAttributes="Bold"
-                                    FontSize="17"
+                                    FontSize="20"
                                     HorizontalTextAlignment="End"
                                     VerticalTextAlignment="Center" />
 
@@ -393,19 +369,21 @@
                                         HorizontalTextAlignment="Start"
                                         Text="Less Fuel for Taxiing (200lbs)"
                                         VerticalTextAlignment="Center"
-                                        WidthRequest="200"/>
+                                        WidthRequest="200" />
                                     <Border />
-                                    <Label x:Name="TaxiFuel_Weight"
+                                    <Label
+                                        x:Name="TaxiFuel_Weight"
                                         FontSize="15"
                                         HorizontalTextAlignment="Center"
-                                        Text="Weight"
+                                        Text="---"
                                         VerticalTextAlignment="Center"
                                         WidthRequest="70" />
                                     <Border />
-                                    <Label x:Name="TaxiFuel_Moment"
+                                    <Label
+                                        x:Name="TaxiFuel_Moment"
                                         FontSize="15"
                                         HorizontalTextAlignment="Center"
-                                        Text="Moment"
+                                        Text="---"
                                         VerticalTextAlignment="Center"
                                         WidthRequest="65" />
                                 </HorizontalStackLayout>
@@ -418,24 +396,27 @@
                                         VerticalTextAlignment="Center"
                                         WidthRequest="200" />
                                     <Border />
-                                    <Label x:Name="Takeoff_Weight"
+                                    <Label
+                                        x:Name="Takeoff_Weight"
                                         FontSize="15"
                                         HorizontalTextAlignment="Center"
-                                        Text="Weight"
+                                        Text="---"
                                         VerticalTextAlignment="Center"
                                         WidthRequest="70" />
                                     <Border />
-                                    <Label x:Name="Takeoff_Moment"
+                                    <Label
+                                        x:Name="Takeoff_Moment"
                                         FontSize="15"
                                         HorizontalTextAlignment="Center"
-                                        Text="Moment"
+                                        Text="---"
                                         VerticalTextAlignment="Center"
                                         WidthRequest="65" />
                                 </HorizontalStackLayout>
 
-                                <Label x:Name="Takeoff_CG"
+                                <Label
+                                    x:Name="Takeoff_CG"
                                     FontAttributes="Bold"
-                                    FontSize="17"
+                                    FontSize="20"
                                     HorizontalTextAlignment="End"
                                     VerticalTextAlignment="Center" />
 
@@ -447,106 +428,134 @@
                                         VerticalTextAlignment="Center"
                                         WidthRequest="200" />
                                     <Border />
-                                    <Label x:Name="Landing_Weight"
+                                    <Label
+                                        x:Name="Landing_Weight"
                                         FontSize="15"
                                         HorizontalTextAlignment="Center"
-                                        Text="Weight"
+                                        Text="---"
                                         VerticalTextAlignment="Center"
                                         WidthRequest="70" />
                                     <Border />
-                                    <Label x:Name="Landing_Moment"
+                                    <Label
+                                        x:Name="Landing_Moment"
                                         FontSize="15"
                                         HorizontalTextAlignment="Center"
-                                        Text="Moment"
+                                        Text="---"
                                         VerticalTextAlignment="Center"
                                         WidthRequest="65" />
                                 </HorizontalStackLayout>
 
-                                <Label x:Name="Landing_CG"
+                                <Label
+                                    x:Name="Landing_CG"
                                     FontAttributes="Bold"
-                                    FontSize="17"
+                                    FontSize="20"
                                     HorizontalTextAlignment="End"
-                                    Text="Landing Center of Gravity"
                                     VerticalTextAlignment="Center" />
                             </VerticalStackLayout>
                         </VerticalStackLayout>
 
                     </FlexLayout>
 
-                    <Border />
-                    <Grid HeightRequest="600" WidthRequest="700">
+                    <VerticalStackLayout Margin="10" Spacing="10">
+                        <Label
+                            FontSize="25"
+                            HorizontalOptions="Center"
+                            Text="Center of Gravity Envelope"
+                            TextColor="#E8E9EB" />
+                        <Border WidthRequest="500" />
 
-                        <chart:SfCartesianChart
-                            x:Name="Chart"
-                            Title="Cessna CJ3 - Envelope Chart"
-                            BackgroundColor="White">
+                        <Grid
+                            Margin="10"
+                            HeightRequest="600"
+                            WidthRequest="700">
 
-                            <chart:SfCartesianChart.Resources>
-                                <DoubleCollection x:Key="dashArray">
-                                    <x:Double>5</x:Double>
-                                    <x:Double>4</x:Double>
-                                </DoubleCollection>
-                            </chart:SfCartesianChart.Resources>
+                            <chart:SfCartesianChart x:Name="Chart" BackgroundColor="White">
 
-                            <chart:SfCartesianChart.XAxes>
+                                <chart:SfCartesianChart.Resources>
+                                    <DoubleCollection x:Key="dashArray">
+                                        <x:Double>5</x:Double>
+                                        <x:Double>4</x:Double>
+                                    </DoubleCollection>
+                                </chart:SfCartesianChart.Resources>
 
-                                <chart:NumericalAxis
-                                    Interval="1"
-                                    Maximum="306"
-                                    Minimum="293" />
+                                <chart:SfCartesianChart.XAxes>
 
-                                <chart:CategoryAxis>
-                                    <chart:CategoryAxis.Title>
-                                        <chart:ChartAxisTitle Text="CG limits (Inches)" />
-                                    </chart:CategoryAxis.Title>
-                                </chart:CategoryAxis>
-                            </chart:SfCartesianChart.XAxes>
+                                    <chart:NumericalAxis
+                                        Interval="1"
+                                        Maximum="306"
+                                        Minimum="293" />
 
-                            <chart:SfCartesianChart.YAxes>
+                                    <chart:CategoryAxis>
+                                        <chart:CategoryAxis.Title>
+                                            <chart:ChartAxisTitle Text="Center of Gravity Limits (Inches)" />
+                                        </chart:CategoryAxis.Title>
+                                    </chart:CategoryAxis>
+                                </chart:SfCartesianChart.XAxes>
 
-                                <chart:NumericalAxis
-                                    Interval="500"
-                                    Maximum="14300"
-                                    Minimum="7800">
-                                    <chart:NumericalAxis.Title>
-                                        <chart:ChartAxisTitle Text="Weight (pounds)" />
-                                    </chart:NumericalAxis.Title>
-                                </chart:NumericalAxis>
-                            </chart:SfCartesianChart.YAxes>
+                                <chart:SfCartesianChart.YAxes>
 
-                            <chart:LineSeries
-                                ItemsSource="{Binding EnvelopeLimits}"
-                                              StrokeDashArray="{StaticResource dashArray}"
-                                              XBindingPath="CenterOfGravity"
-                                YBindingPath="Weight" />
+                                    <chart:NumericalAxis
+                                        Interval="500"
+                                        Maximum="14300"
+                                        Minimum="7800">
+                                        <chart:NumericalAxis.Title>
+                                            <chart:ChartAxisTitle Text="Weight (pounds)" />
+                                        </chart:NumericalAxis.Title>
+                                    </chart:NumericalAxis>
+                                </chart:SfCartesianChart.YAxes>
 
-                            <chart:LineSeries
-                                ItemsSource="{Binding TkofLimits}"
-                                StrokeDashArray="{StaticResource dashArray}"
-                                XBindingPath="CenterOfGravity"
-                                YBindingPath="Weight" />
+                                <chart:LineSeries
+                                    ItemsSource="{Binding EnvelopeLimits}"
+                                    StrokeDashArray="{StaticResource dashArray}"
+                                    XBindingPath="CenterOfGravity"
+                                    YBindingPath="Weight" />
 
-                            <chart:LineSeries
-                                ItemsSource="{Binding LandingLimits}"
-                                StrokeDashArray="{StaticResource dashArray}"
-                                XBindingPath="CenterOfGravity"
-                                YBindingPath="Weight" />
+                                <chart:LineSeries
+                                    ItemsSource="{Binding TkofLimits}"
+                                    StrokeDashArray="{StaticResource dashArray}"
+                                    XBindingPath="CenterOfGravity"
+                                    YBindingPath="Weight" />
 
-                            <chart:LineSeries
-                                ItemsSource="{Binding ZeroFuelLimits}"
-                                StrokeDashArray="{StaticResource dashArray}"
-                                XBindingPath="CenterOfGravity"
-                                YBindingPath="Weight" />
+                                <chart:LineSeries
+                                    ItemsSource="{Binding LandingLimits}"
+                                    StrokeDashArray="{StaticResource dashArray}"
+                                    XBindingPath="CenterOfGravity"
+                                    YBindingPath="Weight" />
 
-                            <chart:ScatterSeries
-                                ItemsSource="{Binding ZeroFuelWeight}"
-                                PointWidth="10"
-                                XBindingPath="CenterOfGravity"
-                                YBindingPath="Weight"/>
+                                <chart:LineSeries
+                                    ItemsSource="{Binding ZeroFuelLimits}"
+                                    StrokeDashArray="{StaticResource dashArray}"
+                                    XBindingPath="CenterOfGravity"
+                                    YBindingPath="Weight" />
 
-                        </chart:SfCartesianChart>
-                    </Grid>
+                                <chart:ScatterSeries
+                                    ItemsSource="{Binding ZeroFuelWeight}"
+                                    PointWidth="12"
+                                    XBindingPath="CenterOfGravity"
+                                    YBindingPath="Weight" />
 
+                                <chart:ScatterSeries
+                                    ItemsSource="{Binding TaxiWeight}"
+                                    PointWidth="12"
+                                    XBindingPath="CenterOfGravity"
+                                    YBindingPath="Weight" />
+
+                                <chart:ScatterSeries
+                                    ItemsSource="{Binding TkofWeight}"
+                                    PointWidth="12"
+                                    XBindingPath="CenterOfGravity"
+                                    YBindingPath="Weight" />
+
+                                <chart:ScatterSeries
+                                    ItemsSource="{Binding LandingWeight}"
+                                    PointWidth="12"
+                                    XBindingPath="CenterOfGravity"
+                                    YBindingPath="Weight" />
+
+
+                            </chart:SfCartesianChart>
+                        </Grid>
+                    </VerticalStackLayout>
                 </VerticalStackLayout>
             </Frame>
         </VerticalStackLayout>

@@ -13,6 +13,7 @@ namespace MAUIpractice.Resources.ViewModels
         public PayloadModel PayloadData { get; set; }
         public FuelModel FuelTank { get; set; }
         public ObservableCollection<FuelModel> FuelWeight { get; set; }
+        public int[] StandardWeights { get; set; }
 
         public ViewPayloadModel()
         {
@@ -21,6 +22,7 @@ namespace MAUIpractice.Resources.ViewModels
             FuelTank = new();
             PopulatePayloadArms();
             PopulateFuelWeight();
+            PopulateStandards();
         }
 
         private void PopulatePayloadArms()
@@ -119,6 +121,34 @@ namespace MAUIpractice.Resources.ViewModels
         public Dictionary<int, double> GetFuelTank()
         {
             return FuelTank.FuelTank;
+        }
+
+        private void PopulateStandards()
+        {
+            StandardWeights = new int[]
+            {
+                200,
+                200,
+                0,
+                0,
+                0,
+                170,
+                220,
+                160,
+                0,
+                25,
+                30,
+                5,
+                5,
+                15,
+                10,
+                50,
+            };
+        }
+
+        public int[] GetStandards()
+        {
+            return StandardWeights;
         }
 
     }

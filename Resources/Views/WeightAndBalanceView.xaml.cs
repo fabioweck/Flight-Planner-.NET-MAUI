@@ -29,11 +29,14 @@ public partial class WeightAndBalanceView : ContentPage
         Chart.BindingContext = WeightAndBalanceData;
         SelectTotalFuel.BindingContext = PayloadColumn;
         SelectDestinationFuel.BindingContext = PayloadColumn;
+        ComputeFuel.TextColor = Colors.White;
         
 	}
 
     private void AddFields()
-    {   
+    {
+        int[] standards = PayloadColumn.GetStandards();
+        int i = 0;
 
         foreach(var column in FieldsAndArms)
         {
@@ -52,12 +55,14 @@ public partial class WeightAndBalanceView : ContentPage
 
             Entry entry = new()
             {
-                Text = "0",
+                Text = standards[i].ToString(),
                 FontSize = 16,
                 HorizontalTextAlignment = TextAlignment.Center,
                 VerticalTextAlignment = TextAlignment.Center,
                 WidthRequest = 50,
             };
+
+            i++;
             PayloadComputations.Add(entry);
 
             Border border = new Border();
@@ -95,6 +100,8 @@ public partial class WeightAndBalanceView : ContentPage
 
     private void Compute_ZFW_Clicked(object sender, EventArgs e)
     {
+        double payloadWeight = 0;
+        double payloadMoment = 0;
         double zfWeight = 0;
         double zfMoment = 0;
         double zfwCg = 0;
@@ -104,17 +111,19 @@ public partial class WeightAndBalanceView : ContentPage
             EntriesAndMoments.ElementAt(i).Value.Text =
                     ((Convert.ToInt16(EntriesAndMoments.ElementAt(i).Key.Text) * FieldsAndArms.ElementAt(i).Value) / 100).ToString("0.00");
 
-            zfWeight += Convert.ToInt16(EntriesAndMoments.ElementAt(i).Key.Text);
-            zfMoment += Convert.ToDouble(EntriesAndMoments.ElementAt(i).Value.Text);
+            payloadWeight += Convert.ToInt16(EntriesAndMoments.ElementAt(i).Key.Text);
+            payloadMoment += Convert.ToDouble(EntriesAndMoments.ElementAt(i).Value.Text);
         }
 
-        Payload_Weight.Text = zfWeight.ToString("0.00");
-        Payload_Moment.Text = zfMoment.ToString("0.00");
+        Payload_Weight.Text = payloadWeight.ToString("0.00");
+        Payload_Moment.Text = payloadMoment.ToString("0.00");
 
-        ZFW_Weight.Text = (Convert.ToDouble(BEW_Weight.Text) + zfWeight).ToString("0.00");
-        ZFW_Moment.Text = (Convert.ToDouble(BEW_Moment.Text) + zfMoment).ToString("0.00");
+        zfWeight = payloadWeight + Convert.ToDouble(BEW_Weight.Text);
+        zfMoment = payloadMoment + Convert.ToDouble(BEW_Moment.Text);
+        zfwCg = (zfMoment / zfWeight) * 100;
 
-        zfwCg = (Convert.ToDouble(ZFW_Moment.Text) / Convert.ToDouble(ZFW_Weight.Text)) * 100;
+        ZFW_Weight.Text = zfWeight.ToString("0.00");
+        ZFW_Moment.Text = zfMoment.ToString("0.00");
 
         ZFW_CG.Text = $"ZFW Center of Gravity: {zfwCg.ToString("0.0")}";
 
@@ -192,6 +201,12 @@ public partial class WeightAndBalanceView : ContentPage
                 Landing_CG.Text = $"Landing Center of Gravity: {(landingCG).ToString("0.0")}";
             }
         }
+
+        Chart.BindingContext = null;
+        WeightAndBalanceData.SetTaxiWeight(rampWeight, rampCG);
+        WeightAndBalanceData.SetTkofWeight(takeoffWeight, takeofCG);
+        WeightAndBalanceData.SetLandingWeight(landingWeight, landingCG);
+        Chart.BindingContext = WeightAndBalanceData;
 
     }
 }
