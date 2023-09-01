@@ -8,7 +8,6 @@ namespace MAUIpractice.Resources.Models
 {
     public class PayloadModel
     {
-        public string[] PayloadFields { get; set; }
-        public double[] PayloadArms { get; set; }
+        public Dictionary<string, double> FieldsAndArms { get; set; }
     }
 }

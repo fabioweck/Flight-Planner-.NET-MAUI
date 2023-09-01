@@ -53,9 +53,13 @@ namespace MAUIpractice.Resources.ViewModels
             };
 
             ZeroFuelWeight = new();
+            TaxiWeight = new();
+            TkofWeight = new();
+            LandingWeight = new();
+
         }
 
-        public void SetZeroFuelWeight(int weight, double cg)
+        public void SetZeroFuelWeight(double weight, double cg)
         {
 
             if(ZeroFuelWeight.Count == 0)
@@ -70,7 +74,7 @@ namespace MAUIpractice.Resources.ViewModels
             
         }
 
-        public void SetZeroTaxiWeight(int weight, double cg)
+        public void SetTaxiWeight(double weight, double cg)
         {
 
             if (TaxiWeight.Count == 0)
@@ -84,7 +88,7 @@ namespace MAUIpractice.Resources.ViewModels
             }
         }
 
-        public void SetZeroTkofWeight(int weight, double cg)
+        public void SetTkofWeight(double weight, double cg)
         {
 
             if (TkofWeight.Count == 0)
@@ -98,7 +102,7 @@ namespace MAUIpractice.Resources.ViewModels
             }
         }
 
-        public void SetZeroLandingWeight(int weight, double cg)
+        public void SetLandingWeight(double weight, double cg)
         {
 
             if (LandingWeight.Count == 0)
