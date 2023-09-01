@@ -1,15 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<TabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MAUIpractice.MainPage"
-             xmlns:local="clr-namespace:MAUIpractice.Resources.Views"
-             SelectedTabColor="#444444">
+<TabbedPage
+    x:Class="MAUIpractice.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:MAUIpractice.Resources.Views"
+    SelectedTabColor="#444444">
 
-    <local:WeatherView Title="Weather"/>
-    <local:AirportView Title="Rotaer"/>
-    <local:ChartsView Title="Charts"/>
+    <local:WeatherView Title="Weather" />
+    <local:AirportView Title="Rotaer" />
+    <local:ChartsView Title="Charts" />
+    <local:WeightAndBalanceView Title="Weight and Balance" />
     <!--<local:WaypointsView Title="Waypoints"/>-->
     <!--<local:ReportView Title="Report"/>-->
-    <local:DistanceCalcView Title="Calculator"/>
+    <local:DistanceCalcView Title="Calculator" />
 
 </TabbedPage>
