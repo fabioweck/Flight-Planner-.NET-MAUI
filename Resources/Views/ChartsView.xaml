@@ -1,64 +1,72 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MAUIpractice.Resources.Views.ChartsView"
-             xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion.Maui.ProgressBar"
-             Title="ChartsView"
-             BackgroundImageSource="charts_tab.png">
+<ContentPage
+    x:Class="MAUIpractice.Resources.Views.ChartsView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion.Maui.ProgressBar"
+    Title="ChartsView"
+    BackgroundImageSource="charts_tab.png">
 
     <VerticalStackLayout Padding="30" Spacing="30">
 
-        <Label  Text="Charts - DECEA, Brazil"
-                HorizontalOptions="Center"
-                FontSize="30"
-                FontFamily="Calibri">
+        <Label
+            FontFamily="Calibri"
+            FontSize="30"
+            HorizontalOptions="Center"
+            Text="Charts - DECEA, Brazil">
             <Label.Shadow>
-                <Shadow Brush="Black"
-                        Offset="2,2"
-                        Radius="4"
-                        Opacity="1">
-                </Shadow>
+                <Shadow
+                    Brush="Black"
+                    Opacity="1"
+                    Radius="4"
+                    Offset="2,2" />
             </Label.Shadow>
         </Label>
 
-        <FlexLayout Direction="Row" 
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"
-                    JustifyContent="SpaceAround">
+        <FlexLayout
+            Direction="Row"
+            HorizontalOptions="Center"
+            JustifyContent="SpaceAround"
+            VerticalOptions="Center">
 
-            <Frame BorderColor="#0A000000" 
-                   Padding="0" BackgroundColor="#CC000000" 
-                   CornerRadius="10"
-                   HeightRequest="600">
+            <Frame
+                Padding="0"
+                BackgroundColor="#CC000000"
+                BorderColor="#0A000000"
+                CornerRadius="10"
+                HeightRequest="600">
 
                 <VerticalStackLayout>
 
-                    <Entry x:Name="SearchChart"
-                           WidthRequest="250"
-                           Placeholder="Type in a location and press ENTER"
-                           Completed="SearchChart_Completed"
-                           HorizontalTextAlignment="Center"
-                           Margin="20"
-                           FontSize="14"
-                           PlaceholderColor="#E8E9EB"
-                           BackgroundColor="#1AFFFFFF"/>
+                    <Entry
+                        x:Name="SearchChart"
+                        Margin="20"
+                        BackgroundColor="#1AFFFFFF"
+                        Completed="SearchChart_Completed"
+                        FontSize="14"
+                        HorizontalTextAlignment="Center"
+                        Placeholder="Type in a location and press ENTER"
+                        PlaceholderColor="#E8E9EB"
+                        WidthRequest="250" />
 
-                    <progressBar:SfLinearProgressBar x:Name="ProgressBar"
-                                                    Progress="0" 
-                                                    WidthRequest="250"
-                                                    ProgressFill="Aqua"
-                                                    TrackFill="Black"
-                                                    HorizontalOptions="Center"
-                                                    VerticalOptions="Start"
-                                                    TrackCornerRadius="20"
-                                                    ProgressCornerRadius="20"
-                                                    TrackHeight="3"
-                                                    ProgressHeight="3">
+                    <progressBar:SfLinearProgressBar
+                        x:Name="ProgressBar"
+                        HorizontalOptions="Center"
+                        Progress="0"
+                        ProgressCornerRadius="20"
+                        ProgressFill="Aqua"
+                        ProgressHeight="3"
+                        TrackCornerRadius="20"
+                        TrackFill="Black"
+                        TrackHeight="3"
+                        VerticalOptions="Start"
+                        WidthRequest="250">
                         <progressBar:SfLinearProgressBar.Shadow>
-                            <Shadow Brush="aqua"
-                                    Offset="0,0"
-                                    Radius="5"
-                                    Opacity="0.3"></Shadow>
+                            <Shadow
+                                Brush="aqua"
+                                Opacity="0.3"
+                                Radius="5"
+                                Offset="0,0" />
                         </progressBar:SfLinearProgressBar.Shadow>
                     </progressBar:SfLinearProgressBar>
 
@@ -70,34 +78,38 @@
                            Margin="10"
                            HorizontalOptions="Center"/>-->
 
-                    <ListView x:Name="ChartsList" 
-                        HorizontalOptions="Center" 
-                        WidthRequest="250" 
+                    <ListView
+                        x:Name="ChartsList"
+                        Margin="10"
                         HeightRequest="480"
+                        HorizontalOptions="Center"
                         ItemsSource="{Binding Charts}"
-                              Margin="10">
+                        WidthRequest="250">
 
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell Tapped="ViewCell_Tapped">
-                                    <Grid RowSpacing="5" 
-                                  Padding="15"
-                                  RowDefinitions="*"
-                                    ColumnDefinitions="*,*,*,*,*">
-                                        <Label Text="{Binding Description}"
-                                               HorizontalTextAlignment="Center" 
-                                               Grid.Row="0"
-                                               Grid.Column="0"
-                                               FontAttributes="Bold"
-                                               FontFamily="Calibri"/>
-                                        <Label x:Name="chartClicked"
-                                               Text="{Binding Name}" 
-                                               HorizontalTextAlignment="Center" 
-                                               Grid.Row="0"
-                                               Grid.Column="1"
-                                               Grid.ColumnSpan="4"
-                                               FontAttributes="Bold"
-                                               FontFamily="Calibri"/>
+                                    <Grid
+                                        Padding="15"
+                                        ColumnDefinitions="*,*,*,*,*"
+                                        RowDefinitions="*"
+                                        RowSpacing="5">
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="0"
+                                            FontAttributes="Bold"
+                                            FontFamily="Calibri"
+                                            HorizontalTextAlignment="Center"
+                                            Text="{Binding Description}" />
+                                        <Label
+                                            x:Name="chartClicked"
+                                            Grid.Row="0"
+                                            Grid.Column="1"
+                                            Grid.ColumnSpan="4"
+                                            FontAttributes="Bold"
+                                            FontFamily="Calibri"
+                                            HorizontalTextAlignment="Center"
+                                            Text="{Binding Name}" />
                                     </Grid>
                                 </ViewCell>
                             </DataTemplate>
@@ -107,26 +119,28 @@
                 </VerticalStackLayout>
             </Frame>
 
-            <Border StrokeThickness="1"
-                    Stroke="#CC000000"
-                    StrokeShape="RoundRectangle 10,10,10,10"
-                    StrokeLineCap="Round"
-                    BackgroundColor="#CC000000">
-                <WebView x:Name="PdfCharts"
-                     WidthRequest="901"
-                     HeightRequest="600"
-                     VerticalOptions="Start">
+            <Border
+                BackgroundColor="#CC000000"
+                Stroke="#CC000000"
+                StrokeLineCap="Round"
+                StrokeShape="RoundRectangle 10,10,10,10"
+                StrokeThickness="1">
+                <WebView
+                    x:Name="PdfCharts"
+                    HeightRequest="600"
+                    VerticalOptions="Start"
+                    WidthRequest="901">
                     <WebView.Shadow>
-                        <Shadow Brush="Black"
-                                Offset="0,0"
-                                Radius="20"
-                                Opacity="1">
-                        </Shadow>
+                        <Shadow
+                            Brush="Black"
+                            Opacity="1"
+                            Radius="20"
+                            Offset="0,0" />
                     </WebView.Shadow>
                 </WebView>
             </Border>
 
-    </FlexLayout>
+        </FlexLayout>
     </VerticalStackLayout>
-    
+
 </ContentPage>

@@ -1,5 +1,6 @@
 using MAUIpractice.Resources.ViewModels;
 using Syncfusion.Maui.Charts;
+using System.Xml.Schema;
 
 namespace MAUIpractice.Resources.Views;
 
@@ -8,27 +9,33 @@ public partial class WeightAndBalanceView : ContentPage
 
 	ViewWeightModel WeightAndBalanceData { get; set; }
     ViewPayloadModel PayloadColumn { get; set; }
-    List<Entry> Entries { get; set; }
-    List<Label> Moments { get; set; }
-    double[] Arms { get; set; }
-
+    Dictionary<Entry,Label> EntriesAndMoments { get; set; }
+    Dictionary<string, double> FieldsAndArms { get; set; }
+    Dictionary<int, double> FuelTank { get; set; }
+    
 	public WeightAndBalanceView()
 	{
 		WeightAndBalanceData = new();
         PayloadColumn = new();
-        Entries = new();
-        Moments = new();
-        Arms = PayloadColumn.GetArms();
+        EntriesAndMoments = new();
+        FieldsAndArms = new();
+        FuelTank = new();
+        FieldsAndArms = PayloadColumn.GetPayloadData();
+        FuelTank = PayloadColumn.GetFuelTank();
+
         InitializeComponent();
-		BindingContext = WeightAndBalanceData;
         AddFields();
+
+        Chart.BindingContext = WeightAndBalanceData;
+        SelectTotalFuel.BindingContext = PayloadColumn;
+        SelectDestinationFuel.BindingContext = PayloadColumn;
+        
 	}
 
     private void AddFields()
-    {
-        string[] fields = PayloadColumn.GetFields();      
+    {   
 
-        for(int i = 0; i < fields.Length; i++)
+        foreach(var column in FieldsAndArms)
         {
             HorizontalStackLayout PayloadComputations = new();
             PayloadComputations.Spacing = 20;
@@ -36,7 +43,7 @@ public partial class WeightAndBalanceView : ContentPage
             //Creates first column
             Label field = new() 
             {
-                Text = fields[i],
+                Text = column.Key,
                 FontSize = 13,
                 VerticalTextAlignment = TextAlignment.Center,
                 WidthRequest = 200,
@@ -52,14 +59,13 @@ public partial class WeightAndBalanceView : ContentPage
                 WidthRequest = 50,
             };
             PayloadComputations.Add(entry);
-            Entries.Add(entry);
 
             Border border = new Border();
             PayloadComputations.Add(border);
 
             Label Arm = new()
             {
-                Text = Arms[i].ToString(),
+                Text = column.Value.ToString(),
                 FontSize = 15,
                 VerticalTextAlignment = TextAlignment.Center,
                 WidthRequest = 40,
@@ -77,31 +83,115 @@ public partial class WeightAndBalanceView : ContentPage
                 WidthRequest = 65,
             };
             PayloadComputations.Add(moment);
-            Moments.Add(moment);
+
+            EntriesAndMoments.Add(entry, moment);
 
             //Adds the whole content to payload vertical stack layout
             Payload.Add(PayloadComputations);
+
         }
         
     }
 
-    private void Button_Clicked(object sender, EventArgs e)
+    private void Compute_ZFW_Clicked(object sender, EventArgs e)
     {
-        double sum = 0;
-        for(int i = 0; i < Entries.Count; i++)
+        double zfWeight = 0;
+        double zfMoment = 0;
+        double zfwCg = 0;
+
+        for (int i = 0; i < EntriesAndMoments.Count; i++)
         {
-            Moments[i].Text = Convert.ToString
-                (
-                    Math.Round((Convert.ToDouble(Entries[i].Text) * Arms[i]) / 100, 2)
-                );
+            EntriesAndMoments.ElementAt(i).Value.Text =
+                    ((Convert.ToInt16(EntriesAndMoments.ElementAt(i).Key.Text) * FieldsAndArms.ElementAt(i).Value) / 100).ToString("0.00");
+
+            zfWeight += Convert.ToInt16(EntriesAndMoments.ElementAt(i).Key.Text);
+            zfMoment += Convert.ToDouble(EntriesAndMoments.ElementAt(i).Value.Text);
         }
 
-        foreach(var item in Moments)
+        Payload_Weight.Text = zfWeight.ToString("0.00");
+        Payload_Moment.Text = zfMoment.ToString("0.00");
+
+        ZFW_Weight.Text = (Convert.ToDouble(BEW_Weight.Text) + zfWeight).ToString("0.00");
+        ZFW_Moment.Text = (Convert.ToDouble(BEW_Moment.Text) + zfMoment).ToString("0.00");
+
+        zfwCg = (Convert.ToDouble(ZFW_Moment.Text) / Convert.ToDouble(ZFW_Weight.Text)) * 100;
+
+        ZFW_CG.Text = $"ZFW Center of Gravity: {zfwCg.ToString("0.0")}";
+
+        Chart.BindingContext = null;
+        WeightAndBalanceData.SetZeroFuelWeight(zfWeight, zfwCg);
+        Chart.BindingContext = WeightAndBalanceData;
+        ComputeFuel.IsEnabled = true;
+
+    }
+
+    private void Compute_Fuel_Clicked(object sender, EventArgs e)
+    {
+
+        int totalFuel = Convert.ToInt16(SelectTotalFuel.Text);
+        int fuelToDestination = Convert.ToInt16(SelectDestinationFuel.Text);
+
+        double rampWeight = 0;
+        double rampMoment = 0;
+        double rampCG = 0;
+
+        double takeoffWeight = 0;
+        double takeoffMoment = 0;
+        double takeofCG = 0;
+
+        double landingWeight = 0;
+        double landingMoment = 0;
+        double landingCG = 0;
+
+        foreach (var item in FuelTank)
         {
-            sum += Convert.ToDouble(item.Text);
+            if (totalFuel == item.Key)
+            {
+                UseableFuel_Weight.Text = item.Key.ToString();
+                UseableFuel_Moment.Text = item.Value.ToString();
+
+                rampWeight = Convert.ToDouble(ZFW_Weight.Text) + item.Key;
+                rampMoment = Convert.ToDouble(ZFW_Moment.Text) + item.Value;
+                rampCG = (rampMoment / rampWeight) * 100;
+
+                Ramp_Weight.Text = rampWeight.ToString("0.00");
+                Ramp_Moment.Text = rampMoment.ToString("0.00");
+                Ramp_CG.Text = $"Ramp Center of Gravity: {rampCG.ToString("0.0")}";
+
+                break;
+            }
         }
 
-        //Total.Text = Math.Round(sum, 2).ToString();
+        foreach (var item in FuelTank)
+        {
+            if (item.Key == 200)
+            {
+                TaxiFuel_Weight.Text = item.Key.ToString();
+                TaxiFuel_Moment.Text = item.Value.ToString();
+
+                takeoffWeight = rampWeight - item.Key;
+                takeoffMoment = rampMoment - item.Value;
+                takeofCG = (takeoffMoment / takeoffWeight) * 100;
+
+                Takeoff_Weight.Text = (takeoffWeight).ToString("0.00");
+                Takeoff_Moment.Text = (takeoffMoment).ToString("0.00");
+                Takeoff_CG.Text = $"Takeoff Center of Gravity: {takeofCG.ToString("0.0")}";
+            }
+        }
+
+        foreach (var item in FuelTank)
+        {
+            if (fuelToDestination == item.Key)
+            {
+                landingWeight = takeoffWeight - item.Key;
+                landingMoment = takeoffMoment - item.Value;
+                landingCG = (landingMoment / landingWeight) * 100;
+
+                Landing_Weight.Text = (landingWeight).ToString("0.00");
+                Landing_Moment.Text = (landingMoment).ToString("0.00");
+                Landing_CG.Text = $"Landing Center of Gravity: {(landingCG).ToString("0.0")}";
+            }
+        }
 
     }
 }

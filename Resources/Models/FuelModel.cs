@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace MAUIpractice.Resources.Models
 {
-    public class WeightModel
+    public class FuelModel
     {
-        public double Weight { get; set; }
-        public double CenterOfGravity { get; set; }
+        public Dictionary<int,double> FuelTank { get; set; }
+        public int FuelWeight { get; set; }
     }
 }
