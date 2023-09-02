@@ -57,6 +57,8 @@ namespace MAUIpractice.Resources.ViewModels
             TkofWeight = new();
             LandingWeight = new();
 
+            
+
         }
 
         public void SetZeroFuelWeight(double weight, double cg)
@@ -115,7 +117,5 @@ namespace MAUIpractice.Resources.ViewModels
                 LandingWeight.Add(new WeightModel { Weight = weight, CenterOfGravity = cg });
             }
         }
-
-
     }
 }
