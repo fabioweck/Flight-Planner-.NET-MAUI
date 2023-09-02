@@ -9,6 +9,8 @@ public partial class WeightAndBalanceView : ContentPage
 
 	ViewWeightModel WeightAndBalanceData { get; set; }
     ViewPayloadModel PayloadColumn { get; set; }
+    ViewCustomBrushesModel CustomBrushes { get; set; }
+
     Dictionary<Entry,Label> EntriesAndMoments { get; set; }
     Dictionary<string, double> FieldsAndArms { get; set; }
     Dictionary<int, double> FuelTank { get; set; }
@@ -17,6 +19,7 @@ public partial class WeightAndBalanceView : ContentPage
 	{
 		WeightAndBalanceData = new();
         PayloadColumn = new();
+        CustomBrushes = new();
         EntriesAndMoments = new();
         FieldsAndArms = new();
         FuelTank = new();
@@ -25,13 +28,15 @@ public partial class WeightAndBalanceView : ContentPage
 
         InitializeComponent();
         AddFields();
-
-        Chart.BindingContext = WeightAndBalanceData;
+      
         SelectTotalFuel.BindingContext = PayloadColumn;
         SelectDestinationFuel.BindingContext = PayloadColumn;
         ComputeFuel.TextColor = Colors.White;
-        
-	}
+
+        Chart.BindingContext = WeightAndBalanceData;
+        Chart.PaletteBrushes = CustomBrushes.GetBrushes();          
+
+    }
 
     private void AddFields()
     {
@@ -131,6 +136,16 @@ public partial class WeightAndBalanceView : ContentPage
         WeightAndBalanceData.SetZeroFuelWeight(zfWeight, zfwCg);
         Chart.BindingContext = WeightAndBalanceData;
         ComputeFuel.IsEnabled = true;
+
+        //ScatterSeries newPoint = new ScatterSeries() {
+        //    ItemsSource = WeightAndBalanceData.ZeroFuelWeight,
+        //    PointWidth = 15,
+        //    XBindingPath = "CenterOfGravity",
+        //    YBindingPath = "Weight"
+
+        //};
+        //Chart.Series.Add(newPoint);
+
 
     }
 

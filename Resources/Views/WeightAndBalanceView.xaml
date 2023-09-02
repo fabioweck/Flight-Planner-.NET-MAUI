@@ -469,14 +469,90 @@
                             HeightRequest="600"
                             WidthRequest="700">
 
-                            <chart:SfCartesianChart x:Name="Chart" BackgroundColor="White">
+                            <chart:SfCartesianChart x:Name="Chart" BackgroundColor="#CCFFFFFF">
 
                                 <chart:SfCartesianChart.Resources>
+
                                     <DoubleCollection x:Key="dashArray">
                                         <x:Double>5</x:Double>
                                         <x:Double>4</x:Double>
                                     </DoubleCollection>
+
+                                    <DataTemplate x:Key="tooltipZFW">
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="12"
+                                            HorizontalOptions="Center"
+                                            Text="Zero Fuel Weight"
+                                            TextColor="Grey"
+                                            VerticalOptions="Center" />
+                                    </DataTemplate>
+
+                                    <DataTemplate x:Key="tooltipRampWeight">
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="12"
+                                            HorizontalOptions="Center"
+                                            Text="Ramp Weight"
+                                            TextColor="Grey"
+                                            VerticalOptions="Center" />
+                                    </DataTemplate>
+
+                                    <DataTemplate x:Key="tooltipTakeoffWeight">
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="12"
+                                            HorizontalOptions="Center"
+                                            Text="Takeoff Weight"
+                                            TextColor="Grey"
+                                            VerticalOptions="Center" />
+                                    </DataTemplate>
+
+                                    <DataTemplate x:Key="tooltipLandingWeight">
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="12"
+                                            HorizontalOptions="Center"
+                                            Text="Landing Weight"
+                                            TextColor="Grey"
+                                            VerticalOptions="Center" />
+                                    </DataTemplate>
+
+                                    <DataTemplate x:Key="tooltipZFWlimit">
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="10"
+                                            HorizontalOptions="Center"
+                                            Text="Zero Fuel Weight Limit"
+                                            TextColor="Grey"
+                                            VerticalOptions="Center" />
+                                    </DataTemplate>
+
+                                    <DataTemplate x:Key="tooltipTakeoffLimit">
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="10"
+                                            HorizontalOptions="Center"
+                                            Text="Takeoff Weight Limit"
+                                            TextColor="Grey"
+                                            VerticalOptions="Center" />
+                                    </DataTemplate>
+
+                                    <DataTemplate x:Key="tooltipLandingLimit">
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="10"
+                                            HorizontalOptions="Center"
+                                            Text="Landing Weight Limit"
+                                            TextColor="Grey"
+                                            VerticalOptions="Center" />
+                                    </DataTemplate>
+
                                 </chart:SfCartesianChart.Resources>
+
+                                <chart:SfCartesianChart.TooltipBehavior>
+                                    <chart:ChartTooltipBehavior Duration="5000" />
+                                </chart:SfCartesianChart.TooltipBehavior>
 
                                 <chart:SfCartesianChart.XAxes>
 
@@ -504,51 +580,70 @@
                                     </chart:NumericalAxis>
                                 </chart:SfCartesianChart.YAxes>
 
-                                <chart:LineSeries
+                                <chart:AreaSeries
                                     ItemsSource="{Binding EnvelopeLimits}"
+                                    PaletteBrushes="{Binding CustomBrushes}"
                                     StrokeDashArray="{StaticResource dashArray}"
                                     XBindingPath="CenterOfGravity"
                                     YBindingPath="Weight" />
 
                                 <chart:LineSeries
+                                    EnableTooltip="True"
                                     ItemsSource="{Binding TkofLimits}"
                                     StrokeDashArray="{StaticResource dashArray}"
+                                    StrokeWidth="2"
+                                    TooltipTemplate="{StaticResource tooltipTakeoffLimit}"
                                     XBindingPath="CenterOfGravity"
                                     YBindingPath="Weight" />
 
                                 <chart:LineSeries
+                                    EnableTooltip="True"
                                     ItemsSource="{Binding LandingLimits}"
                                     StrokeDashArray="{StaticResource dashArray}"
+                                    StrokeWidth="2"
+                                    TooltipTemplate="{StaticResource tooltipLandingLimit}"
                                     XBindingPath="CenterOfGravity"
                                     YBindingPath="Weight" />
 
                                 <chart:LineSeries
+                                    EnableTooltip="True"
                                     ItemsSource="{Binding ZeroFuelLimits}"
                                     StrokeDashArray="{StaticResource dashArray}"
+                                    StrokeWidth="2"
+                                    TooltipTemplate="{StaticResource tooltipZFWlimit}"
                                     XBindingPath="CenterOfGravity"
                                     YBindingPath="Weight" />
 
                                 <chart:ScatterSeries
+                                    EnableTooltip="True"
                                     ItemsSource="{Binding ZeroFuelWeight}"
-                                    PointWidth="12"
+                                    Label="Zero Fuel Weight"
+                                    PointWidth="13"
+                                    TooltipTemplate="{StaticResource tooltipZFW}"
                                     XBindingPath="CenterOfGravity"
                                     YBindingPath="Weight" />
 
                                 <chart:ScatterSeries
+                                    EnableTooltip="True"
                                     ItemsSource="{Binding TaxiWeight}"
-                                    PointWidth="12"
+                                    PointWidth="13"
+                                    TooltipTemplate="{StaticResource tooltipRampWeight}"
                                     XBindingPath="CenterOfGravity"
                                     YBindingPath="Weight" />
 
                                 <chart:ScatterSeries
+                                    EnableTooltip="True"
                                     ItemsSource="{Binding TkofWeight}"
-                                    PointWidth="12"
+                                    PointWidth="13"
+                                    TooltipTemplate="{StaticResource tooltipTakeoffWeight}"
                                     XBindingPath="CenterOfGravity"
                                     YBindingPath="Weight" />
 
                                 <chart:ScatterSeries
+                                    EnableTooltip="True"
                                     ItemsSource="{Binding LandingWeight}"
-                                    PointWidth="12"
+                                    PointWidth="13"
+                                    TooltipTemplate="{StaticResource tooltipLandingWeight}"
                                     XBindingPath="CenterOfGravity"
                                     YBindingPath="Weight" />
 
