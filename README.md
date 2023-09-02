@@ -1,5 +1,5 @@
 # Flight-Planner-.NET-MAUI
-Useful tools for pilots! (Refreshed last Flight Planner project, this time built with C#)
+Useful tools for pilots!
 
 Another version of the same project posted here in my repositories, but now making use of C# and more powerful resouces.
 The project currently reads, updates and stores favorite locations in a local file, fetches actual weather and forecast, displays sigwx chart
