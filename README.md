@@ -3,8 +3,8 @@ Useful tools for pilots!
 
 Another version of the same project posted here in my repositories, but now making use of C# and more powerful resouces.
 The project currently reads, updates and stores favorite locations in a local file, fetches actual weather and forecast, displays sigwx chart
-and enhanced radar image (both images retrieved from APIs), reads weight and balance charts (in PDF format), and calculates weight and balance
-limits of a Cessna Citation CJ3 aircraft model (small corporate/private jet) - displaying these limits in a line chart (SyncFusion Line Chart). 
+and enhanced radar image (both images retrieved from APIs), and calculates weight and balance limits of a Cessna Citation CJ3 aircraft model 
+(small corporate/private jet) - displaying these limits in a line chart (SyncFusion Line Chart). 
 It is also possible to check all information about an airport on the "Rotaer" tab. The tab displays a webview consuming a html response from the API.
 On the tab "IFR charts", the user can check published charts for a specific airport through search and have all
 its resources listed in a listview (procedures, airport map, runaways,...). This tab makes use of a webview as well, calling google
@@ -12,8 +12,8 @@ online PDF viewer in order to avoid downloading locally the chart file.
 Distance calculator tab fetches latitude and longitude coordinates and calculates the distance between two airports selected by the user,
 and displays the distance in nautical miles (aviation patterns).
 
-Further improvements will include distance calculator between waypoints, WACs (World aeronautical charts), 
-NOTAMs (notice to air men) and AIP (aeronautical information publication).
+Further improvements will include WACs (World aeronautical charts), NOTAMs (notice to air men), AIP (aeronautical information publication),
+and a Flight Package section which will add to a PDF file all the information that the user wants to store and it will be sent to the user's email.
 
 **UNDER DEVELOPMENT...!**
 
