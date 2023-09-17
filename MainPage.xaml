@@ -13,5 +13,6 @@
     <!--<local:WaypointsView Title="Waypoints"/>-->
     <!--<local:ReportView Title="Report"/>-->
     <local:DistanceCalcView Title="Calculator" />
+    <local:FlightPackageView Title="Flight Package" />
 
 </TabbedPage>

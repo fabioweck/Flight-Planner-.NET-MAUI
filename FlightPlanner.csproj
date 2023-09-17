@@ -81,6 +81,9 @@
 	  <MauiXaml Update="Resources\Views\DistanceCalcView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Resources\Views\FlightPackageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Resources\Views\RadarView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
