@@ -21,6 +21,7 @@
         <FlexLayout AlignItems="Center" Direction="Column">
 
             <Label
+                x:Name="lblTitle"
                 Margin="10"
                 Padding="10"
                 FontFamily="Calibri"
@@ -199,6 +200,7 @@
                                                     CommandParameter="{Binding .}"
                                                     IsDestructive="True"
                                                     Text="Delete" />
+                                                <MenuItem Clicked="AddToFlightPackage_Clicked" Text="Add to report" />
                                             </ViewCell.ContextActions>
                                             <Grid Margin="20" RowSpacing="5">
                                                 <Grid.RowDefinitions>
@@ -206,12 +208,14 @@
                                                     <RowDefinition Height="*" />
                                                 </Grid.RowDefinitions>
                                                 <Label
+                                                    x:Name="lblMetar"
                                                     Grid.Row="0"
                                                     FontAttributes="Bold"
                                                     FontSize="12"
                                                     HorizontalTextAlignment="Start"
                                                     Text="{Binding Metar}" />
                                                 <Label
+                                                    x:Name="lblTaf"
                                                     Grid.Row="1"
                                                     FontSize="12"
                                                     HorizontalTextAlignment="Start"

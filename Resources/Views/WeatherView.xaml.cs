@@ -1,3 +1,4 @@
+using MAUIpractice.Resources.Models;
 using MAUIpractice.Resources.ViewModels;
 using Microsoft.Maui.Devices.Sensors;
 using Syncfusion.Maui.ProgressBar;
@@ -12,6 +13,7 @@ public partial class WeatherView : ContentPage
     ViewFavoritesModel GetFavorites { get; set; }
     ViewSigwxModel GetSigwx { get; set; }
     ViewRadarModel GetRadar { get; set; }
+    ViewFlightPackageModel FlightPackage { get; set; }
 
     DataTemplate contentTemplateView;
     Image sigwxImage;
@@ -25,6 +27,7 @@ public partial class WeatherView : ContentPage
         GetFavorites = new ViewFavoritesModel();
         GetSigwx = new ViewSigwxModel();
         GetRadar = new ViewRadarModel();
+        FlightPackage = new ViewFlightPackageModel();
 
         WeatherList.BindingContext = GetWeather;
         FavoritesList.BindingContext = GetFavorites;
@@ -92,11 +95,6 @@ public partial class WeatherView : ContentPage
         }
     }
 
-    private void FavoritesList_ItemSelected(object sender, SelectedItemChangedEventArgs e)
-    {
-        
-    }
-
     private async Task LoadSigwxAndProgressBar()
     {
         await Task.WhenAll(LoadSigwxContent(), LoadProgressBar());
@@ -118,10 +116,29 @@ public partial class WeatherView : ContentPage
             sigwxImage.BackgroundColor = Colors.Transparent;
             sigwxImage.Margin = 10;
             sigwxImage.Source = link;
+
+            sigwxImage.GestureRecognizers.Add(new TapGestureRecognizer
+            {
+                Command = new Command(async () =>
+                {
+                    // Handle the right-click-like action here
+                    // You can extract information or perform any other action
+                    // when the image is long-pressed (simulated right-click)
+                    bool add = await DisplayAlert("SIGWX", "Would you like to add to your current Flight Package?", "Add", "Cancel");
+
+                    if(add)
+                    {
+                        FlightPackage.AddSigwx(link);
+                    }
+
+                }),
+                NumberOfTapsRequired = 2
+            });
+
             return sigwxImage;
         });
 
-        SigwxPopup.ContentTemplate = contentTemplateView;
+        SigwxPopup.ContentTemplate = contentTemplateView;   
         SigwxPopup.Show();
     }
 
@@ -136,10 +153,27 @@ public partial class WeatherView : ContentPage
             radarImage = new Image();
             radarImage.Margin = 10;
             radarImage.Source = link;
+
+            radarImage.GestureRecognizers.Add(new TapGestureRecognizer
+            {
+                Command = new Command(async () =>
+                {
+                    // Handle the right-click-like action here
+                    // You can extract information or perform any other action
+                    // when the image is long-pressed (simulated right-click)
+                    bool add = await DisplayAlert("SIGWX", "Would you like to add to your current Flight Package?", "Add", "Cancel");
+
+                    if (add)
+                    {
+                        FlightPackage.AddSatellite(link);
+                    }
+
+                }),
+                NumberOfTapsRequired = 2
+            });
+
             return radarImage;
         });
-
-
 
         RadarPopup.HeaderTitle = $"Enhanced - {date}";
         RadarPopup.ContentTemplate = contentTemplateView;
@@ -154,5 +188,22 @@ public partial class WeatherView : ContentPage
     private void RadarDisplay_Clicked(object sender, EventArgs e)
     {
         LoadRadarAndProgressBar();
+    }
+
+    private void AddToFlightPackage_Clicked(object sender, EventArgs e)
+    {
+        // Find the ListViewItem associated with the clicked MenuItem
+        if (sender is MenuItem menuItem && menuItem.BindingContext is MetarTafModel dataItem)
+        {
+            // Find the "lblMetar" Label within the ListViewItem
+            Label lblMetar = (Label)menuItem.Parent.FindByName("lblMetar");
+            Label lblTaf = (Label)menuItem.Parent.FindByName("lblTaf");
+
+            if (lblMetar != null)
+            {
+                string weather = $"{lblMetar.Text}\n{lblTaf.Text}";
+                FlightPackage.AddWeather(weather);
+            }
+        }
     }
 }
