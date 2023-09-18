@@ -1,5 +1,6 @@
 using MAUIpractice.Resources.ViewModels;
 using Syncfusion.Maui.Charts;
+using Syncfusion.Maui.Core;
 using System.Xml.Schema;
 
 namespace MAUIpractice.Resources.Views;
@@ -10,6 +11,7 @@ public partial class WeightAndBalanceView : ContentPage
 	ViewWeightModel WeightAndBalanceData { get; set; }
     ViewPayloadModel PayloadColumn { get; set; }
     ViewCustomBrushesModel CustomBrushes { get; set; }
+    ViewFlightPackageModel FlightPackage { get; set; }
 
     Dictionary<Entry,Label> EntriesAndMoments { get; set; }
     Dictionary<string, double> FieldsAndArms { get; set; }
@@ -25,6 +27,7 @@ public partial class WeightAndBalanceView : ContentPage
         FuelTank = new();
         FieldsAndArms = PayloadColumn.GetPayloadData();
         FuelTank = PayloadColumn.GetFuelTank();
+        FlightPackage = new();
 
         InitializeComponent();
         AddFields();
@@ -34,7 +37,7 @@ public partial class WeightAndBalanceView : ContentPage
         ComputeFuel.TextColor = Colors.White;
 
         Chart.BindingContext = WeightAndBalanceData;
-        Chart.PaletteBrushes = CustomBrushes.GetBrushes();          
+        Chart.PaletteBrushes = CustomBrushes.GetBrushes();
 
     }
 
@@ -222,6 +225,11 @@ public partial class WeightAndBalanceView : ContentPage
         WeightAndBalanceData.SetTkofWeight(takeoffWeight, takeofCG);
         WeightAndBalanceData.SetLandingWeight(landingWeight, landingCG);
         Chart.BindingContext = WeightAndBalanceData;
+    }
 
+    private async void addToFlightPackage_Clicked(object sender, EventArgs e)
+    {
+        Stream chartStream = await Chart.GetStreamAsync(ImageFileFormat.Jpeg);
+        FlightPackage.AddChart(chartStream);
     }
 }

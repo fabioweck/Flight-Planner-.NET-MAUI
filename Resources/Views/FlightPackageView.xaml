@@ -3,7 +3,8 @@
     x:Class="MAUIpractice.Resources.Views.FlightPackageView"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    Title="FlightPackageView">
+    Title="FlightPackageView"
+    BackgroundColor="DimGrey">
     <ScrollView>
         <VerticalStackLayout Spacing="30">
             <Label
@@ -11,12 +12,16 @@
                 Text="Flight Package"
                 VerticalOptions="Center" />
             <Label x:Name="lblWeather" />
-            <Image x:Name="sigwxImage" WidthRequest="800" />
-            <Image x:Name="satelliteImage" WidthRequest="800" />
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
+                <Image x:Name="sigwxImage" HeightRequest="500" />
+                <Image x:Name="satelliteImage" HeightRequest="500" />
+            </HorizontalStackLayout>
+            <Image x:Name="cgImage" HeightRequest="500" />
             <Button
                 x:Name="btnWeather"
                 Clicked="btnWeather_Clicked"
-                Text="Read weather test" />
+                Text="Read weather test"
+                WidthRequest="150" />
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

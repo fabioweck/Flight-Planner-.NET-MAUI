@@ -44,5 +44,15 @@ namespace MAUIpractice.Resources.ViewModels
         {
             return FlightPackageModel.Satellite;
         }
+
+        public void AddChart(Stream chart)
+        {
+            FlightPackageModel.Chart = chart;
+        }
+
+        public Stream GetChart()
+        {
+            return FlightPackageModel.Chart;
+        }
     }
 }
