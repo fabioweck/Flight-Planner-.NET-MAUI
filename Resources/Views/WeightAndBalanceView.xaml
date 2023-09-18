@@ -551,7 +551,7 @@
                                 </chart:SfCartesianChart.Resources>
 
                                 <chart:SfCartesianChart.TooltipBehavior>
-                                    <chart:ChartTooltipBehavior Duration="5000" />
+                                    <chart:ChartTooltipBehavior x:Name="tooltip" />
                                 </chart:SfCartesianChart.TooltipBehavior>
 
                                 <chart:SfCartesianChart.XAxes>
@@ -647,10 +647,40 @@
                                     XBindingPath="CenterOfGravity"
                                     YBindingPath="Weight" />
 
-
                             </chart:SfCartesianChart>
                         </Grid>
                     </VerticalStackLayout>
+
+                    <Button
+                        x:Name="addToFlightPackage"
+                        BackgroundColor="#66000000"
+                        BorderColor="#4DE8E9EB"
+                        BorderWidth="1.2"
+                        Clicked="addToFlightPackage_Clicked"
+                        FontFamily="Calibri"
+                        FontSize="15"
+                        HorizontalOptions="Center"
+                        Text="Add to Flight Package"
+                        TextColor="White"
+                        WidthRequest="180">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroupList>
+                                <VisualStateGroup x:Name="BtnPressed">
+                                    <VisualState x:Name="Normal">
+                                        <VisualState.Setters>
+                                            <Setter Property="Scale" Value="1" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                    <VisualState x:Name="Pressed">
+                                        <VisualState.Setters>
+                                            <Setter Property="Scale" Value="0.95" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateGroupList>
+                        </VisualStateManager.VisualStateGroups>
+                    </Button>
+
                 </VerticalStackLayout>
             </Frame>
         </VerticalStackLayout>

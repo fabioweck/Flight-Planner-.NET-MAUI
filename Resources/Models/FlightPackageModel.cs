@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Syncfusion.Maui.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,5 +12,6 @@ namespace MAUIpractice.Resources.Models
         public static string Weather { get; set; }
         public static string Sigwx { get; set;}
         public static string Satellite { get; set;}
+        public static Stream Chart { get; set;}
     }
 }

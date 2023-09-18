@@ -200,7 +200,7 @@
                                                     CommandParameter="{Binding .}"
                                                     IsDestructive="True"
                                                     Text="Delete" />
-                                                <MenuItem Clicked="AddToFlightPackage_Clicked" Text="Add to report" />
+                                                <MenuItem Clicked="AddToFlightPackage_Clicked" Text="Add to Flight Package" />
                                             </ViewCell.ContextActions>
                                             <Grid Margin="20" RowSpacing="5">
                                                 <Grid.RowDefinitions>
